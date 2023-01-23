@@ -3,17 +3,33 @@ import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import CssBaseline from '@mui/material/CssBaseline'
 import TextField from '@mui/material/TextField'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import Checkbox from '@mui/material/Checkbox'
-import Link from '@mui/material/Link'
+import MuiLink from '@mui/material/Link'
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import MainLayout from '@/components/layouts/MainLayout'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { GetStaticProps } from 'next'
+import Link from 'next/link'
+import { useTranslation } from 'next-i18next'
+
+export const getStaticProps: GetStaticProps = async () => ({
+  props: {
+    ...(await serverSideTranslations('fr', [
+      'common',
+      'authentification'
+    ]))
+  }
+})
 
 const Register: React.FC = () => {
+  const { t } = useTranslation([
+    'common',
+    'authentification'
+  ])
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
@@ -39,7 +55,7 @@ const Register: React.FC = () => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign up
+            {t('authentification:create_account')}
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -85,12 +101,6 @@ const Register: React.FC = () => {
                   autoComplete="new-password"
                 />
               </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid>
             </Grid>
             <Button
               type="submit"
@@ -98,13 +108,13 @@ const Register: React.FC = () => {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              {t('authentification:create_account_action')}
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
-                </Link>
+                <MuiLink href="/authentification/login" component={Link} variant="body2">
+                  {t('authentification:already_account')}
+                </MuiLink>
               </Grid>
             </Grid>
           </Box>

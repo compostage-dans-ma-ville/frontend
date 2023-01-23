@@ -10,7 +10,7 @@ import Close from '@mui/icons-material/Close'
 import Typography from '@mui/material/Typography'
 import AuthNavigation from './AuthNavigation'
 
-const Index: React.FC = () => {
+const Navbar: React.FC = () => {
   const [visibleMenu, setVisibleMenu] = React.useState<boolean>(false)
   const { breakpoints } = useTheme()
   const matchMobileView = useMediaQuery(breakpoints.down('md'))
@@ -73,4 +73,4 @@ const Index: React.FC = () => {
   )
 }
 
-export default Index
+export default Navbar

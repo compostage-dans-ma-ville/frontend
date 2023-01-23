@@ -5,7 +5,7 @@ import Link from 'next/link'
 const navigations = [
   {
     label: 'Home',
-    path: '#' // '/',
+    path: '/' // '/',
   },
   {
     label: 'Courses',

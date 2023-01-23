@@ -6,6 +6,7 @@ import createEmotionCache from '@/styles/utils/createEmotionCache'
 import { CacheProvider } from '@emotion/react'
 import React from 'react'
 import { EmotionCache } from '@emotion/cache'
+import { appWithTranslation } from 'next-i18next'
 
 const clientSideEmotionCache = createEmotionCache()
 
@@ -24,4 +25,4 @@ const App: React.FC<MyAppProps> = ({ Component, emotionCache = clientSideEmotion
   )
 }
 
-export default App
+export default appWithTranslation(App)

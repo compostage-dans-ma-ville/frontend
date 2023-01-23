@@ -1,8 +1,18 @@
 import * as React from 'react'
 import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import Switch from '@mui/material/Switch'
 import MainLayout from '@/components/layouts/MainLayout'
+import { GetStaticProps } from 'next'
+
+export const getStaticProps: GetStaticProps = async () => ({
+  props: {
+    ...(await serverSideTranslations('fr', [
+      'common'
+    ]))
+  }
+})
 
 const Home: React.FC = () => {
   return (
@@ -14,6 +24,15 @@ const Home: React.FC = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainLayout>
+        <h3>test</h3>
+        <h3>test</h3>
+        <h3>test</h3>
+        <h3>test</h3>
+        <h3>test</h3>
+        <h3>test</h3>
+        <h3>test</h3>
+        <h3>test</h3>
+        <h3>test</h3>
         <Switch defaultChecked />
       </MainLayout>
     </>

@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
   }
 
   return (
-    <footer>
+    <Box component="footer">
       <Container maxWidth="lg">
         <StyledBox py={6} display="flex" flexWrap="wrap" alignItems="center">
           <Typography
@@ -66,7 +66,7 @@ const Footer: React.FC = () => {
           <Typography color="textSecondary" component="p" variant="caption" gutterBottom={false}>{content.copy}</Typography>
         </StyledBox>
       </Container>
-    </footer>
+    </Box>
   )
 }
 
