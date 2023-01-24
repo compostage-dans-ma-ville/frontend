@@ -61,23 +61,23 @@ const Register: React.FC = () => {
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  autoComplete="given-name"
-                  name="firstName"
                   required
                   fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
+                  id="lastName"
+                  label={t('common:lastname')}
+                  name="lastName"
+                  autoComplete="family-name"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
+                  autoComplete="given-name"
+                  name="firstName"
                   required
                   fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
+                  label={t('common:firstname')}
+                  id="firstName"
+                  autoFocus
                 />
               </Grid>
               <Grid item xs={12}>
@@ -85,7 +85,7 @@ const Register: React.FC = () => {
                   required
                   fullWidth
                   id="email"
-                  label="Email Address"
+                  label={t('common:email_addresse')}
                   name="email"
                   autoComplete="email"
                 />
@@ -95,7 +95,7 @@ const Register: React.FC = () => {
                   required
                   fullWidth
                   name="password"
-                  label="Password"
+                  label={t('common:password')}
                   type="password"
                   id="password"
                   autoComplete="new-password"

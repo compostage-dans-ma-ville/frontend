@@ -3,8 +3,6 @@ import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import CssBaseline from '@mui/material/CssBaseline'
 import TextField from '@mui/material/TextField'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import Checkbox from '@mui/material/Checkbox'
 import MuiLink from '@mui/material/Link'
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
@@ -66,7 +64,7 @@ const Login: React.FC = () => {
               required
               fullWidth
               id="email"
-              label="Email Address"
+              label={t('common:email_addresse')}
               name="email"
               autoComplete="email"
               autoFocus
@@ -76,7 +74,7 @@ const Login: React.FC = () => {
               required
               fullWidth
               name="password"
-              label="Password"
+              label={t('common:password')}
               type="password"
               id="password"
               autoComplete="current-password"
@@ -89,14 +87,14 @@ const Login: React.FC = () => {
             >
               {t('authentification:login')}
             </Button>
-            <Grid container>
+            <Grid container justifyContent="flex-end">
               <Grid item>
                 <MuiLink href="/authentification/register" component={Link} variant="body2">
                   {t('authentification:no_account')}
                 </MuiLink>
               </Grid>
               <Grid item>
-                <MuiLink href="#" variant="body2">
+                <MuiLink href="/authentification/forgot-password" component={Link} variant="body2">
                   {t('authentification:forgot_pwd')}
                 </MuiLink>
               </Grid>

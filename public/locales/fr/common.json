@@ -1,4 +1,8 @@
 {
   "login": "Se connecter",
-  "signIn": "Créer un compte"
+  "signIn": "Créer un compte",
+  "firstname": "Prénom",
+  "lastname": "Nom",
+  "email_addresse": "Adresse mail",
+  "password": "Mot de passe"
 }
