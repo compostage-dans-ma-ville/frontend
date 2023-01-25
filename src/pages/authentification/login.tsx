@@ -41,7 +41,6 @@ const Login: React.FC = () => {
 
   return (
     <MainLayout>
-
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box

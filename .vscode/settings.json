@@ -6,4 +6,5 @@
     "javascript"
   ],
   "files.eol": "\n",
+  "i18next.i18nPaths": "c:/Users/johannchopin/Desktop/www/compostage-dans-ma-ville/frontend/src/public/locales",
 }

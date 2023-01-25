@@ -14,6 +14,9 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { userCreationSchema } from '@/domains/user'
 
 export const getStaticProps: GetStaticProps = async () => ({
   props: {
@@ -30,14 +33,18 @@ const Register: React.FC = () => {
     'authentification'
   ])
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
-    event.preventDefault()
-    const data = new FormData(event.currentTarget)
-    console.log({
-      email: data.get('email'),
-      password: data.get('password')
-    })
-  }
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    reset,
+    watch,
+    getValues,
+    formState: { errors }
+  } = useForm({
+    mode: 'onChange',
+    resolver: yupResolver(userCreationSchema)
+  })
 
   return (
     <MainLayout>
@@ -57,7 +64,7 @@ const Register: React.FC = () => {
           <Typography component="h1" variant="h5">
             {t('authentification:create_account')}
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box component="form" noValidate onSubmit={handleSubmit((data) => data.)} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
