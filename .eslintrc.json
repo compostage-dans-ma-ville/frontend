@@ -5,8 +5,22 @@
   ],
   "extends": [
     "next/core-web-vitals",
-    "airbnb-base/legacy"
+    "airbnb-base/legacy",
+    "plugin:import/errors",
+    "plugin:import/typescript"
   ],
+  "settings": {
+    "import/resolver": {
+      "typescript": true,
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".tsx"
+        ]
+      }
+    }
+  },
   "rules": {
     // note you must disable the base rule as it can report incorrect errors
     "no-use-before-define": "off",

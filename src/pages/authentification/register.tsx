@@ -16,7 +16,9 @@ import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { userCreationSchema } from '@/domains/user'
+import { UserCreation, userCreationSchema } from '@/domains/user'
+
+import axios from 'axios'
 
 export const getStaticProps: GetStaticProps = async () => ({
   props: {
@@ -44,6 +46,12 @@ const Register: React.FC = () => {
     resolver: yupResolver(userCreationSchema)
   })
 
+  const registerUser = (user: UserCreation): void => {
+    axios.post('/users', user).then((response) => {
+      console.log(response)
+    })
+  }
+
   return (
     <MainLayout>
       <Container component="main" maxWidth="xs">
@@ -62,7 +70,7 @@ const Register: React.FC = () => {
           <Typography component="h1" variant="h5">
             {t('authentification:create_account')}
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit((data) => console.log(data))} sx={{ mt: 3 }}>
+          <Box component="form" noValidate onSubmit={handleSubmit(registerUser)} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
