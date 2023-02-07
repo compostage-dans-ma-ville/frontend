@@ -25,3 +25,4 @@ export const userCreationSchema = yup.object().shape({
 })
 
 export type UserCreation = yup.InferType<typeof userCreationSchema>
+export type User = Omit<UserCreation, 'password' | 'confirmPassword' >

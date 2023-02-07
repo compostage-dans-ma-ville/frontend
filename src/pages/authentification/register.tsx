@@ -48,7 +48,7 @@ const Register: React.FC = () => {
 
   const registerUser = (user: UserCreation): void => {
     axios.post('/users', user).then((response) => {
-      console.log(response)
+      console.log(response.data)
     })
   }
 
