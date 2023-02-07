@@ -1,0 +1,8 @@
+{
+  "required_field": "Ce champ est requis",
+  "min_length": "Ce champs doit avoir minimum {{min}} charactères",
+  "min3": "Ce champs doit avoir minimum 3 charactères",
+  "valid_email": "Veuillez entrer un format d'email valide",
+  "pwd_not_same": "Les mots de passe entrés ne sont pas identiques",
+  "valid_pwd": "Veuillez entrer un mot de passe de plus de 8 caractères contenant au moins une minuscule, une majuscule, un chiffre et un symbole"
+}

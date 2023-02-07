@@ -1,3 +1,72 @@
 {
-  "extends": "next/core-web-vitals"
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb-base/legacy",
+    "plugin:import/errors",
+    "plugin:import/typescript"
+  ],
+  "settings": {
+    "import/resolver": {
+      "typescript": true,
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".tsx"
+        ]
+      }
+    }
+  },
+  "rules": {
+    // note you must disable the base rule as it can report incorrect errors
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": [
+      "error"
+    ],
+    "eol-last": [
+      "error",
+      "always"
+    ],
+    "global": "off",
+    "global-strict": "off",
+    "indent": [
+      "warn",
+      2
+    ],
+    "lines-between-class-members": "off",
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 110,
+        "ignoreComments": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true
+      }
+    ],
+    "no-unused-vars": "off",
+    "no-param-reassign": "off",
+    "no-underscore-dangle": "off",
+    "semi": [
+      "error",
+      "never"
+    ],
+    "strict": [
+      "error",
+      "never"
+    ],
+    "@typescript-eslint/explicit-function-return-type": "error",
+    "@typescript-eslint/no-unused-vars": "error"
+  },
+  "globals": {
+    "React": true,
+    "JSX": true
+  }
 }
