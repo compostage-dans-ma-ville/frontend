@@ -4,5 +4,6 @@
   "firstname": "Prénom",
   "lastname": "Nom",
   "email_addresse": "Adresse mail",
-  "password": "Mot de passe"
+  "password": "Mot de passe",
+  "confirm_password": "Confirmer le mot de passe"
 }

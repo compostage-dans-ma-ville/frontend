@@ -22,7 +22,8 @@ export const getStaticProps: GetStaticProps = async () => ({
   props: {
     ...(await serverSideTranslations('fr', [
       'common',
-      'authentification'
+      'authentification',
+      'errors'
     ]))
   }
 })
@@ -30,16 +31,13 @@ export const getStaticProps: GetStaticProps = async () => ({
 const Register: React.FC = () => {
   const { t } = useTranslation([
     'common',
-    'authentification'
+    'authentification',
+    'errors'
   ])
 
   const {
     register,
     handleSubmit,
-    setValue,
-    reset,
-    watch,
-    getValues,
     formState: { errors }
   } = useForm({
     mode: 'onChange',
@@ -64,48 +62,74 @@ const Register: React.FC = () => {
           <Typography component="h1" variant="h5">
             {t('authentification:create_account')}
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit((data) => data.)} sx={{ mt: 3 }}>
+          <Box component="form" noValidate onSubmit={handleSubmit((data) => console.log(data))} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
+                  {...register('lastName')}
                   required
                   fullWidth
                   id="lastName"
+                  error={!!errors.lastName}
                   label={t('common:lastname')}
                   name="lastName"
                   autoComplete="family-name"
+                  helperText={errors?.lastName?.message && t(errors.lastName.message as string)}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
+                  {...register('firstName')}
                   autoComplete="given-name"
                   name="firstName"
                   required
                   fullWidth
                   label={t('common:firstname')}
+                  error={!!errors.firstName}
+                  helperText={errors?.firstName?.message && t(errors.firstName.message as string)}
                   id="firstName"
                   autoFocus
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  {...register('email')}
                   required
                   fullWidth
                   id="email"
                   label={t('common:email_addresse')}
                   name="email"
+                  error={!!errors.email}
+                  helperText={errors?.email?.message && t(errors.email.message as string)}
                   autoComplete="email"
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  {...register('password')}
                   required
                   fullWidth
                   name="password"
                   label={t('common:password')}
                   type="password"
                   id="password"
+                  error={!!errors.password}
                   autoComplete="new-password"
+                  helperText={errors?.password?.message && t(errors.password.message as string)}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  {...register('confirmPassword')}
+                  required
+                  fullWidth
+                  name="confirmPassword"
+                  label={t('common:confirm_password')}
+                  type="password"
+                  id="confirmPassword"
+                  error={!!errors.confirmPassword}
+                  autoComplete="new-password"
+                  helperText={errors.confirmPassword && t('errors:pwd_not_same')}
                 />
               </Grid>
             </Grid>
