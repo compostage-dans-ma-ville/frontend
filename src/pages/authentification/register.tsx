@@ -18,15 +18,18 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { UserCreation, userCreationSchema } from '@/domains/user'
 import { useSnackbar } from 'notistack'
+import Head from 'next/head'
 
 import axios, { AxiosError } from 'axios'
+import PageTitle from '@/components/PageTitle'
 
 export const getStaticProps: GetStaticProps = async () => ({
   props: {
     ...(await serverSideTranslations('fr', [
       'common',
       'authentification',
-      'errors'
+      'errors',
+      'pages'
     ]))
   }
 })
@@ -35,7 +38,8 @@ const Register: React.FC = () => {
   const { t } = useTranslation([
     'common',
     'authentification',
-    'errors'
+    'errors',
+    'pages'
   ])
   const { enqueueSnackbar } = useSnackbar()
 
@@ -62,6 +66,8 @@ const Register: React.FC = () => {
 
   return (
     <MainLayout>
+      <PageTitle title={t('pages:register.title')} />
+      {t('pages:register.title')}
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
