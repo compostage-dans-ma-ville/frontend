@@ -9,6 +9,7 @@ import { EmotionCache } from '@emotion/cache'
 import { appWithTranslation } from 'next-i18next'
 import axios from 'axios'
 import { SWRConfig } from 'swr'
+import { SnackbarProvider } from 'notistack'
 
 const clientSideEmotionCache = createEmotionCache()
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_BASEURL
@@ -28,8 +29,10 @@ const App: React.FC<MyAppProps> = ({ Component, emotionCache = clientSideEmotion
 
       <CacheProvider value={emotionCache}>
         <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Component {...pageProps} />
+          <SnackbarProvider maxSnack={3}>
+            <CssBaseline />
+            <Component {...pageProps} />
+          </SnackbarProvider>
         </ThemeProvider>
       </CacheProvider>
     </SWRConfig>

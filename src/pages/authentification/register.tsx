@@ -17,8 +17,9 @@ import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { UserCreation, userCreationSchema } from '@/domains/user'
+import { useSnackbar } from 'notistack'
 
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 
 export const getStaticProps: GetStaticProps = async () => ({
   props: {
@@ -36,6 +37,7 @@ const Register: React.FC = () => {
     'authentification',
     'errors'
   ])
+  const { enqueueSnackbar } = useSnackbar()
 
   const {
     register,
@@ -49,6 +51,12 @@ const Register: React.FC = () => {
   const registerUser = (user: UserCreation): void => {
     axios.post('/users', user).then((response) => {
       console.log(response.data)
+    }).catch((error: AxiosError) => {
+      if (error?.response?.status === 409) {
+        enqueueSnackbar(t('errors:email_already_exist'), { variant: 'error' })
+      } else {
+        enqueueSnackbar(t('errors:unknow_error'), { variant: 'error' })
+      }
     })
   }
 

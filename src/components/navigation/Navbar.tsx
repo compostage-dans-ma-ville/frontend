@@ -9,6 +9,7 @@ import Menu from '@mui/icons-material/Menu'
 import Close from '@mui/icons-material/Close'
 import Typography from '@mui/material/Typography'
 import AuthNavigation from './AuthNavigation'
+import Link from 'next/link'
 
 const Navbar: React.FC = () => {
   const [visibleMenu, setVisibleMenu] = React.useState<boolean>(false)
@@ -19,13 +20,16 @@ const Navbar: React.FC = () => {
     <Box sx={{ backgroundColor: 'background.paper' }}>
       <Container sx={{ py: { xs: 2, md: 3 } }}>
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <Typography
-            variant="h4"
-            component="h1"
-            sx={{ fontWeight: 700, '& span': { color: 'primary.main' } }}
-          >
+          <Link href="/">
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ fontWeight: 700, '& span': { color: 'primary.main' } }}
+            >
             Com<span>postage</span>
-          </Typography>
+            </Typography>
+          </Link>
+
           <Box sx={{ ml: 'auto', display: { xs: 'inline-flex', md: 'none' } }}>
             <IconButton onClick={(): void => setVisibleMenu(!visibleMenu)}>
               <Menu />
