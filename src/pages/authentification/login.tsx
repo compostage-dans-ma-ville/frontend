@@ -14,12 +14,14 @@ import { GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
+import PageTitle from '@/components/PageTitle'
 
 export const getStaticProps: GetStaticProps = async () => ({
   props: {
     ...(await serverSideTranslations('fr', [
       'common',
-      'authentification'
+      'authentification',
+      'pages'
     ]))
   }
 })
@@ -27,7 +29,8 @@ export const getStaticProps: GetStaticProps = async () => ({
 const Login: React.FC = () => {
   const { t } = useTranslation([
     'common',
-    'authentification'
+    'authentification',
+    'pages'
   ])
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
@@ -41,6 +44,7 @@ const Login: React.FC = () => {
 
   return (
     <MainLayout>
+      <PageTitle title={t('pages:login.title')}/>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box

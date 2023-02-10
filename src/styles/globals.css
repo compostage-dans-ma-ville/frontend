@@ -51,13 +51,11 @@ body {
   background: var(--background-start-rgb);
 }
 
+main {
+  min-height: 60vh;
+}
+
 a {
   color: inherit;
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }
