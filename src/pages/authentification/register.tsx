@@ -18,7 +18,6 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { UserCreation, userCreationSchema } from '@/domains/user'
 import { useSnackbar } from 'notistack'
-import Head from 'next/head'
 
 import axios, { AxiosError } from 'axios'
 import PageTitle from '@/components/PageTitle'
@@ -47,12 +46,12 @@ const Register: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm({
-    mode: 'onChange',
+  } = useForm<UserCreation>({
     resolver: yupResolver(userCreationSchema)
   })
 
   const registerUser = (user: UserCreation): void => {
+    // TODO: Extract logic
     axios.post('/users', user).then((response) => {
       console.log(response.data)
     }).catch((error: AxiosError) => {
@@ -67,7 +66,6 @@ const Register: React.FC = () => {
   return (
     <MainLayout>
       <PageTitle title={t('pages:register.title')} />
-      {t('pages:register.title')}
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -97,6 +95,7 @@ const Register: React.FC = () => {
                   name="lastName"
                   autoComplete="family-name"
                   helperText={errors?.lastName?.message && t(errors.lastName.message as string)}
+                  autoFocus
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -110,7 +109,6 @@ const Register: React.FC = () => {
                   error={!!errors.firstName}
                   helperText={errors?.firstName?.message && t(errors.firstName.message as string)}
                   id="firstName"
-                  autoFocus
                 />
               </Grid>
               <Grid item xs={12}>

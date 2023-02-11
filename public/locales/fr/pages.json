@@ -4,5 +4,9 @@
   },
   "login": {
     "title": "Connection"
+  },
+  "forgot_password": {
+    "title": "Mot de passe oublié",
+    "description": "Veuillez entrer votre addresse email. Vous recevrez un lien vous permettant de modifier votre mot de passe."
   }
 }
