@@ -18,11 +18,7 @@ export const emailSchema = {
     .required('errors:required_field')
 }
 
-export const userCreationSchema = yup.object().shape({
-  firstName: yup.string().required('errors:required_field').min(3, 'errors:min3'),
-  lastName: yup.string().required('errors:required_field').min(3, 'errors:min3'),
-  ...emailSchema,
-  ...passwordSchema,
+export const confirmPasswordSchema = {
   confirmPassword: yup.string()
     .required('errors:required_field')
     .when('password', {
@@ -31,6 +27,14 @@ export const userCreationSchema = yup.object().shape({
         [yup.ref('password')]
       )
     })
+}
+
+export const userCreationSchema = yup.object().shape({
+  firstName: yup.string().required('errors:required_field').min(3, 'errors:min3'),
+  lastName: yup.string().required('errors:required_field').min(3, 'errors:min3'),
+  ...emailSchema,
+  ...passwordSchema,
+  ...confirmPasswordSchema
 })
 
 export const loginUserSchema = yup.object().shape({

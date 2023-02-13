@@ -16,7 +16,7 @@ import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { UserCreation, userCreationSchema } from '@/domains/user'
+import { UserCreation, userCreationSchema } from '@/domains/schemas/user'
 import { useSnackbar } from 'notistack'
 
 import axios, { AxiosError } from 'axios'
@@ -67,7 +67,6 @@ const Register: React.FC = () => {
     <MainLayout>
       <PageTitle title={t('pages:register.title')} />
       <Container component="main" maxWidth="xs">
-        <CssBaseline />
         <Box
           sx={{
             marginTop: 8,

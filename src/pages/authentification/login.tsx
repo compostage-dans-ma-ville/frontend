@@ -1,6 +1,5 @@
 import * as React from 'react'
 import Avatar from '@mui/material/Avatar'
-import CssBaseline from '@mui/material/CssBaseline'
 import TextField from '@mui/material/TextField'
 import MuiLink from '@mui/material/Link'
 import Grid from '@mui/material/Grid'
@@ -15,12 +14,13 @@ import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
 import PageTitle from '@/components/PageTitle'
 import { useForm } from 'react-hook-form'
-import { LoginUser, loginUserSchema } from '@/domains/user'
+import { LoginUser, loginUserSchema } from '@/domains/schemas/user'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { loginUser } from '@/domains/api'
 import { AxiosError } from 'axios'
 import Alert from '@mui/material/Alert'
 import LoadingButton from '@/components/LoadingButton'
+import { useRouter } from 'next/router'
 
 export const getStaticProps: GetStaticProps = async () => ({
   props: {
@@ -48,6 +48,7 @@ const Login: React.FC = () => {
     resolver: yupResolver(loginUserSchema)
   })
 
+  const router = useRouter()
   const [loginErrored, setLoginErrored] = React.useState(false)
   const [isLoading, setIsLoading] = React.useState(false)
 
@@ -55,6 +56,7 @@ const Login: React.FC = () => {
     setIsLoading(true)
     loginUser(data).then(response => {
       // TODO: logic to login user
+      router.push('/')
       setIsLoading(false)
     }).catch((error: AxiosError) => {
       setLoginErrored(true)
@@ -67,7 +69,6 @@ const Login: React.FC = () => {
     <MainLayout>
       <PageTitle title={t('pages:login.title')}/>
       <Container component="main" maxWidth="xs">
-        <CssBaseline />
         <Box
           sx={{
             marginTop: 8,
