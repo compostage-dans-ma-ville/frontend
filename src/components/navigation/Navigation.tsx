@@ -2,6 +2,7 @@ import * as React from 'react'
 import Box from '@mui/material/Box'
 import Link from 'next/link'
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const navigations = [
   {
     label: 'Home',
@@ -24,7 +25,7 @@ const navigations = [
 const Navigation: React.FC = () => {
   return (
     <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' } }}>
-      {navigations.map(({ path: destination, label }) => (
+      {[].map(({ path: destination, label }) => (
         <Box
           component={Link}
           key={destination}
@@ -63,8 +64,7 @@ const Navigation: React.FC = () => {
               transform: 'rotate(3deg)',
               '& img': { width: 44, height: 'auto' }
             }}
-          >
-          </Box>
+          />
           {label}
         </Box>
       ))}

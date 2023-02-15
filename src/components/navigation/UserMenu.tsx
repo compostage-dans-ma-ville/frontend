@@ -50,11 +50,12 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, logout }) => {
         open={Boolean(anchorElUser)}
         onClose={handleCloseUserMenu}
       >
-        <MenuItem onClick={handleCloseUserMenu}>
-          <Link href={`/users/${user.id}`}>
+
+        <Link href={`/users/${user.id}`}>
+          <MenuItem onClick={handleCloseUserMenu}>
             <Typography textAlign="center">{t('common:profile')}</Typography>
-          </Link>
-        </MenuItem>
+          </MenuItem>
+        </Link>
         <MenuItem onClick={():void => {
           handleCloseUserMenu()
           logout()

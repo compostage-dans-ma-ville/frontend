@@ -8,5 +8,9 @@
   "forgot_password": {
     "title": "Mot de passe oublié",
     "description": "Veuillez entrer votre addresse email. Vous recevrez un lien vous permettant de modifier votre mot de passe."
+  },
+  "404": {
+    "back_home": "Aller à la page d'accueil",
+    "not_found": "Oups ! Cette page n'a pas pu être trouvée."
   }
 }
