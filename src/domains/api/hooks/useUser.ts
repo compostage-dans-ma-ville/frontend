@@ -1,12 +1,12 @@
 import useSWR from 'swr'
 import axios from 'axios'
-import { User } from './user'
+import { User } from '../../schemas/user'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const useUser = (userId: number) => {
+export const useUser = () => {
   const {
     data, mutate, error, isLoading
-  } = useSWR<User>('api_user', () => axios.get(`/users/${userId}`).then(res => res.data))
+  } = useSWR<User>('/users/me', () => axios.get('/users/me').then(res => res.data))
 
   return {
     isLoading,
@@ -15,5 +15,3 @@ const useUser = (userId: number) => {
     mutate
   }
 }
-
-export default useUser

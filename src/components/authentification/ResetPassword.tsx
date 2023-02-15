@@ -1,0 +1,106 @@
+import React from 'react'
+
+import TextField from '@mui/material/TextField'
+import Box from '@mui/material/Box'
+import Alert from '@mui/material/Alert'
+import LoadingButton from '@/components/LoadingButton'
+import { useTranslation } from 'next-i18next'
+
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+
+import { updatePassword as apiUpdatePassword } from '@/domains/api'
+import { UpdatePassword, updatePasswordSchema } from '@/domains/schemas'
+import Grid from '@mui/material/Grid'
+import { useRouter } from 'next/router'
+
+export interface ResetPasswordProps {
+  token: string
+}
+export const ResetPassword: React.FC<ResetPasswordProps> = ({ token }) => {
+  const { t } = useTranslation([
+    'common',
+    'authentification',
+    'errors',
+    'pages'
+  ])
+
+  const [errored, setErrored] = React.useState(false)
+  const [isLoading, setIsLoading] = React.useState(false)
+
+  const router = useRouter()
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<UpdatePassword>({
+    mode: 'onChange',
+    resolver: yupResolver(updatePasswordSchema)
+  })
+
+  const resetPassword = (data: UpdatePassword): void => {
+    setIsLoading(true)
+
+    apiUpdatePassword({ ...data, token }).then(() => {
+      // TODO: handle user creation
+      router.push('/')
+    }).catch(() => {
+      setErrored(true)
+      setIsLoading(false)
+      // TODO: handle all errors
+    })
+  }
+
+  return (
+    <>
+      <Box component="form" onSubmit={handleSubmit(resetPassword)} noValidate sx={{ mt: 1 }}>
+        {errored && (
+          <Alert severity="error" sx={{ my: 3 }}>
+            {t('errors:unknow_error')}
+          </Alert>
+        )}
+
+        <Grid container spacing={2} sx={{ my: 2 }}>
+          <Grid item xs={12}>
+            <TextField
+              {...register('password')}
+              required
+              fullWidth
+              name="password"
+              label={t('common:password')}
+              type="password"
+              id="password"
+              error={!!errors.password}
+              autoComplete="new-password"
+              helperText={errors?.password?.message && t(errors.password.message as string)}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              {...register('confirmPassword')}
+              required
+              fullWidth
+              name="confirmPassword"
+              label={t('common:confirm_password')}
+              type="password"
+              id="confirmPassword"
+              error={!!errors.confirmPassword}
+              autoComplete="new-password"
+              helperText={errors.confirmPassword && t('errors:pwd_not_same')}
+            />
+          </Grid>
+        </Grid>
+        <LoadingButton
+          type="submit"
+          fullWidth
+          variant="contained"
+          loading={isLoading}
+          sx={{ mt: 3, mb: 2 }}
+        >
+          {t('authentification:reset_password')}
+        </LoadingButton>
+      </Box>
+    </>
+  )
+}

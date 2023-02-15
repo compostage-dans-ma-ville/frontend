@@ -6,6 +6,7 @@
   "pwd_not_same": "Les mots de passe entrés ne sont pas identiques",
   "valid_pwd": "Veuillez entrer un mot de passe de plus de 8 caractères contenant au moins une minuscule, une majuscule, un chiffre et un symbole",
   "email_already_exist": "Cet email est déjà utilisé!",
-  "unknow_error": "Une erreur inconnu est survenu",
-  "invalid_login": "L'adresse email et le mot de passe ne correspondent pas"
+  "unknow_error": "Une erreur inconnu est survenu.",
+  "invalid_login": "L'adresse email et le mot de passe ne correspondent pas",
+  "invalid_reset_password_token": "Il semble que le lien de réinitialisation du mot de passe ne soit plus valide."
 }

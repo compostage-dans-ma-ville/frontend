@@ -10,6 +10,8 @@ import { appWithTranslation } from 'next-i18next'
 import axios from 'axios'
 import { SWRConfig } from 'swr'
 import { SnackbarProvider } from 'notistack'
+import AuthProvider from '@/components/authentification/AuthProvider'
+import { UserProvider } from '@/domains/contexts'
 
 const clientSideEmotionCache = createEmotionCache()
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_BASEURL
@@ -26,17 +28,19 @@ const App: React.FC<MyAppProps> = ({ Component, emotionCache = clientSideEmotion
         revalidateOnFocus: false
       }}
     >
-
       <CacheProvider value={emotionCache}>
         <ThemeProvider theme={theme}>
-          <SnackbarProvider maxSnack={3}>
-            <CssBaseline />
-            <Component {...pageProps} />
-          </SnackbarProvider>
+          <AuthProvider>
+            <UserProvider>
+              <SnackbarProvider maxSnack={3}>
+                <CssBaseline />
+                <Component {...pageProps} />
+              </SnackbarProvider>
+            </UserProvider>
+          </AuthProvider>
         </ThemeProvider>
       </CacheProvider>
     </SWRConfig>
-
   )
 }
 

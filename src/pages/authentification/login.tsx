@@ -1,6 +1,5 @@
 import * as React from 'react'
 import Avatar from '@mui/material/Avatar'
-import CssBaseline from '@mui/material/CssBaseline'
 import TextField from '@mui/material/TextField'
 import MuiLink from '@mui/material/Link'
 import Grid from '@mui/material/Grid'
@@ -15,12 +14,14 @@ import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
 import PageTitle from '@/components/PageTitle'
 import { useForm } from 'react-hook-form'
-import { LoginUser, loginUserSchema } from '@/domains/user'
+import { LoginUser, loginUserSchema } from '@/domains/schemas/user'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { loginUser } from '@/domains/api'
-import { AxiosError } from 'axios'
 import Alert from '@mui/material/Alert'
 import LoadingButton from '@/components/LoadingButton'
+import { useRouter } from 'next/router'
+import { AuthService } from '@/domains/AuthService'
+import { useUser } from '@/domains/contexts'
 
 export const getStaticProps: GetStaticProps = async () => ({
   props: {
@@ -45,29 +46,33 @@ const Login: React.FC = () => {
     handleSubmit,
     formState: { errors }
   } = useForm<LoginUser>({
+    mode: 'onChange',
     resolver: yupResolver(loginUserSchema)
   })
 
+  const router = useRouter()
+  const { fetch } = useUser()
   const [loginErrored, setLoginErrored] = React.useState(false)
   const [isLoading, setIsLoading] = React.useState(false)
 
-  const login = (data: LoginUser): void => {
+  const login = React.useCallback((user: LoginUser): void => {
     setIsLoading(true)
-    loginUser(data).then(response => {
-      // TODO: logic to login user
+    loginUser(user).then(({ data }) => {
+      AuthService.setToken(data.token)
+      fetch()
+      router.push('/')
       setIsLoading(false)
-    }).catch((error: AxiosError) => {
+    }).catch(() => {
       setLoginErrored(true)
       setIsLoading(false)
     // TODO: handle all errors
     })
-  }
+  }, [fetch, router])
 
   return (
     <MainLayout>
       <PageTitle title={t('pages:login.title')}/>
       <Container component="main" maxWidth="xs">
-        <CssBaseline />
         <Box
           sx={{
             marginTop: 8,

@@ -7,6 +7,6 @@ export const theme = createTheme({
     }
   },
   shape: {
-    borderRadius: 18
+    borderRadius: 8
   }
 })

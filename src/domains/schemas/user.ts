@@ -18,11 +18,7 @@ export const emailSchema = {
     .required('errors:required_field')
 }
 
-export const userCreationSchema = yup.object().shape({
-  firstName: yup.string().required('errors:required_field').min(3, 'errors:min3'),
-  lastName: yup.string().required('errors:required_field').min(3, 'errors:min3'),
-  ...emailSchema,
-  ...passwordSchema,
+export const confirmPasswordSchema = {
   confirmPassword: yup.string()
     .required('errors:required_field')
     .when('password', {
@@ -31,6 +27,14 @@ export const userCreationSchema = yup.object().shape({
         [yup.ref('password')]
       )
     })
+}
+
+export const userCreationSchema = yup.object().shape({
+  firstName: yup.string().required('errors:required_field').min(3, 'errors:min3'),
+  lastName: yup.string().required('errors:required_field').min(3, 'errors:min3'),
+  ...emailSchema,
+  ...passwordSchema,
+  ...confirmPasswordSchema
 })
 
 export const loginUserSchema = yup.object().shape({
@@ -40,4 +44,7 @@ export const loginUserSchema = yup.object().shape({
 
 export type LoginUser = RemoveIndex<yup.InferType<typeof loginUserSchema>>
 export type UserCreation = RemoveIndex<yup.InferType<typeof userCreationSchema>>
-export type User = Omit<UserCreation, 'password' | 'confirmPassword' >
+export type User = Omit<UserCreation, 'password' | 'confirmPassword' > & {
+  id: number
+  avatar: string
+}

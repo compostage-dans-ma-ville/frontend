@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 8082",
-    "start:api": "yarn restapify serve ./mockedAPI",
+    "start:api": "yarn restapify serve ./mockedAPI --baseUrl api",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
