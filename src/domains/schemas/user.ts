@@ -44,4 +44,7 @@ export const loginUserSchema = yup.object().shape({
 
 export type LoginUser = RemoveIndex<yup.InferType<typeof loginUserSchema>>
 export type UserCreation = RemoveIndex<yup.InferType<typeof userCreationSchema>>
-export type User = Omit<UserCreation, 'password' | 'confirmPassword' >
+export type User = Omit<UserCreation, 'password' | 'confirmPassword' > & {
+  id: number
+  avatar: string
+}

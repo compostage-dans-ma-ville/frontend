@@ -1,9 +1,11 @@
 {
   "login": "Se connecter",
+  "logout": "Déconnexion",
   "signIn": "Créer un compte",
   "firstname": "Prénom",
   "lastname": "Nom",
   "email_addresse": "Adresse mail",
   "password": "Mot de passe",
-  "confirm_password": "Confirmer le mot de passe"
+  "confirm_password": "Confirmer le mot de passe",
+  "profile": "Profile"
 }

@@ -10,7 +10,6 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 import { updatePassword as apiUpdatePassword } from '@/domains/api'
-import { AxiosError } from 'axios'
 import { UpdatePassword, updatePasswordSchema } from '@/domains/schemas'
 import Grid from '@mui/material/Grid'
 import { useRouter } from 'next/router'
@@ -46,7 +45,7 @@ export const ResetPassword: React.FC<ResetPasswordProps> = ({ token }) => {
     apiUpdatePassword({ ...data, token }).then(() => {
       // TODO: handle user creation
       router.push('/')
-    }).catch((error: AxiosError) => {
+    }).catch(() => {
       setErrored(true)
       setIsLoading(false)
       // TODO: handle all errors

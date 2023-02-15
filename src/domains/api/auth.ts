@@ -2,8 +2,9 @@ import axios, { AxiosResponse } from 'axios'
 import { ForgotPassword, UpdatePassword } from '../schemas'
 import { LoginUser } from '../schemas/user'
 
-export const loginUser = (data: LoginUser): Promise<AxiosResponse> => {
-  return axios.post('/auth/login', data)
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export const loginUser = (data: LoginUser) => {
+  return axios.post<{token: string}>('/auth/login', data)
 }
 
 export const resetPassword = (data: ForgotPassword): Promise<AxiosResponse> => {

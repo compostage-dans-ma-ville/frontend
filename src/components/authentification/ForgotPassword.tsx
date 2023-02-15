@@ -15,7 +15,6 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 import { resetPassword as apiResetPassword } from '@/domains/api'
-import { AxiosError } from 'axios'
 import { ForgotPassword as ForgotPasswordDto, forgotPasswordSchema } from '@/domains/schemas'
 import { CheckEmail } from './CheckEmail'
 
@@ -40,12 +39,12 @@ export const ForgotPassword: React.FC = () => {
     resolver: yupResolver(forgotPasswordSchema)
   })
 
-  const resetPassword = (data?: ForgotPasswordDto): void => {
+  const resetPassword = (data: ForgotPasswordDto): void => {
     setIsLoading(true)
 
     apiResetPassword(data).then(() => {
       setIsEmailSend(true)
-    }).catch((error: AxiosError) => {
+    }).catch(() => {
       setLoginErrored(true)
       setIsLoading(false)
       // TODO: handle all errors
