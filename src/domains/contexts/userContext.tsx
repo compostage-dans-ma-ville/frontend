@@ -4,12 +4,12 @@ import { AuthService } from '../AuthService'
 import { User } from '../schemas'
 
 export interface UserContextData {
-  user: User | null
+  me: User | null
   isFetching: boolean
   fetch: () => void
   logout: () => void
 }
-export const UserContext = React.createContext<UserContextData>({} as UserContextData)
+export const UserContext = React.createContext<UserContextData>({ me: null } as UserContextData)
 
 export const UserProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const [user, setUser] = React.useState<User | null>(null)
@@ -36,11 +36,11 @@ export const UserProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
 
   return (
     <UserContext.Provider value={{
-      user, fetch, logout, isFetching
+      me: user, fetch, logout, isFetching
     }}>
       {children}
     </UserContext.Provider>
   )
 }
 
-export const useUser = (): UserContextData => React.useContext(UserContext)
+export const useMe = (): UserContextData => React.useContext(UserContext)

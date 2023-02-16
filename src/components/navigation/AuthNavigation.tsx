@@ -4,13 +4,13 @@ import Button from '@mui/material/Button'
 
 import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
-import { useUser } from '@/domains/contexts'
+import { useMe } from '@/domains/contexts'
 import UserMenu from './UserMenu'
 
 const AuthNavigation: React.FC = () => {
   const { t } = useTranslation('common')
 
-  const { user, logout } = useUser()
+  const { me: user, logout } = useMe()
 
   return (
     <Box sx={{

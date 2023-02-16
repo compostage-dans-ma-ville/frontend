@@ -1,7 +1,7 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import { CssBaseline, ThemeProvider } from '@mui/material'
-import { theme } from '@/styles/theme'
+import { customTheme } from '@/styles/theme'
 import createEmotionCache from '@/styles/utils/createEmotionCache'
 import { CacheProvider } from '@emotion/react'
 import React from 'react'
@@ -29,7 +29,7 @@ const App: React.FC<MyAppProps> = ({ Component, emotionCache = clientSideEmotion
       }}
     >
       <CacheProvider value={emotionCache}>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={customTheme}>
           <AuthProvider>
             <UserProvider>
               <SnackbarProvider maxSnack={3}>

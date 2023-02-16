@@ -4,6 +4,7 @@ import Document, {
 } from 'next/document'
 import createEmotionServer from '@emotion/server/create-instance'
 import createEmotionCache from '@/styles/utils/createEmotionCache'
+import { Box } from '@mui/material'
 
 export default class MyDocument extends Document<{emotionStyleTags: JSX.Element[] }> {
   render(): JSX.Element {
@@ -12,10 +13,10 @@ export default class MyDocument extends Document<{emotionStyleTags: JSX.Element[
         <Head>
           {this.props.emotionStyleTags}
         </Head>
-        <body>
+        <Box component="body">
           <Main />
           <NextScript />
-        </body>
+        </Box>
       </Html>
     )
   }

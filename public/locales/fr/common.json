@@ -8,5 +8,6 @@
   "password": "Mot de passe",
   "confirm_password": "Confirmer le mot de passe",
   "profile": "Profile",
-  "welcome": "Bienvenue"
+  "welcome": "Bienvenue",
+  "edit": "Modifier"
 }

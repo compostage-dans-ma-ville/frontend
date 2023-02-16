@@ -21,7 +21,7 @@ import Alert from '@mui/material/Alert'
 import LoadingButton from '@/components/LoadingButton'
 import { useRouter } from 'next/router'
 import { AuthService } from '@/domains/AuthService'
-import { useUser } from '@/domains/contexts'
+import { useMe } from '@/domains/contexts'
 
 export const getStaticProps: GetStaticProps = async () => ({
   props: {
@@ -51,7 +51,7 @@ const Login: React.FC = () => {
   })
 
   const router = useRouter()
-  const { fetch } = useUser()
+  const { fetch } = useMe()
   const [loginErrored, setLoginErrored] = React.useState(false)
   const [isLoading, setIsLoading] = React.useState(false)
 

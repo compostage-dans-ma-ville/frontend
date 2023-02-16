@@ -1,12 +1,43 @@
 import { createTheme } from '@mui/material/styles'
 
-export const theme = createTheme({
+export const customTheme = createTheme({
   palette: {
     primary: {
-      main: '#239350'
+      main: '#0A6259'
+    },
+    error: {
+      main: '#FD7064'
+    },
+    background: {
+      default: '#FEFFF6'
     }
   },
   shape: {
     borderRadius: 8
+  },
+  components: {
+    MuiAvatar: {
+      styleOverrides: {
+        root: ({ theme }) => theme.unstable_sx({
+          border: 'solid',
+          borderColor: theme.palette.primary.main,
+          borderWidth: 3
+        })
+      }
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: ({ theme }) => theme.unstable_sx({
+          textTransform: 'none'
+        })
+      }
+    },
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          backgroundColor: '#FEFFF6 !important'
+        }
+      }
+    }
   }
 })

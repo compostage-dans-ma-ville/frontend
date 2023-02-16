@@ -5,11 +5,15 @@ import Navbar from '@/components/navigation/Navbar'
 
 const MainLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
-    <Box component="main">
-      <Navbar />
-      {children}
+    <>
+      <Box component="header">
+        <Navbar />
+      </Box>
+      <Box component="main">
+        {children}
+      </Box>
       <Footer />
-    </Box>
+    </>
   )
 }
 
