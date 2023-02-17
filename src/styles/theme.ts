@@ -28,7 +28,8 @@ export const customTheme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: ({ theme }) => theme.unstable_sx({
-          textTransform: 'none'
+          textTransform: 'none',
+          width: 'fit-content'
         })
       }
     },

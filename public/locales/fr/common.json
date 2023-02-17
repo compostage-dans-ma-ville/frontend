@@ -9,5 +9,8 @@
   "confirm_password": "Confirmer le mot de passe",
   "profile": "Profile",
   "welcome": "Bienvenue",
-  "edit": "Modifier"
+  "edit": "Modifier",
+  "upload_image": "Importer une image",
+  "save_changes": "Enregistrer les modifications",
+  "update_avatar": "Modifier votre avatar"
 }

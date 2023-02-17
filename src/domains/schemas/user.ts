@@ -29,12 +29,22 @@ export const confirmPasswordSchema = {
     })
 }
 
-export const userCreationSchema = yup.object().shape({
+export const userFullNameSchema = {
   firstName: yup.string().required('errors:required_field').min(3, 'errors:min3'),
-  lastName: yup.string().required('errors:required_field').min(3, 'errors:min3'),
+  lastName: yup.string().required('errors:required_field').min(3, 'errors:min3')
+
+}
+
+export const userCreationSchema = yup.object().shape({
+  ...userFullNameSchema,
   ...emailSchema,
   ...passwordSchema,
   ...confirmPasswordSchema
+})
+
+export const editUserSchema = yup.object().shape({
+  ...userFullNameSchema,
+  avatar: yup.string().url()
 })
 
 export const loginUserSchema = yup.object().shape({

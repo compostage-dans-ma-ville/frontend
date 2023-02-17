@@ -1,5 +1,6 @@
-import { confirmPasswordSchema, emailSchema, passwordSchema } from './user'
 import * as yup from 'yup'
+
+import { confirmPasswordSchema, emailSchema, passwordSchema } from './user'
 import { RemoveIndex } from '@/helpers/typing'
 
 export const forgotPasswordSchema = yup.object().shape({

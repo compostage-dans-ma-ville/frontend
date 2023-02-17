@@ -15,11 +15,14 @@ import EditIcon from '@mui/icons-material/Edit'
 import Button from '@mui/material/Button'
 import ButtonGroup from '@mui/material/ButtonGroup'
 import { useMe } from '@/domains/contexts'
+import EditAvatar from '@/components/EditAvatar'
 
 export const getServerSideProps: GetServerSideProps = async () => ({
   props: {
     ...(await serverSideTranslations('fr', [
-      'common'
+      'common',
+      'pages',
+      'errors'
     ]))
   }
 })
@@ -28,6 +31,7 @@ const UserProfile: React.FC = () => {
   const { t } = useTranslation([
     'common'
   ])
+  const [editionMode, setEditionMode] = React.useState(false)
 
   const { query } = useRouter()
   const { user } = useUser(query.userId as string)
@@ -42,15 +46,21 @@ const UserProfile: React.FC = () => {
         <Card sx={{ mx: 3 }} >
           {canEdit && (
             <ButtonGroup variant="outlined" sx={{ m: 2, display: 'flex', justifyContent: 'flex-end' }}>
-              <Button startIcon={<EditIcon />}>{t('common:edit')}</Button>
+              <Button onClick={(): void => setEditionMode(true)} startIcon={<EditIcon />}>{t('common:edit')}</Button>
             </ButtonGroup>
           )}
 
           <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <Avatar src={user.avatar} sx={{
-              width: '150px',
-              height: '150px'
-            }} />
+
+            {canEdit
+              ? <EditAvatar user={user} />
+              : (
+                <Avatar src={user.avatar} sx={{
+                  width: '150px',
+                  height: '150px'
+                }} />
+              )
+            }
 
             <Typography variant="h4" component="h2" fontWeight="bold">
               {user.firstName} {user.lastName}

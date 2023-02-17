@@ -2,15 +2,19 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
-
+1. Create your local `.env` file (see `./.env.example`)
+2. Start the mocked api:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+yarn start:api
 ```
+
+3. Start the app
+```bash
+yarn dev
+```
+
+
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 

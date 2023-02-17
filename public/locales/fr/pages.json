@@ -12,5 +12,9 @@
   "404": {
     "back_home": "Aller à la page d'accueil",
     "not_found": "Oups! Cette page n'a pas pu être trouvée."
+  },
+  "user": {
+    "adjust_zoom": "Ajuster le zoom",
+    "delete_avatar": "Supprimer mon avatar"
   }
 }

@@ -30,6 +30,7 @@
     "next-i18next": "^13.0.3",
     "notistack": "^2.0.8",
     "react": "18.2.0",
+    "react-avatar-editor": "^13.0.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.42.1",
     "react-i18next": "^12.1.4",
@@ -38,6 +39,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@types/react-avatar-editor": "^13.0.0",
     "@typescript-eslint/eslint-plugin": "^5.48.2",
     "@typescript-eslint/parser": "^5.48.2",
     "eslint-config-airbnb-base": "^15.0.0",
