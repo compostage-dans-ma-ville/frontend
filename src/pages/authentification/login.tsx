@@ -51,6 +51,7 @@ const Login: React.FC = () => {
   })
 
   const router = useRouter()
+  const redirection = router.query.redirect_url as string
   const { fetch } = useMe()
   const [loginErrored, setLoginErrored] = React.useState(false)
   const [isLoading, setIsLoading] = React.useState(false)
@@ -60,14 +61,14 @@ const Login: React.FC = () => {
     loginUser(user).then(({ data }) => {
       AuthService.setToken(data.token)
       fetch()
-      router.push('/')
+      router.push(redirection || '/')
       setIsLoading(false)
     }).catch(() => {
       setLoginErrored(true)
       setIsLoading(false)
     // TODO: handle all errors
     })
-  }, [fetch, router])
+  }, [fetch, redirection, router])
 
   return (
     <MainLayout>

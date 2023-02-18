@@ -30,14 +30,14 @@ const App: React.FC<MyAppProps> = ({ Component, emotionCache = clientSideEmotion
     >
       <CacheProvider value={emotionCache}>
         <ThemeProvider theme={customTheme}>
-          <AuthProvider>
-            <UserProvider>
+          <UserProvider>
+            <AuthProvider>
               <SnackbarProvider maxSnack={3}>
                 <CssBaseline />
                 <Component {...pageProps} />
               </SnackbarProvider>
-            </UserProvider>
-          </AuthProvider>
+            </AuthProvider>
+          </UserProvider>
         </ThemeProvider>
       </CacheProvider>
     </SWRConfig>
