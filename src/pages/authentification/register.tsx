@@ -20,6 +20,7 @@ import { useSnackbar } from 'notistack'
 
 import axios, { AxiosError } from 'axios'
 import PageTitle from '@/components/PageTitle'
+import { useRouter } from 'next/router'
 
 export const getStaticProps: GetStaticProps = async () => ({
   props: {
@@ -41,6 +42,9 @@ const Register: React.FC = () => {
   ])
   const { enqueueSnackbar } = useSnackbar()
 
+  const router = useRouter()
+  const redirection = router.query.redirect_url as string
+
   const {
     register,
     handleSubmit,
@@ -51,8 +55,8 @@ const Register: React.FC = () => {
 
   const registerUser = (user: UserCreation): void => {
     // TODO: Extract logic
-    axios.post('/users', user).then((response) => {
-      console.log(response.data)
+    axios.post('/users', user).then(() => {
+      router.push(redirection || '/')
     }).catch((error: AxiosError) => {
       if (error?.response?.status === 409) {
         enqueueSnackbar(t('errors:email_already_exist'), { variant: 'error' })
