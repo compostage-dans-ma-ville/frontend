@@ -11,7 +11,7 @@ import axios from 'axios'
 import { SWRConfig } from 'swr'
 import { SnackbarProvider } from 'notistack'
 import AuthProvider from '@/components/authentification/AuthProvider'
-import { UserProvider } from '@/domains/contexts'
+import { UserProvider } from '@/contexts'
 
 const clientSideEmotionCache = createEmotionCache()
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_BASEURL

@@ -21,7 +21,7 @@ import Alert from '@mui/material/Alert'
 import LoadingButton from '@/components/LoadingButton'
 import { useRouter } from 'next/router'
 import { AuthService } from '@/domains/AuthService'
-import { useMe } from '@/domains/contexts'
+import { useMe } from '@/contexts'
 
 export const getStaticProps: GetStaticProps = async () => ({
   props: {

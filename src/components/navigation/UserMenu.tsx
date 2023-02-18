@@ -10,6 +10,7 @@ import MenuItem from '@mui/material/MenuItem'
 import Typography from '@mui/material/Typography'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
+import Divider from '@mui/material/Divider'
 
 export interface UserMenuProps {
   user: User
@@ -56,6 +57,9 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, logout }) => {
             <Typography textAlign="center">{t('common:profile')}</Typography>
           </MenuItem>
         </Link>
+
+        <Divider />
+
         <MenuItem onClick={():void => {
           handleCloseUserMenu()
           logout()

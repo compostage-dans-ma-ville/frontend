@@ -1,6 +1,7 @@
 {
   "required_field": "Ce champ est requis",
   "min_length": "Ce champs doit avoir minimum {{min}} charactères",
+  "max_length": "Ce champs doit avoir maximum {{max}} charactères",
   "min3": "Ce champs doit avoir minimum 3 charactères",
   "valid_email": "Veuillez entrer un format d'email valide (ex: john.doer@gmail.com)",
   "pwd_not_same": "Les mots de passe entrés ne sont pas identiques",

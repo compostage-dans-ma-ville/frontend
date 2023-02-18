@@ -4,7 +4,7 @@ import Button from '@mui/material/Button'
 
 import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
-import { useMe } from '@/domains/contexts'
+import { useMe } from '@/contexts'
 import UserMenu from './UserMenu'
 
 const AuthNavigation: React.FC = () => {

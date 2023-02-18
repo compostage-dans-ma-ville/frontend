@@ -1,6 +1,7 @@
 import { RemoveIndex } from '@/helpers/typing'
 import * as yup from 'yup'
 
+export const DESCRIPTION_MAX_LENGTH = 800
 export const passwordSchema = {
   password: yup
     .string()
@@ -44,7 +45,7 @@ export const userCreationSchema = yup.object().shape({
 
 export const editUserSchema = yup.object().shape({
   ...userFullNameSchema,
-  avatar: yup.string().url()
+  description: yup.string().max(DESCRIPTION_MAX_LENGTH, 'errors:max_length')
 })
 
 export const loginUserSchema = yup.object().shape({
@@ -54,6 +55,7 @@ export const loginUserSchema = yup.object().shape({
 
 export type LoginUser = RemoveIndex<yup.InferType<typeof loginUserSchema>>
 export type UserCreation = RemoveIndex<yup.InferType<typeof userCreationSchema>>
+export type EditUser = RemoveIndex<yup.InferType<typeof editUserSchema>>
 export type User = Omit<UserCreation, 'password' | 'confirmPassword' > & {
   id: number
   avatar: string

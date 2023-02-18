@@ -14,6 +14,9 @@ import Slider from '@mui/material/Slider'
 
 import AvatarEditor from 'react-avatar-editor'
 import { avatarFileSchema } from '@/domains/schemas/avatar'
+import { uploadAvatar } from '@/domains/api'
+import { useMe } from '@/contexts'
+import { useUser } from '@/domains/api/hooks'
 
 export interface EditAvatarProps {
   user: User
@@ -24,6 +27,8 @@ const EditAvatar: React.FC<EditAvatarProps> = ({ user }) => {
     'common',
     'pages'
   ])
+  const { update } = useMe()
+  const { mutate } = useUser(user.id)
 
   const editor = React.useRef<AvatarEditor | null>(null)
   const [imageSource, setImageSource] = React.useState(user.avatar)
@@ -32,8 +37,8 @@ const EditAvatar: React.FC<EditAvatarProps> = ({ user }) => {
   const [imageErrored, setImageErrored] = React.useState(false)
 
   const userUploaded = React.useMemo(() => {
-    return imageSource !== user.avatar
-  }, [imageSource, user.avatar])
+    return imageSource !== user.avatar || zoomLevel !== 1
+  }, [imageSource, user.avatar, zoomLevel])
 
   const handleChange = (e: FormEvent<HTMLInputElement>): void => {
     const file = (e?.target as HTMLInputElement)?.files?.[0] as File
@@ -56,9 +61,13 @@ const EditAvatar: React.FC<EditAvatarProps> = ({ user }) => {
     if (editor.current) {
       editor.current.getImage().toBlob((blob) => {
         if (blob) {
-          const data = new FormData()
-          data.append('data', blob)
-          // TODO: send request
+          uploadAvatar(blob)
+            .then(({ data }) => {
+              update({ avatar: data.link })
+              mutate()
+              setOpenDialog(false)
+            })
+            .catch(() => {})
         }
       })
     }
@@ -92,6 +101,7 @@ const EditAvatar: React.FC<EditAvatarProps> = ({ user }) => {
               border={10}
               color={[0, 0, 0, 0.6]}
               scale={zoomLevel}
+              crossOrigin={'anonymous'}
             />
           </Box>
 
