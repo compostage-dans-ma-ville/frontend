@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import axios from 'axios'
-import { EditUser, User } from '../schemas'
+import { AuthenticatedUser, EditUser, User } from '../schemas'
 
 export const getMe = () => {
-  return axios.get<User>('/users/me')
+  return axios.get<AuthenticatedUser>('/users/me')
 }
 
 export const uploadAvatar = (avatar: Blob) => {

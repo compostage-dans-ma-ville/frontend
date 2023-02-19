@@ -1,5 +1,5 @@
 import React from 'react'
-import { User } from '@/domains/schemas'
+import { AuthenticatedUser } from '@/domains/schemas'
 
 import Avatar from '@mui/material/Avatar'
 import { green } from '@mui/material/colors'
@@ -13,7 +13,7 @@ import { useTranslation } from 'react-i18next'
 import Divider from '@mui/material/Divider'
 
 export interface UserMenuProps {
-  user: User
+  user: AuthenticatedUser
   logout: () => void
 }
 
@@ -37,7 +37,6 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, logout }) => {
       </IconButton>
       <Menu
         sx={{ mt: '45px' }}
-        id="menu-appbar"
         anchorEl={anchorElUser}
         anchorOrigin={{
           vertical: 'top',
@@ -51,10 +50,16 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, logout }) => {
         open={Boolean(anchorElUser)}
         onClose={handleCloseUserMenu}
       >
+        <Box sx={{ mx: 2, lineHeight: 0.3, mb: 1 }}>
+          <Typography sx={{ fontWeight: 'bold', minWidth: 200 }}>{user.firstName} {user.lastName}</Typography>
+          <Typography variant="caption" sx={{ mt: -2 }} >{user.email}</Typography>
+        </Box>
+
+        <Divider />
 
         <Link href={`/users/${user.id}`}>
           <MenuItem onClick={handleCloseUserMenu}>
-            <Typography textAlign="center">{t('common:profile')}</Typography>
+            <Typography>{t('common:profile')}</Typography>
           </MenuItem>
         </Link>
 
@@ -64,7 +69,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, logout }) => {
           handleCloseUserMenu()
           logout()
         }}>
-          <Typography textAlign="center">{t('common:logout')}</Typography>
+          <Typography>{t('common:logout')}</Typography>
         </MenuItem>
       </Menu>
     </Box>
