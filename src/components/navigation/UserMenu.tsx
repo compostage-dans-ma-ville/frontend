@@ -11,6 +11,10 @@ import Typography from '@mui/material/Typography'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 import Divider from '@mui/material/Divider'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import ListItemText from '@mui/material/ListItemText'
+import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded'
+import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded'
 
 export interface UserMenuProps {
   user: AuthenticatedUser
@@ -59,7 +63,10 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, logout }) => {
 
         <Link href={`/users/${user.id}`}>
           <MenuItem onClick={handleCloseUserMenu}>
-            <Typography>{t('common:profile')}</Typography>
+            <ListItemIcon>
+              <AccountCircleRoundedIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText>{t('common:profile')}</ListItemText>
           </MenuItem>
         </Link>
 
@@ -69,7 +76,10 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, logout }) => {
           handleCloseUserMenu()
           logout()
         }}>
-          <Typography>{t('common:logout')}</Typography>
+          <ListItemIcon>
+            <LogoutRoundedIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText>{t('common:logout')}</ListItemText>
         </MenuItem>
       </Menu>
     </Box>

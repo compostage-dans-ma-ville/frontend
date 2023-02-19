@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
               transition: (theme) => theme.transitions.create(['top']),
               ...(matchMobileView && {
                 py: 6,
-                backgroundColor: 'background.paper',
+                backgroundColor: 'background.default',
                 zIndex: 'appBar',
                 position: 'fixed',
                 height: { xs: '100vh', md: 'auto' },
