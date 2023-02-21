@@ -57,6 +57,7 @@
     "no-param-reassign": "off",
     "no-underscore-dangle": "off",
     "react/self-closing-comp": "error",
+    "react/prop-types": "off",
     "semi": [
       "error",
       "never"

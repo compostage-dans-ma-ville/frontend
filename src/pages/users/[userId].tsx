@@ -16,6 +16,7 @@ import Button from '@mui/material/Button'
 import ButtonGroup from '@mui/material/ButtonGroup'
 import { useMe } from '@/contexts'
 import dynamic from 'next/dynamic'
+import Container from '@mui/material/Container'
 
 const EditUserForm = dynamic(() => import('@/components/user/EditUserForm'))
 
@@ -44,35 +45,38 @@ const UserProfile: React.FC = () => {
   return (
     <MainLayout>
       <PageTitle title={t('common:profile')} />
-      {user && (
-        editionMode
-          ? (
-            <EditUserForm
-              user={user}
-              goBack={(): void => { setEditionMode(false) }}
-            />
-          )
-          : (
-            <Card sx={{ mx: 3 }} >
-              {canEdit && (
-                <ButtonGroup variant="outlined" sx={{ m: 2, display: 'flex', justifyContent: 'flex-end' }}>
-                  <Button onClick={(): void => setEditionMode(true)} startIcon={<EditIcon />}>{t('common:edit')}</Button>
-                </ButtonGroup>
-              )}
+      <Container maxWidth="lg">
+        {user && (
+          editionMode
+            ? (
+              <EditUserForm
+                user={user}
+                goBack={(): void => { setEditionMode(false) }}
+              />
+            )
+            : (
+              <Card sx={{ mx: 3 }} >
+                {canEdit && (
+                  <ButtonGroup variant="outlined" sx={{ m: 2, display: 'flex', justifyContent: 'flex-end' }}>
+                    <Button onClick={(): void => setEditionMode(true)} startIcon={<EditIcon />}>{t('common:edit')}</Button>
+                  </ButtonGroup>
+                )}
 
-              <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <Avatar src={user.avatar} sx={{
-                  width: '150px',
-                  height: '150px'
-                }} />
+                <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <Avatar src={user.avatar} sx={{
+                    width: '150px',
+                    height: '150px'
+                  }} />
 
-                <Typography variant="h4" component="h2" fontWeight="bold" sx={{ mt: 2 }}>
-                  {user.firstName} {user.lastName}
-                </Typography>
-              </CardContent>
-            </Card>
-          )
-      )}
+                  <Typography variant="h4" component="h2" fontWeight="bold" sx={{ mt: 2 }}>
+                    {user.firstName} {user.lastName}
+                  </Typography>
+                </CardContent>
+              </Card>
+            )
+        )}
+      </Container>
+
     </MainLayout>
   )
 }

@@ -2,14 +2,17 @@ export class AuthService {
   public static tokenKey = 'token'
 
   public static setToken(token: string): void {
-    localStorage.setItem(AuthService.tokenKey, token)
+    if (typeof window === 'undefined') return
+    window.localStorage.setItem(AuthService.tokenKey, token)
   }
 
   public static getToken(): string | null {
-    return localStorage.getItem(AuthService.tokenKey)
+    if (typeof window === 'undefined') return null
+    return window.localStorage.getItem(AuthService.tokenKey)
   }
 
   public static removeToken(): void {
-    localStorage.removeItem(AuthService.tokenKey)
+    if (typeof window === 'undefined') return
+    window.localStorage.removeItem(AuthService.tokenKey)
   }
 }

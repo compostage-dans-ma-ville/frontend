@@ -16,5 +16,7 @@
   "update_avatar": "Modifier votre avatar",
   "upload_image": "Importer une image",
   "welcome": "Bienvenue",
-  "change_saved": "Modifications enregistrés avec succès"
+  "change_saved": "Modifications enregistrés avec succès",
+  "next": "Suivant",
+  "previous": "Précèdent"
 }

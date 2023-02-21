@@ -8,7 +8,12 @@ export const useUser = <T = User>(id?: number) => {
 
   const {
     data, mutate, error, isLoading
-  } = useSWR<T>(path, () => axios.get(path).then(res => res.data))
+  } = useSWR<T>(
+    path,
+    () => axios
+      .get(path)
+      .then(res => res.data)
+  )
 
   return {
     isLoading,
