@@ -1,12 +1,14 @@
 import React from 'react'
-import Box from '@mui/material/Box'
+
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft'
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight'
-import SwipeableViews from 'react-swipeable-views'
-import { useTheme } from '@mui/material/styles'
+import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Chip from '@mui/material/Chip'
+import { useTheme } from '@mui/material/styles'
+
 import { useTranslation } from 'next-i18next'
+import SwipeableViews from 'react-swipeable-views'
 
 export interface SiteCarouselProps {
   images: string[]

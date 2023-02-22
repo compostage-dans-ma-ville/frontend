@@ -17,10 +17,12 @@ export interface Address {
   longitude: string
 }
 
+export type Hour = `${number}:${number}`
+
 export interface Schedule {
   dayOfWeek:DayOfWeek // beetween 1 and 7
-  open?: string // like 19:00
-  close?: string // like 19:30
+  open?: Hour // like 19:00
+  close?: Hour // like 19:30
 }
 
 export type DayOfWeek = 1 | 2 | 3 | 4 | 5 | 6 | 7

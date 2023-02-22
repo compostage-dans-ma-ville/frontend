@@ -18,5 +18,7 @@
   "welcome": "Bienvenue",
   "change_saved": "Modifications enregistrés avec succès",
   "next": "Suivant",
-  "previous": "Précèdent"
+  "previous": "Précèdent",
+  "closed": "Fermé",
+  "open": "Ouvert"
 }

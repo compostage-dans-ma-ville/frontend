@@ -16,5 +16,11 @@
   "user": {
     "adjust_zoom": "Ajuster le zoom",
     "delete_avatar": "Supprimer mon avatar"
+  },
+  "site": {
+    "composting_site": "Site de compostage",
+    "more_schedule": "Voir plus d'horaires",
+    "close_at": "Ferme à {{hour}}",
+    "open_at": "Ouvre à {{hour}}"
   }
 }

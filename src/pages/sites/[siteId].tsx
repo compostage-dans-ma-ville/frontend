@@ -1,19 +1,25 @@
 import * as React from 'react'
+
+import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import Container from '@mui/material/Container'
+import Divider from '@mui/material/Divider'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import ListItemAvatar from '@mui/material/ListItemAvatar'
+import Typography from '@mui/material/Typography'
+
+import { GetServerSideProps, NextPage } from 'next'
+import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import MainLayout from '@/components/layouts/MainLayout'
-import { GetServerSideProps, NextPage } from 'next'
 import PageTitle from '@/components/PageTitle'
-import { useTranslation } from 'react-i18next'
-import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
-
+import ScheduleListItem from '@/components/site/ScheduleListItem'
+import SiteCarousel from '@/components/site/SiteCarousel'
 import { getSite } from '@/domains/api'
 import { Site } from '@/domains/schemas'
-
-import Container from '@mui/material/Container'
-import SiteCarousel from '@/components/site/SiteCarousel'
-import Typography from '@mui/material/Typography'
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const res = await getSite(params?.siteId as string)
@@ -43,12 +49,13 @@ interface UserProfileProps {
 
 const UserProfile: NextPage<UserProfileProps> = ({ site }) => {
   const { t } = useTranslation([
-    'common'
+    'common',
+    'pages'
   ])
 
   return (
     <MainLayout>
-      <PageTitle title={t('common:profile')} />
+      <PageTitle title={[site.name, t('pages:site.composting_site')]} />
 
       <Container maxWidth="md" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <Card>
@@ -64,6 +71,24 @@ const UserProfile: NextPage<UserProfileProps> = ({ site }) => {
                 {site.description}
               </Typography>
             )}
+
+            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+              <ListItem alignItems="center">
+                <ListItemAvatar>
+                  <LocationOnRoundedIcon fontSize="large" color="primary" />
+                </ListItemAvatar>
+
+                <Typography fontWeight="bold">
+                  {site.address.houseNumber}&nbsp;
+                  {site.address.streetName},&nbsp;
+                  {site.address.zipCode}&nbsp;
+                  {site.address.city}
+                </Typography>
+
+              </ListItem>
+              <Divider variant="inset" component="li" />
+              <ScheduleListItem schedules={site.schedules}/>
+            </List>
           </CardContent>
         </Card>
       </Container>
