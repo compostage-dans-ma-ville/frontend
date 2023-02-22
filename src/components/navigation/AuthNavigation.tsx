@@ -1,10 +1,13 @@
 import * as React from 'react'
+
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 
-import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
+import { useTranslation } from 'next-i18next'
+
 import { useMe } from '@/contexts'
+
 import UserMenu from './UserMenu'
 
 const AuthNavigation: React.FC = () => {

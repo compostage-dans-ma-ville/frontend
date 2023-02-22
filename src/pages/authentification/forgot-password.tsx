@@ -1,14 +1,17 @@
 import * as React from 'react'
+
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
-import MainLayout from '@/components/layouts/MainLayout'
+
 import { GetStaticProps } from 'next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { useTranslation } from 'next-i18next'
-import PageTitle from '@/components/PageTitle'
-import { ForgotPassword as ForgotPasswordComponent } from '@/components/authentification/ForgotPassword'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+
+import { ForgotPassword as ForgotPasswordComponent } from '@/components/authentification/ForgotPassword'
 import { ResetPassword } from '@/components/authentification/ResetPassword'
+import MainLayout from '@/components/layouts/MainLayout'
+import PageTitle from '@/components/PageTitle'
 
 export const getStaticProps: GetStaticProps = async () => ({
   props: {

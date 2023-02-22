@@ -1,11 +1,11 @@
 import * as React from 'react'
 
-import Container from '@mui/material/Container'
 import Box from '@mui/material/Box'
-import Link from 'next/link'
+import Container from '@mui/material/Container'
+import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 
-import { styled } from '@mui/material/styles'
+import Link from 'next/link'
 
 const StyledBox = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down('md')]: {

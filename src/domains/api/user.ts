@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import axios from 'axios'
+
 import { AuthenticatedUser, EditUser, User } from '../schemas'
 
 export const getMe = () => {

@@ -7,8 +7,8 @@
     "next/core-web-vitals",
     "airbnb-base/legacy",
     "plugin:import/errors",
-    "plugin:import/typescript",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:import/recommended"
   ],
   "settings": {
     "import/resolver": {
@@ -35,6 +35,42 @@
     ],
     "global": "off",
     "global-strict": "off",
+    "import/order": [
+      "error",
+      {
+        "newlines-between": "always",
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          [
+            "parent",
+            "sibling",
+            "index"
+          ]
+        ],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "@mui/**",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": [
+          "react"
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "import/no-named-as-default-member": "off",
     "indent": [
       "warn",
       2
@@ -56,7 +92,12 @@
     "no-unused-vars": "off",
     "no-param-reassign": "off",
     "no-underscore-dangle": "off",
+    "no-restricted-imports": [
+      "error",
+      "react-i18next"
+    ],
     "react/self-closing-comp": "error",
+    "react/prop-types": "off",
     "semi": [
       "error",
       "never"

@@ -1,15 +1,19 @@
 import * as React from 'react'
+
+import Close from '@mui/icons-material/Close'
+import Menu from '@mui/icons-material/Menu'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import IconButton from '@mui/material/IconButton'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import Navigation from '@/components/navigation/Navigation'
 import { useTheme } from '@mui/material/styles'
-import Menu from '@mui/icons-material/Menu'
-import Close from '@mui/icons-material/Close'
 import Typography from '@mui/material/Typography'
-import AuthNavigation from './AuthNavigation'
+import useMediaQuery from '@mui/material/useMediaQuery'
+
 import Link from 'next/link'
+
+import Navigation from '@/components/navigation/Navigation'
+
+import AuthNavigation from './AuthNavigation'
 
 const Navbar: React.FC = () => {
   const [visibleMenu, setVisibleMenu] = React.useState<boolean>(false)

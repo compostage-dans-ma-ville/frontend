@@ -5,6 +5,9 @@ export const customTheme = createTheme({
     primary: {
       main: '#0A6259'
     },
+    secondary: {
+      main: '#000'
+    },
     error: {
       main: '#FD7064'
     },

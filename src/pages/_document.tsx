@@ -1,10 +1,13 @@
 import * as React from 'react'
+
+import { Box } from '@mui/material'
+
+import createEmotionServer from '@emotion/server/create-instance'
 import Document, {
   DocumentInitialProps, Head, Html, Main, NextScript
 } from 'next/document'
-import createEmotionServer from '@emotion/server/create-instance'
+
 import createEmotionCache from '@/styles/utils/createEmotionCache'
-import { Box } from '@mui/material'
 
 export default class MyDocument extends Document<{emotionStyleTags: JSX.Element[] }> {
   render(): JSX.Element {

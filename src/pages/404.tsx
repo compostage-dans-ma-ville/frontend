@@ -1,13 +1,16 @@
+import React from 'react'
+
+import { Button } from '@mui/material'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+
+import { GetStaticProps } from 'next'
+import Link from 'next/link'
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+
 import MainLayout from '@/components/layouts/MainLayout'
 import PageTitle from '@/components/PageTitle'
-import Typography from '@mui/material/Typography'
-import Box from '@mui/material/Box'
-import React from 'react'
-import Link from 'next/link'
-import { Button } from '@mui/material'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { GetStaticProps } from 'next'
-import { useTranslation } from 'next-i18next'
 
 export const getStaticProps: GetStaticProps = async () => ({
   props: {

@@ -1,17 +1,20 @@
 import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
-import { CssBaseline, ThemeProvider } from '@mui/material'
-import { customTheme } from '@/styles/theme'
-import createEmotionCache from '@/styles/utils/createEmotionCache'
-import { CacheProvider } from '@emotion/react'
 import React from 'react'
+
+import { CssBaseline, ThemeProvider } from '@mui/material'
+
 import { EmotionCache } from '@emotion/cache'
-import { appWithTranslation } from 'next-i18next'
+import { CacheProvider } from '@emotion/react'
 import axios from 'axios'
-import { SWRConfig } from 'swr'
+import type { AppProps } from 'next/app'
+import { appWithTranslation } from 'next-i18next'
 import { SnackbarProvider } from 'notistack'
+import { SWRConfig } from 'swr'
+
 import AuthProvider from '@/components/authentification/AuthProvider'
 import { UserProvider } from '@/contexts'
+import { customTheme } from '@/styles/theme'
+import createEmotionCache from '@/styles/utils/createEmotionCache'
 
 const clientSideEmotionCache = createEmotionCache()
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_BASEURL

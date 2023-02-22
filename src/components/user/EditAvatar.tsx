@@ -1,22 +1,22 @@
-import {
-  Alert,
-  Avatar, Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography
-} from '@mui/material'
 import React, { FormEvent } from 'react'
 
-import { Box } from '@mui/material'
 import EditIcon from '@mui/icons-material/EditRounded'
-import { User } from '@/domains/schemas'
-import { useTranslation } from 'next-i18next'
-
 import UploadRoundedIcon from '@mui/icons-material/UploadRounded'
+import {
+  Alert,
+  Avatar, Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography,
+  Box
+} from '@mui/material'
 import Slider from '@mui/material/Slider'
 
+import { useTranslation } from 'next-i18next'
 import AvatarEditor from 'react-avatar-editor'
-import { avatarFileSchema } from '@/domains/schemas/avatar'
-import { uploadAvatar } from '@/domains/api'
+
 import { useMe } from '@/contexts'
+import { uploadAvatar } from '@/domains/api'
 import { useUser } from '@/domains/api/hooks'
+import { User } from '@/domains/schemas'
+import { avatarFileSchema } from '@/domains/schemas/avatar'
 
 export interface EditAvatarProps {
   user: User

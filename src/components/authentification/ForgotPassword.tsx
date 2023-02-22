@@ -1,21 +1,20 @@
 import React from 'react'
 
-import TextField from '@mui/material/TextField'
-import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
-import Alert from '@mui/material/Alert'
-import LoadingButton from '@/components/LoadingButton'
-
-import Avatar from '@mui/material/Avatar'
 import VpnKeyOutlinedIcon from '@mui/icons-material/VpnKeyOutlined'
+import Alert from '@mui/material/Alert'
+import Avatar from '@mui/material/Avatar'
+import Box from '@mui/material/Box'
+import TextField from '@mui/material/TextField'
+import Typography from '@mui/material/Typography'
 
-import { useTranslation } from 'next-i18next'
-
-import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useTranslation } from 'next-i18next'
+import { useForm } from 'react-hook-form'
 
+import LoadingButton from '@/components/LoadingButton'
 import { resetPassword as apiResetPassword } from '@/domains/api'
 import { ForgotPassword as ForgotPasswordDto, forgotPasswordSchema } from '@/domains/schemas'
+
 import { CheckEmail } from './CheckEmail'
 
 export const ForgotPassword: React.FC = () => {
