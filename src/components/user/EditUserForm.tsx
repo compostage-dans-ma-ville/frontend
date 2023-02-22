@@ -1,21 +1,25 @@
-import {
-  DESCRIPTION_MAX_LENGTH, EditUser, editUserSchema, User
-} from '@/domains/schemas'
-import { yupResolver } from '@hookform/resolvers/yup'
+import React from 'react'
+
+import ClearRoundedIcon from '@mui/icons-material/ClearRounded'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Grid from '@mui/material/Grid'
 import TextField from '@mui/material/TextField'
+
+import { yupResolver } from '@hookform/resolvers/yup'
 import { useTranslation } from 'next-i18next'
-import React from 'react'
+import { useSnackbar } from 'notistack'
 import { useForm, useWatch } from 'react-hook-form'
-import EditAvatar from './EditAvatar'
-import ClearRoundedIcon from '@mui/icons-material/ClearRounded'
+
 import { updateUser as apiUpdateUser } from '@/domains/api'
 import { useUser } from '@/domains/api/hooks'
-import { useSnackbar } from 'notistack'
+import {
+  DESCRIPTION_MAX_LENGTH, EditUser, editUserSchema, User
+} from '@/domains/schemas'
+
+import EditAvatar from './EditAvatar'
 
 export interface EditUserFormProps {
   user: User

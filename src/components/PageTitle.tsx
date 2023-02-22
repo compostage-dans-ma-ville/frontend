@@ -1,14 +1,17 @@
-import Head from 'next/head'
 import * as React from 'react'
 
+import Head from 'next/head'
+
 export interface PageTitleProps {
-  title: string
+  title: string | string[]
 }
 
 const PageTitle: React.FC<PageTitleProps> = ({ title }) => {
+  const stringTitle = Array.isArray(title) ? title.join(' • ') : title
+
   return (
     <Head>
-      <title>{`${title} • Compostage dans ma ville`}</title>
+      <title>{`${stringTitle} • Compostage dans ma ville`}</title>
     </Head>
   )
 }

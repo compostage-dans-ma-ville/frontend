@@ -1,10 +1,11 @@
 import React from 'react'
 
+import axios, { AxiosError } from 'axios'
 import { useRouter } from 'next/router'
+
+import { useMe } from '@/contexts'
 import { AuthService } from '@/domains/AuthService'
 import HttpStatusCode from '@/domains/HttpStatusCode'
-import axios, { AxiosError } from 'axios'
-import { useMe } from '@/contexts'
 
 const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const router = useRouter()

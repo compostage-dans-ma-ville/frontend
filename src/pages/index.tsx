@@ -1,11 +1,12 @@
 import * as React from 'react'
+
+import { GetStaticProps } from 'next'
 import Head from 'next/head'
+import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import MainLayout from '@/components/layouts/MainLayout'
-import { GetStaticProps } from 'next'
 import PageTitle from '@/components/PageTitle'
-import { useTranslation } from 'react-i18next'
 
 export const getStaticProps: GetStaticProps = async () => ({
   props: {

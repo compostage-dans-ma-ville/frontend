@@ -1,20 +1,22 @@
 import * as React from 'react'
+
+import VpnKeyOutlinedIcon from '@mui/icons-material/VpnKeyOutlined'
+import { Alert } from '@mui/lab'
+import { Button } from '@mui/material'
+import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
-import MainLayout from '@/components/layouts/MainLayout'
-import { GetStaticProps } from 'next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { useTranslation } from 'next-i18next'
-import PageTitle from '@/components/PageTitle'
-import { useRouter } from 'next/router'
-import { ResetPassword as ResetPasswordComponent } from '@/components/authentification/ResetPassword'
-import { Alert } from '@mui/lab'
-
-import Avatar from '@mui/material/Avatar'
-import VpnKeyOutlinedIcon from '@mui/icons-material/VpnKeyOutlined'
 import Typography from '@mui/material/Typography'
-import { Button } from '@mui/material'
+
+import { GetStaticProps } from 'next'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+
+import { ResetPassword as ResetPasswordComponent } from '@/components/authentification/ResetPassword'
+import MainLayout from '@/components/layouts/MainLayout'
+import PageTitle from '@/components/PageTitle'
 
 export const getStaticProps: GetStaticProps = async () => ({
   props: {

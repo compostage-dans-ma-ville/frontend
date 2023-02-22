@@ -1,5 +1,6 @@
-import { RemoveIndex } from '@/helpers/typing'
 import * as yup from 'yup'
+
+import { RemoveIndex } from '@/helpers/typing'
 
 export const DESCRIPTION_MAX_LENGTH = 800
 export const passwordSchema = {

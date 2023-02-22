@@ -1,9 +1,10 @@
 import React from 'react'
 
-import Typography from '@mui/material/Typography'
-import { useTranslation } from 'next-i18next'
-import Avatar from '@mui/material/Avatar'
 import MailOutlineIcon from '@mui/icons-material/MailOutline'
+import Avatar from '@mui/material/Avatar'
+import Typography from '@mui/material/Typography'
+
+import { useTranslation } from 'next-i18next'
 
 export const CheckEmail: React.FC = () => {
   const { t } = useTranslation([

@@ -1,20 +1,22 @@
 import React from 'react'
-import { AuthenticatedUser } from '@/domains/schemas'
 
+import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded'
+import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded'
 import Avatar from '@mui/material/Avatar'
-import { green } from '@mui/material/colors'
-import IconButton from '@mui/material/IconButton'
 import Box from '@mui/material/Box'
+import { green } from '@mui/material/colors'
+import Divider from '@mui/material/Divider'
+import IconButton from '@mui/material/IconButton'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import ListItemText from '@mui/material/ListItemText'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Typography from '@mui/material/Typography'
+
 import Link from 'next/link'
-import { useTranslation } from 'react-i18next'
-import Divider from '@mui/material/Divider'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import ListItemText from '@mui/material/ListItemText'
-import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded'
-import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded'
+import { useTranslation } from 'next-i18next'
+
+import { AuthenticatedUser } from '@/domains/schemas'
 
 export interface UserMenuProps {
   user: AuthenticatedUser

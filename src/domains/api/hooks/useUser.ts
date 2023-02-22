@@ -1,5 +1,6 @@
-import useSWR from 'swr'
 import axios from 'axios'
+import useSWR from 'swr'
+
 import { User } from '../../schemas/user'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
