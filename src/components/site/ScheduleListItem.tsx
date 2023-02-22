@@ -11,7 +11,11 @@ import Typography from '@mui/material/Typography'
 
 import { useTranslation } from 'next-i18next'
 
-import { Hour, Schedule } from '@/domains/schemas'
+import { Schedule } from '@/domains/schemas'
+import { hourAsNumber } from '@/domains/utils'
+
+import ScheduleTable from './ScheduleTable'
+
 export interface ScheduleListItemProps {
   schedules: Schedule[]
 }
@@ -27,10 +31,6 @@ const ScheduleListItem: React.FC<ScheduleListItemProps> = ({ schedules }) => {
   const currentDayOfWeek = [7, 1, 2, 3, 4, 5, 6][now.getDay()]
   const currentHour = now.getHours()
   const currentMinutes = now.getMinutes()
-
-  const hourAsNumber = (hour: Hour): number => {
-    return Number(hour.replace(':', '.'))
-  }
 
   const matchingSchedules = schedules.filter(({ dayOfWeek }) => dayOfWeek === currentDayOfWeek)
   const currentHourAsNumber = hourAsNumber(`${currentHour}:${currentMinutes}`)
@@ -75,9 +75,7 @@ const ScheduleListItem: React.FC<ScheduleListItemProps> = ({ schedules }) => {
 
       </ListItemButton>
       <Collapse in={openSchedules}>
-        <Box sx={{ marginLeft: 10 }}>
-          Test
-        </Box>
+        <ScheduleTable schedules={schedules} />
       </Collapse>
     </>
   )

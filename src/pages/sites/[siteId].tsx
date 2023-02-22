@@ -72,7 +72,7 @@ const UserProfile: NextPage<UserProfileProps> = ({ site }) => {
               </Typography>
             )}
 
-            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+            <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
               <ListItem alignItems="center">
                 <ListItemAvatar>
                   <LocationOnRoundedIcon fontSize="large" color="primary" />
