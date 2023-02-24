@@ -43,11 +43,11 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   }
 }
 
-interface UserProfileProps {
+interface SiteProps {
   site: Site
 }
 
-const UserProfile: NextPage<UserProfileProps> = ({ site }) => {
+const SitePage: NextPage<SiteProps> = ({ site }) => {
   const { t } = useTranslation([
     'common',
     'pages'
@@ -97,4 +97,4 @@ const UserProfile: NextPage<UserProfileProps> = ({ site }) => {
   )
 }
 
-export default UserProfile
+export default SitePage

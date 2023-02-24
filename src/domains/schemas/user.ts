@@ -59,6 +59,7 @@ export type UserCreation = RemoveIndex<yup.InferType<typeof userCreationSchema>>
 export type EditUser = RemoveIndex<yup.InferType<typeof editUserSchema>>
 export type User = Omit<UserCreation, 'password' | 'confirmPassword' | 'email' > & {
   id: number
-  avatar: string
+  avatar?: string,
+  description?: string
 }
 export type AuthenticatedUser = User & { email: string }

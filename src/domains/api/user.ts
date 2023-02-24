@@ -7,6 +7,10 @@ export const getMe = () => {
   return axios.get<AuthenticatedUser>('/users/me')
 }
 
+export const getUser = (userId: number) => {
+  return axios.get<User>(`/users/${userId}`)
+}
+
 export const uploadAvatar = (avatar: Blob) => {
   const formData = new FormData()
   formData.append('avatar', avatar)

@@ -95,7 +95,7 @@ const EditUserForm: React.FC<EditUserFormProps> = ({ user, goBack }) => {
                 fullWidth
                 label={t('common:description')}
                 multiline
-                minRows={3}
+                minRows={5}
                 error={!!errors.description}
                 helperText={
                   errors?.description?.message
