@@ -1,13 +1,13 @@
 import * as React from 'react'
 
 import EditIcon from '@mui/icons-material/Edit'
-import { Grid } from '@mui/material'
 import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import ButtonGroup from '@mui/material/ButtonGroup'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Container from '@mui/material/Container'
+import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 
 import { GetServerSideProps, NextPage } from 'next'

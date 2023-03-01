@@ -2,7 +2,8 @@ import * as yup from 'yup'
 
 import { RemoveIndex } from '@/helpers/typing'
 
-export const DESCRIPTION_MAX_LENGTH = 800
+import { descriptionSchema } from './common'
+
 export const passwordSchema = {
   password: yup
     .string()
@@ -43,10 +44,9 @@ export const userCreationSchema = yup.object().shape({
   ...passwordSchema,
   ...confirmPasswordSchema
 })
-
 export const editUserSchema = yup.object().shape({
   ...userFullNameSchema,
-  description: yup.string().max(DESCRIPTION_MAX_LENGTH, 'errors:max_length')
+  ...descriptionSchema
 })
 
 export const loginUserSchema = yup.object().shape({

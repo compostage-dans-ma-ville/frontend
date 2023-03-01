@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { LoadingButton as MuiLoadingButton, LoadingButtonProps } from '@mui/lab'
+import MuiLoadingButton, { LoadingButtonProps } from '@mui/lab/LoadingButton'
 
 const LoadingButton: React.FC<LoadingButtonProps> = ({ children, ...props }) => {
   return (

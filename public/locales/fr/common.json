@@ -6,12 +6,13 @@
   "email_addresse": "Adresse mail",
   "firstname": "Prénom",
   "lastname": "Nom",
+  "name": "Nom",
   "login": "Se connecter",
   "logout": "Déconnexion",
   "password": "Mot de passe",
   "profile": "Profile",
   "save_changes": "Enregistrer les modifications",
-  "save": "Sauvegarder",
+  "save": "Enregistrer",
   "signIn": "Créer un compte",
   "update_avatar": "Modifier votre avatar",
   "upload_image": "Importer une image",
@@ -21,13 +22,18 @@
   "previous": "Précèdent",
   "closed": "Fermé",
   "open": "Ouvert",
+  "open_h24": "Ouvert 24h/24",
+  "delete": "Supprimer",
   "days": {
-    "1": "Lundi",
-    "2": "Mardi",
-    "3": "Mercredi",
-    "4": "Jeudi",
-    "5": "Vendredi",
-    "6": "Samedi",
-    "7": "Dimanche"
-  }
+    "0": "Lundi",
+    "1": "Mardi",
+    "2": "Mercredi",
+    "3": "Jeudi",
+    "4": "Vendredi",
+    "5": "Samedi",
+    "6": "Dimanche"
+  },
+  "opening": "Ouverture",
+  "closing": "Fermeture",
+  "schedules": "Horaires"
 }

@@ -28,22 +28,22 @@ const ScheduleList: React.FC<ScheduleListProps> = ({ schedules }) => {
 
   const [openSchedules, setOpenSchedules] = React.useState(false)
   const now = new Date()
-  const currentDayOfWeek = [7, 1, 2, 3, 4, 5, 6][now.getDay()]
+  const currentDayOfWeek = [6, 0, 1, 2, 3, 4, 5][now.getDay()]
   const currentHour = now.getHours()
   const currentMinutes = now.getMinutes()
 
-  const matchingSchedule = schedules.find(({ dayOfWeek }) => dayOfWeek === currentDayOfWeek)
+  const matchingSchedule = schedules[currentDayOfWeek]
   const currentHourAsNumber = hourAsNumber(`${currentHour}:${currentMinutes}`)
 
-  const currentOpenedSlot = matchingSchedule?.openings?.find(({ open, close }) => {
+  const currentOpenedSlot = matchingSchedule?.find(({ open, close }) => {
     if (open && close) {
       return hourAsNumber(open) <= currentHourAsNumber && currentHourAsNumber <= hourAsNumber(close)
     }
     return null
   })
-  const isOpen = currentOpenedSlot || (matchingSchedule && matchingSchedule.openings.length === 0)
+  const isOpen = currentOpenedSlot || (matchingSchedule && matchingSchedule.length === 0)
 
-  const nextOpenedSlot = matchingSchedule?.openings.find(({ open }) => {
+  const nextOpenedSlot = matchingSchedule?.find(({ open }) => {
     if (open) {
       return hourAsNumber(open) > currentHourAsNumber
     }

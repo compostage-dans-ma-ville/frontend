@@ -7,11 +7,11 @@ import Typography from '@mui/material/Typography'
 
 import { useTranslation } from 'next-i18next'
 
-import { DayOfWeek, Opening } from '@/domains/schemas'
+import { DayOfWeek, Schedule } from '@/domains/schemas'
 
 export interface ScheduleListItemProps extends ListItemProps {
   day: DayOfWeek
-  openings?: Opening[]
+  openings: Schedule
 }
 
 const ScheduleListItem: React.FC<ScheduleListItemProps> = ({ day, openings, ...restProps }) => {
@@ -36,9 +36,9 @@ const ScheduleListItem: React.FC<ScheduleListItemProps> = ({ day, openings, ...r
 
           {openings && openings?.length > 0 && (
             <List dense sx={{ p: 0 }}>
-              {openings.map(({ open, close }) => {
+              {openings.map(({ open, close }, index) => {
                 return (
-                  <ListItem key={open + close} sx={{ p: 0, justifyContent: 'flex-end' }}>
+                  <ListItem key={index} sx={{ p: 0, justifyContent: 'flex-end' }}>
                     <Typography textAlign="left" color="success.main" fontWeight="bold">{open}-{close}</Typography>
                   </ListItem>
                 )

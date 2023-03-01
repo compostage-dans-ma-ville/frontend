@@ -1,24 +1,29 @@
 import * as React from 'react'
 
+import AddLocationRoundedIcon from '@mui/icons-material/AddLocationRounded'
+import Button from '@mui/material/Button'
+
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
+import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import MainLayout from '@/components/layouts/MainLayout'
 import PageTitle from '@/components/PageTitle'
-
 export const getStaticProps: GetStaticProps = async () => ({
   props: {
     ...(await serverSideTranslations('fr', [
-      'common'
+      'common',
+      'pages'
     ]))
   }
 })
 
 const Home: React.FC = () => {
   const { t } = useTranslation([
-    'common'
+    'common',
+    'pages'
   ])
 
   return (
@@ -29,6 +34,10 @@ const Home: React.FC = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <Button variant='contained' LinkComponent={Link} href="/sites/new" startIcon={<AddLocationRoundedIcon />}>
+        {t('pages:home.refer_site')}
+      </Button>
     </MainLayout>
   )
 }

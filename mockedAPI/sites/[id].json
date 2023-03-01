@@ -17,23 +17,26 @@
     "longitude": 6.1749144
   },
   "schedules": [
-    {
-      "dayOfWeek": 2
-    },
-    {
-      "dayOfWeek": 3,
-      "open": "19:00",
-      "close": "19:30"
-    },
-    {
-      "dayOfWeek": 3,
-      "open": "20:00",
-      "close": "20:30"
-    },
-    {
-      "dayOfWeek": 7,
-      "open": "15:00",
-      "close": "17:30"
-    }
+    null,
+    [],
+    [
+      {
+        "open": "15:00",
+        "close": "15:30"
+      },
+      {
+        "open": "19:00",
+        "close": "19:30"
+      }
+    ],
+    null,
+    null,
+    [
+      {
+        "open": "19:00",
+        "close": "23:30"
+      }
+    ],
+    null
   ]
 }

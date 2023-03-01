@@ -1,4 +1,7 @@
 {
+  "home": {
+    "refer_site": "Référencer un site de compostage"
+  },
   "register": {
     "title": "Inscription"
   },
@@ -21,6 +24,9 @@
     "composting_site": "Site de compostage",
     "more_schedule": "Voir plus d'horaires",
     "close_at": "Ferme à {{hour}}",
-    "open_at": "Ouvre à {{hour}}"
+    "open_at": "Ouvre à {{hour}}",
+    "site_creation": "Création d'un nouveau site",
+    "opening_of": "Horaires du",
+    "add_opening": "Ajouter une horaire"
   }
 }
