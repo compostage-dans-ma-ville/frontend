@@ -57,9 +57,11 @@ export const openingsSchema = yup.object().shape({
 export const scheduleSchema = yup.array().of(openingsSchema).required()
 export const siteCreationSchema = yup.object().shape({
   ...nameSchema,
-  ...descriptionSchema,
+  description: descriptionSchema,
   address: yup.object().shape({ ...addressSchema }).defined(),
-  schedules: yup.array().of(yup.array().of(scheduleSchema))
+  schedules: yup.array().of(yup.array().of(scheduleSchema)),
+  isPublic: yup.boolean().default(true),
+  accessConditions: descriptionSchema.optional()
 })
 
 export type CreateSite = RemoveIndex<yup.InferType<typeof siteCreationSchema>>

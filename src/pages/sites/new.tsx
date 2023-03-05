@@ -1,15 +1,23 @@
 import * as React from 'react'
 
+import AccessTimeRoundedIcon from '@mui/icons-material/AccessTimeRounded'
+import LockRoundedIcon from '@mui/icons-material/LockRounded'
+import TipsAndUpdatesRoundedIcon from '@mui/icons-material/TipsAndUpdatesRounded'
+import Alert from '@mui/material/Alert'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
+import Collapse from '@mui/material/Collapse'
 import Container from '@mui/material/Container'
+import FormControl from '@mui/material/FormControl'
+import FormControlLabel from '@mui/material/FormControlLabel'
 import Grid from '@mui/material/Grid'
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 
-import { DevTool } from '@hookform/devtools'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { GetServerSideProps, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
@@ -45,7 +53,8 @@ const SitePage: NextPage = () => {
     name: '',
     description: '',
     // @ts-ignore
-    schedules: DAY_OF_WEEK.map(() => ([{ open: '18:00', close: '19:00' }]))
+    schedules: DAY_OF_WEEK.map(() => ([{ open: '18:00', close: '19:00' }])),
+    isPublic: true
   }
 
   const {
@@ -59,6 +68,15 @@ const SitePage: NextPage = () => {
     defaultValues
   })
   const description = useWatch({ control, name: 'description' })
+  const isPublic = useWatch({
+    control,
+    name: 'isPublic',
+    defaultValue: true
+  })
+
+  React.useEffect(() => {
+    console.log(typeof isPublic)
+  }, [isPublic])
 
   const createSite = (site: CreateSite): void => {
     console.log(site)
@@ -104,7 +122,10 @@ const SitePage: NextPage = () => {
                 </Grid>
               </Grid>
 
-              <Typography variant='h6' component="h2" mt={3}>{t('common:schedules')}</Typography>
+              <Typography variant='h6' component="h2" mt={3} display="flex" alignItems="center">
+                <AccessTimeRoundedIcon color="primary" sx={{ mr: 1 }} />
+                {t('common:schedules')}
+              </Typography>
 
               <Grid>
                 <Controller
@@ -123,6 +144,61 @@ const SitePage: NextPage = () => {
                 />
               </Grid>
 
+              <Typography variant='h6' component="h2" mt={3} display="flex" alignItems="center">
+                <LockRoundedIcon color="primary" sx={{ mr: 1 }} />
+                {t('pages:site.access')}
+              </Typography>
+
+              <Box p={2}>
+                <FormControl>
+                  <Controller
+                    control={control}
+                    name="isPublic"
+                    render={({ field: { onChange, ...field } }): JSX.Element => (
+                      <RadioGroup
+                        {...field}
+                        onChange={(e, value): void => {
+                          onChange(value === 'true')
+                        }}
+                        aria-label={t('pages:site.specify_site_visibility')}
+                        name="radio-buttons-group"
+                      >
+                        <FormControlLabel value={true} control={<Radio />} label={t('pages:site.public_description')} />
+                        <FormControlLabel value={false} control={<Radio />} label={t('pages:site.private_description')} />
+                      </RadioGroup>
+                    )}
+                  />
+                </FormControl>
+
+                <Collapse in={!isPublic}>
+                  <Grid item xs={12} mt={3} mb={2}>
+                    <Alert
+                      severity="warning"
+                      icon={<TipsAndUpdatesRoundedIcon />}
+                    >
+                      {t('pages:site.access_description')}
+                    </Alert>
+                  </Grid>
+
+                  <TextField
+                    {...register('accessConditions')}
+                    required
+                    fullWidth
+                    label={t('common:access_condition')}
+                    multiline
+                    minRows={5}
+                    error={!!errors.accessConditions}
+                    helperText={
+                      errors?.accessConditions?.message
+                        ? t(errors.accessConditions.message as string, { max: DESCRIPTION_MAX_LENGTH })
+                        : `${description?.length || 0}/${DESCRIPTION_MAX_LENGTH}`
+                    }
+                  />
+                </Collapse>
+
+              </Box>
+
+              <Grid />
               <Grid item display="flex" justifyContent="flex-end" mt={3} >
                 <Button
                   type="submit"
@@ -137,8 +213,6 @@ const SitePage: NextPage = () => {
           </CardContent>
         </Card>
       </Container>
-
-      <DevTool control={control} />
     </MainLayout>
   )
 }

@@ -46,7 +46,7 @@ export const userCreationSchema = yup.object().shape({
 })
 export const editUserSchema = yup.object().shape({
   ...userFullNameSchema,
-  ...descriptionSchema
+  description: descriptionSchema
 })
 
 export const loginUserSchema = yup.object().shape({

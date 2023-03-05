@@ -27,6 +27,11 @@
     "open_at": "Ouvre à {{hour}}",
     "site_creation": "Création d'un nouveau site",
     "opening_of": "Horaires du",
-    "add_opening": "Ajouter une horaire"
+    "add_opening": "Ajouter une horaire",
+    "access": "Accès",
+    "specify_site_visibility": "Ce site est il publique?",
+    "public_description": "Ce site est publique",
+    "private_description": "Ce site est privé et accessible qu'à partir de certaines conditions",
+    "access_description": "Merci de préciser quelles sont les conditions pour pouvoir accéder à ce site de compostage."
   }
 }

@@ -35,5 +35,6 @@
   },
   "opening": "Ouverture",
   "closing": "Fermeture",
-  "schedules": "Horaires"
+  "schedules": "Horaires",
+  "access_condition": "Conditions d'accès"
 }
