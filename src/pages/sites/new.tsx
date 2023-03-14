@@ -1,8 +1,8 @@
 import * as React from 'react'
 
 import AccessTimeRoundedIcon from '@mui/icons-material/AccessTimeRounded'
+import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded'
 import LockRoundedIcon from '@mui/icons-material/LockRounded'
-import TipsAndUpdatesRoundedIcon from '@mui/icons-material/TipsAndUpdatesRounded'
 import Alert from '@mui/material/Alert'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
@@ -20,12 +20,20 @@ import Typography from '@mui/material/Typography'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import { GetServerSideProps, NextPage } from 'next'
+import dynamic from 'next/dynamic'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { Controller, useForm, useWatch } from 'react-hook-form'
 
 import MainLayout from '@/components/layouts/MainLayout'
+// eslint-disable-next-line import/order
 import PageTitle from '@/components/PageTitle'
+
+const AddressInput = dynamic(
+  () => import('@/components/site/AddressInput'),
+  { ssr: false }
+)
+
 import SchedulesInput from '@/components/site/SchedulesInput'
 import {
   CreateSite, DAY_OF_WEEK, DESCRIPTION_MAX_LENGTH, Schedule, siteCreationSchema
@@ -73,10 +81,6 @@ const SitePage: NextPage = () => {
     name: 'isPublic',
     defaultValue: true
   })
-
-  React.useEffect(() => {
-    console.log(typeof isPublic)
-  }, [isPublic])
 
   const createSite = (site: CreateSite): void => {
     console.log(site)
@@ -172,10 +176,7 @@ const SitePage: NextPage = () => {
 
                 <Collapse in={!isPublic}>
                   <Grid item xs={12} mt={3} mb={2}>
-                    <Alert
-                      severity="warning"
-                      icon={<TipsAndUpdatesRoundedIcon />}
-                    >
+                    <Alert severity="info">
                       {t('pages:site.access_description')}
                     </Alert>
                   </Grid>
@@ -195,10 +196,34 @@ const SitePage: NextPage = () => {
                     }
                   />
                 </Collapse>
-
               </Box>
 
-              <Grid />
+              <Typography variant='h6' component="h2" mt={3} display="flex" alignItems="center">
+                <LocationOnRoundedIcon color="primary" sx={{ mr: 1 }} />
+                {t('common:location')}
+              </Typography>
+
+              <Box p={2}>
+                <Controller
+                  control={control}
+                  name="address"
+                  render={({
+                    field: {
+                      onChange, value
+                    },
+                    fieldState: {
+                      error
+                    }
+                  }): JSX.Element => (
+                    <AddressInput
+                      color={error ? 'error' : 'secondary'}
+                      address={value}
+                      onChange={onChange}
+                    />
+                  )}
+                />
+              </Box>
+
               <Grid item display="flex" justifyContent="flex-end" mt={3} >
                 <Button
                   type="submit"

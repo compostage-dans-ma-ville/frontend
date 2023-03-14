@@ -26,8 +26,8 @@ export interface Address {
   streetName: string
   zipCode: number
   city: string
-  latitude: string
-  longitude: string
+  latitude: number
+  longitude: number
 }
 
 export const addressSchema = {

@@ -1,3 +1,4 @@
+import TipsAndUpdatesRoundedIcon from '@mui/icons-material/TipsAndUpdatesRounded'
 import { createTheme } from '@mui/material/styles'
 
 export const customTheme = createTheme({
@@ -26,6 +27,13 @@ export const customTheme = createTheme({
           borderColor: theme.palette.primary.main,
           borderWidth: 3
         })
+      }
+    },
+    MuiAlert: {
+      defaultProps: {
+        iconMapping: {
+          info: <TipsAndUpdatesRoundedIcon />
+        }
       }
     },
     MuiButton: {

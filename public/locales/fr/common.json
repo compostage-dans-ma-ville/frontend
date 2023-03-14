@@ -4,6 +4,8 @@
   "description": "Description",
   "edit": "Modifier",
   "email_addresse": "Adresse mail",
+  "address": "Adresse",
+  "no_address_match": "Aucune addresse connue ne correspond",
   "firstname": "Prénom",
   "lastname": "Nom",
   "name": "Nom",
@@ -36,5 +38,11 @@
   "opening": "Ouverture",
   "closing": "Fermeture",
   "schedules": "Horaires",
-  "access_condition": "Conditions d'accès"
+  "access_condition": "Conditions d'accès",
+  "location": "Localisation",
+  "map": {
+    "zoomIn": "zoom avant",
+    "zoomOut": "zoom arrière"
+  },
+  "add_address": "Ajouter une adresse"
 }
