@@ -1,4 +1,4 @@
-import * as yup from 'yup'
+import yup from '@/helpers/yup-extended'
 
 export const MAX_IMAGE_SIZE = 64000000 // 8Mo
 export const ALLOWED_IMAGE_EXTENSION = ['png', 'jpeg', 'jpg']

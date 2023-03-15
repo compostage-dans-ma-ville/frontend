@@ -1,5 +1,6 @@
 import { FeatureCollection, Point } from 'geojson'
-import * as yup from 'yup'
+
+import yup from '@/helpers/yup-extended'
 
 export type AddressType = 'municipality' | 'locality' |'street' | 'housenumber'
 export interface ApiGetAddress {

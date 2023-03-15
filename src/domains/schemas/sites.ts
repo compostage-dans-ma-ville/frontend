@@ -1,6 +1,5 @@
-import * as yup from 'yup'
-
 import { RemoveIndex } from '@/helpers/typing'
+import yup from '@/helpers/yup-extended'
 
 import { descriptionSchema } from './common'
 
@@ -54,14 +53,16 @@ export const openingsSchema = yup.object().shape({
   close: yup.string().required('errors:required_field')
 })
 
-export const scheduleSchema = yup.array().of(openingsSchema).required()
+export const scheduleSchema = yup.array().of(openingsSchema).nullable()
 export const siteCreationSchema = yup.object().shape({
   ...nameSchema,
   description: descriptionSchema,
   address: yup.object().shape({ ...addressSchema }).defined(),
-  schedules: yup.array().of(yup.array().of(scheduleSchema)),
+  schedules: yup.array().of(scheduleSchema),
   isPublic: yup.boolean().default(true),
-  accessConditions: descriptionSchema.optional()
+  accessConditions: descriptionSchema.when('isPublic', (isPublic, schema) => {
+    return !isPublic ? schema.required('errors:required_field') : schema
+  })
 })
 
 export type CreateSite = RemoveIndex<yup.InferType<typeof siteCreationSchema>>

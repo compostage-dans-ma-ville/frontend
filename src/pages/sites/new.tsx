@@ -21,6 +21,7 @@ import Typography from '@mui/material/Typography'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { GetServerSideProps, NextPage } from 'next'
 import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { Controller, useForm, useWatch } from 'react-hook-form'
@@ -35,8 +36,13 @@ const AddressInput = dynamic(
 )
 
 import SchedulesInput from '@/components/site/SchedulesInput'
+import { createSite } from '@/domains/api'
 import {
-  CreateSite, DAY_OF_WEEK, DESCRIPTION_MAX_LENGTH, Schedule, siteCreationSchema
+  CreateSite,
+  DAY_OF_WEEK,
+  DESCRIPTION_MAX_LENGTH,
+  Schedule,
+  siteCreationSchema
 } from '@/domains/schemas'
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -56,6 +62,7 @@ const SitePage: NextPage = () => {
     'common',
     'pages'
   ])
+  const router = useRouter()
 
   const defaultValues: CreateSite = {
     name: '',
@@ -82,8 +89,12 @@ const SitePage: NextPage = () => {
     defaultValue: true
   })
 
-  const createSite = (site: CreateSite): void => {
-    console.log(site)
+  const onSubmit = (siteData: CreateSite): void => {
+    createSite(siteData).then(({ data: site }) => {
+      router.push(`/sites/${site.id}`)
+    }).catch(() => {
+
+    })
   }
 
   return (
@@ -95,7 +106,7 @@ const SitePage: NextPage = () => {
           <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 
             <Typography variant='h4' component='h1'>{t('pages:site.site_creation')}</Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit(createSite)} sx={{ mt: 5 }}>
+            <Box component="form" noValidate onSubmit={handleSubmit(onSubmit)} sx={{ mt: 5 }}>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
                   <TextField
@@ -111,7 +122,6 @@ const SitePage: NextPage = () => {
                 <Grid item xs={12}>
                   <TextField
                     {...register('description')}
-                    required
                     fullWidth
                     label={t('common:description')}
                     multiline
@@ -125,6 +135,32 @@ const SitePage: NextPage = () => {
                   />
                 </Grid>
               </Grid>
+
+              <Typography variant='h6' component="h2" mt={3} display="flex" alignItems="center">
+                <LocationOnRoundedIcon color="primary" sx={{ mr: 1 }} />
+                {t('common:location')}
+              </Typography>
+
+              <Box p={2}>
+                <Controller
+                  control={control}
+                  name="address"
+                  render={({
+                    field: {
+                      onChange, value
+                    },
+                    fieldState: {
+                      error
+                    }
+                  }): JSX.Element => (
+                    <AddressInput
+                      color={error ? 'error' : 'secondary'}
+                      address={value}
+                      onChange={onChange}
+                    />
+                  )}
+                />
+              </Box>
 
               <Typography variant='h6' component="h2" mt={3} display="flex" alignItems="center">
                 <AccessTimeRoundedIcon color="primary" sx={{ mr: 1 }} />
@@ -196,32 +232,6 @@ const SitePage: NextPage = () => {
                     }
                   />
                 </Collapse>
-              </Box>
-
-              <Typography variant='h6' component="h2" mt={3} display="flex" alignItems="center">
-                <LocationOnRoundedIcon color="primary" sx={{ mr: 1 }} />
-                {t('common:location')}
-              </Typography>
-
-              <Box p={2}>
-                <Controller
-                  control={control}
-                  name="address"
-                  render={({
-                    field: {
-                      onChange, value
-                    },
-                    fieldState: {
-                      error
-                    }
-                  }): JSX.Element => (
-                    <AddressInput
-                      color={error ? 'error' : 'secondary'}
-                      address={value}
-                      onChange={onChange}
-                    />
-                  )}
-                />
               </Box>
 
               <Grid item display="flex" justifyContent="flex-end" mt={3} >

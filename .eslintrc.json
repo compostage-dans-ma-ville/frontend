@@ -96,7 +96,8 @@
       "error",
       "react-i18next",
       "@mui/material",
-      "@mui/lab"
+      "@mui/lab",
+      "yup"
     ],
     "react/self-closing-comp": "error",
     "react/prop-types": "off",

@@ -1,4 +1,4 @@
-import * as yup from 'yup'
+import yup from '@/helpers/yup-extended'
 
 import { RemoveIndex } from '@/helpers/typing'
 

@@ -45,7 +45,7 @@ const AddressInput: React.FC<AddressInputProps> = ({ address, onChange, ...restP
           textAlign: 'left'
         }}
       >
-        <Typography variant='body1' component='span' fontWeight='bold'>
+        <Typography variant='body1' component='span'>
           {address ? formatAddress(address) : t('common:add_address')}
         </Typography>
       </Button>
