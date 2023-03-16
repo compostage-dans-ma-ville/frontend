@@ -1,9 +1,13 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import axios, { AxiosResponse } from 'axios'
 
 import { ForgotPassword, UpdatePassword } from '../schemas'
-import { LoginUser } from '../schemas/user'
+import { LoginUser, UserCreation } from '../schemas/user'
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export const registerUser = (data: UserCreation) => {
+  return axios.post<{token: string}>('/auth/register', data)
+}
+
 export const loginUser = (data: LoginUser) => {
   return axios.post<{token: string}>('/auth/login', data)
 }

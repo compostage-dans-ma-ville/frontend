@@ -11,7 +11,7 @@ import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 
 import { yupResolver } from '@hookform/resolvers/yup'
-import axios, { AxiosError } from 'axios'
+import { AxiosError } from 'axios'
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -22,6 +22,9 @@ import { useForm } from 'react-hook-form'
 
 import MainLayout from '@/components/layouts/MainLayout'
 import PageTitle from '@/components/PageTitle'
+import { useMe } from '@/contexts'
+import { registerUser as apiRegisterUser } from '@/domains/api'
+import { AuthService } from '@/domains/AuthService'
 import { UserCreation, userCreationSchema } from '@/domains/schemas/user'
 
 export const getStaticProps: GetStaticProps = async () => ({
@@ -43,6 +46,7 @@ const Register: React.FC = () => {
     'pages'
   ])
   const { enqueueSnackbar } = useSnackbar()
+  const { fetch } = useMe()
 
   const router = useRouter()
   const redirection = router.query.redirect_url as string
@@ -57,8 +61,9 @@ const Register: React.FC = () => {
 
   const registerUser = (user: UserCreation): void => {
     // TODO: Extract logic
-    axios.post('/users', user).then(() => {
-      // TODO: set token
+    apiRegisterUser(user).then(({ data }) => {
+      AuthService.setToken(data.token)
+      fetch()
       router.push(redirection || '/')
     }).catch((error: AxiosError) => {
       if (error?.response?.status === 409) {
