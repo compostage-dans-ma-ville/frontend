@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { Box } from '@mui/material'
+import Box from '@mui/material/Box'
 
 import createEmotionServer from '@emotion/server/create-instance'
 import Document, {

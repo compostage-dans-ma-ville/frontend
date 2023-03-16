@@ -1,83 +1,53 @@
 import React from 'react'
 
-import AccessTimeRoundedIcon from '@mui/icons-material/AccessTimeRounded'
-import ExpandLessRoundedIcon from '@mui/icons-material/ExpandLessRounded'
-import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded'
-import Box from '@mui/material/Box'
-import Collapse from '@mui/material/Collapse'
-import ListItemAvatar from '@mui/material/ListItemAvatar'
-import ListItemButton from '@mui/material/ListItemButton'
+import Grid from '@mui/material/Grid'
+import List from '@mui/material/List'
+import ListItem, { ListItemProps } from '@mui/material/ListItem'
 import Typography from '@mui/material/Typography'
 
 import { useTranslation } from 'next-i18next'
 
-import { Schedule } from '@/domains/schemas'
-import { hourAsNumber } from '@/domains/utils'
+import { DayOfWeek, Schedule } from '@/domains/schemas'
 
-import ScheduleTable from './ScheduleTable'
-
-export interface ScheduleListItemProps {
-  schedules: Schedule[]
+export interface ScheduleListItemProps extends ListItemProps {
+  day: DayOfWeek
+  openings: Schedule
 }
 
-const ScheduleListItem: React.FC<ScheduleListItemProps> = ({ schedules }) => {
+const ScheduleListItem: React.FC<ScheduleListItemProps> = ({ day, openings, ...restProps }) => {
   const { t } = useTranslation([
-    'common',
-    'pages'
+    'common'
   ])
 
-  const [openSchedules, setOpenSchedules] = React.useState(false)
-  const now = new Date()
-  const currentDayOfWeek = [7, 1, 2, 3, 4, 5, 6][now.getDay()]
-  const currentHour = now.getHours()
-  const currentMinutes = now.getMinutes()
-
-  const matchingSchedules = schedules.filter(({ dayOfWeek }) => dayOfWeek === currentDayOfWeek)
-  const currentHourAsNumber = hourAsNumber(`${currentHour}:${currentMinutes}`)
-
-  const currentOpenedSlot = matchingSchedules.find(({ open, close }) => {
-    if (open && close) {
-      return hourAsNumber(open) <= currentHourAsNumber && currentHourAsNumber <= hourAsNumber(close)
-    }
-    return null
-  })
-
-  const nextOpenedSlot = matchingSchedules.find(({ open }) => {
-    if (open) {
-      return hourAsNumber(open) > currentHourAsNumber
-    }
-    return null
-  })
-
   return (
-    <>
-      <ListItemButton alignItems="center" onClick={(): void => setOpenSchedules((state) => !state)}>
-        <ListItemAvatar>
-          <AccessTimeRoundedIcon fontSize="large" color="primary" />
-        </ListItemAvatar>
+    <ListItem {...restProps}>
+      <Grid container justifyContent="space-between">
+        <Grid item>
+          {t(`common:days.${day}`)}
+        </Grid>
+        <Grid item >
+          {!openings && (
+            <Typography color="error.main" fontWeight="bold">{t('common:closed')}</Typography>
+          )}
 
-        <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-          <Box>
-            <Typography variant='h6' component="span" color={currentOpenedSlot ? 'success.main' : 'error.main'} fontWeight="bold">{t(currentOpenedSlot ? 'common:open' : 'common:closed')}</Typography>
-            <Typography component="span">
-              {(currentOpenedSlot || nextOpenedSlot) && ' • '}
-              {
-                currentOpenedSlot
-                  ? t('pages:site.close_at', { hour: currentOpenedSlot.close })
-                  : nextOpenedSlot && t('pages:site.open_at', { hour: nextOpenedSlot.open })
-              }</Typography>
-          </Box>
+          {openings?.length === 0 && (
+            <Typography color="success.main" fontWeight="bold">{t('common:open')}</Typography>
+          )}
 
-          <Typography variant="body2">{t('pages:site.more_schedule')}</Typography>
-        </Box>
-
-        {openSchedules ? <ExpandLessRoundedIcon /> : <ExpandMoreRoundedIcon />}
-
-      </ListItemButton>
-      <Collapse in={openSchedules}>
-        <ScheduleTable schedules={schedules} />
-      </Collapse>
-    </>
+          {openings && openings?.length > 0 && (
+            <List dense sx={{ p: 0 }}>
+              {openings.map(({ open, close }, index) => {
+                return (
+                  <ListItem key={index} sx={{ p: 0, justifyContent: 'flex-end' }}>
+                    <Typography textAlign="left" color="success.main" fontWeight="bold">{open}-{close}</Typography>
+                  </ListItem>
+                )
+              })}
+            </List>
+          )}
+        </Grid>
+      </Grid>
+    </ListItem>
   )
 }
 

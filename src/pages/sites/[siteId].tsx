@@ -16,7 +16,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import MainLayout from '@/components/layouts/MainLayout'
 import PageTitle from '@/components/PageTitle'
-import ScheduleListItem from '@/components/site/ScheduleListItem'
+import ScheduleList from '@/components/site/ScheduleList'
 import SiteCarousel from '@/components/site/SiteCarousel'
 import { getSite } from '@/domains/api'
 import { Site } from '@/domains/schemas'
@@ -87,7 +87,7 @@ const SitePage: NextPage<SiteProps> = ({ site }) => {
 
               </ListItem>
               <Divider variant="inset" component="li" />
-              <ScheduleListItem schedules={site.schedules}/>
+              <ScheduleList schedules={site.schedules}/>
             </List>
           </CardContent>
         </Card>

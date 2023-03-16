@@ -2,12 +2,16 @@ import React, { FormEvent } from 'react'
 
 import EditIcon from '@mui/icons-material/EditRounded'
 import UploadRoundedIcon from '@mui/icons-material/UploadRounded'
-import {
-  Alert,
-  Avatar, Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography,
-  Box
-} from '@mui/material'
+import Alert from '@mui/material/Alert'
+import Avatar from '@mui/material/Avatar'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import Dialog from '@mui/material/Dialog'
+import DialogActions from '@mui/material/DialogActions'
+import DialogContent from '@mui/material/DialogContent'
+import DialogTitle from '@mui/material/DialogTitle'
 import Slider from '@mui/material/Slider'
+import Typography from '@mui/material/Typography'
 
 import { useTranslation } from 'next-i18next'
 import AvatarEditor from 'react-avatar-editor'

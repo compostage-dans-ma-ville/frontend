@@ -1,10 +1,10 @@
 import * as React from 'react'
 
 import VpnKeyOutlinedIcon from '@mui/icons-material/VpnKeyOutlined'
-import { Alert } from '@mui/lab'
-import { Button } from '@mui/material'
+import Alert from '@mui/lab/Alert'
 import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 

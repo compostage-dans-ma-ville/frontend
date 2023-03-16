@@ -94,7 +94,10 @@
     "no-underscore-dangle": "off",
     "no-restricted-imports": [
       "error",
-      "react-i18next"
+      "react-i18next",
+      "@mui/material",
+      "@mui/lab",
+      "yup"
     ],
     "react/self-closing-comp": "error",
     "react/prop-types": "off",

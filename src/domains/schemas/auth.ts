@@ -1,6 +1,5 @@
-import * as yup from 'yup'
-
 import { RemoveIndex } from '@/helpers/typing'
+import yup from '@/helpers/yup-extended'
 
 import { confirmPasswordSchema, emailSchema, passwordSchema } from './user'
 
