@@ -4,12 +4,16 @@ import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRound
 import Button, { ButtonProps } from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 
+import dynamic from 'next/dynamic'
 import { useTranslation } from 'next-i18next'
 
 import { Address } from '@/domains/schemas'
 import { formatAddress } from '@/domains/utils'
 
-import EditAddresseDialog from './EditAddressDialog'
+const EditAddresseDialog = dynamic(
+  () => import('./EditAddressDialog'),
+  { ssr: false }
+)
 
 export interface AddressInputProps extends Omit<ButtonProps, 'onChange'> {
   address?: Address
@@ -46,7 +50,7 @@ const AddressInput: React.FC<AddressInputProps> = ({ address, onChange, ...restP
         }}
       >
         <Typography variant='body1' component='span'>
-          {address ? formatAddress(address) : t('common:add_address')}
+          {address ? formatAddress(address) : t('common:add_address') + ' *'}
         </Typography>
       </Button>
     </>

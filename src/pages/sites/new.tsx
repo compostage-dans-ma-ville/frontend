@@ -20,21 +20,17 @@ import Typography from '@mui/material/Typography'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import { GetServerSideProps, NextPage } from 'next'
-import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useSnackbar } from 'notistack'
 import { Controller, useForm, useWatch } from 'react-hook-form'
 
 import MainLayout from '@/components/layouts/MainLayout'
 // eslint-disable-next-line import/order
 import PageTitle from '@/components/PageTitle'
 
-const AddressInput = dynamic(
-  () => import('@/components/site/AddressInput'),
-  { ssr: false }
-)
-
+import AddressInput from '@/components/site/AddressInput'
 import SchedulesInput from '@/components/site/SchedulesInput'
 import { createSite } from '@/domains/api'
 import {
@@ -63,6 +59,7 @@ const SitePage: NextPage = () => {
     'pages'
   ])
   const router = useRouter()
+  const { enqueueSnackbar } = useSnackbar()
 
   const defaultValues: CreateSite = {
     name: '',
@@ -93,7 +90,7 @@ const SitePage: NextPage = () => {
     createSite(siteData).then(({ data: site }) => {
       router.push(`/sites/${site.id}`)
     }).catch(() => {
-
+      enqueueSnackbar(t('errors:unknow_error'), { variant: 'error' })
     })
   }
 
@@ -101,8 +98,8 @@ const SitePage: NextPage = () => {
     <MainLayout>
       <PageTitle title={[t('pages:site.site_creation')]} />
 
-      <Container maxWidth="lg">
-        <Card sx={{ mx: 3 }} >
+      <Container maxWidth="md">
+        <Card>
           <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 
             <Typography variant='h4' component='h1'>{t('pages:site.site_creation')}</Typography>

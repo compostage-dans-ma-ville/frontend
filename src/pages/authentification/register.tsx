@@ -58,6 +58,7 @@ const Register: React.FC = () => {
   const registerUser = (user: UserCreation): void => {
     // TODO: Extract logic
     axios.post('/users', user).then(() => {
+      // TODO: set token
       router.push(redirection || '/')
     }).catch((error: AxiosError) => {
       if (error?.response?.status === 409) {
