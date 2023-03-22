@@ -25,6 +25,7 @@ import PageTitle from '@/components/PageTitle'
 import { useMe } from '@/contexts'
 import { registerUser as apiRegisterUser } from '@/domains/api'
 import { AuthService } from '@/domains/AuthService'
+import { Routes } from '@/domains/Routes'
 import { UserCreation, userCreationSchema } from '@/domains/schemas/user'
 
 export const getStaticProps: GetStaticProps = async () => ({
@@ -173,7 +174,7 @@ const Register: React.FC = () => {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <MuiLink href="/authentification/login" component={Link} variant="body2">
+                <MuiLink href={Routes.login} component={Link} variant="body2">
                   {t('authentification:already_account')}
                 </MuiLink>
               </Grid>

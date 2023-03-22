@@ -1,5 +1,8 @@
 import React from 'react'
 
+import { getUserRules } from '@/domains/ability'
+
+import { AbilityContext } from './abilityContext'
 import { getMe } from '../domains/api'
 import { AuthService } from '../domains/AuthService'
 import { AuthenticatedUser } from '../domains/schemas'
@@ -16,6 +19,7 @@ export const UserContext = React.createContext<UserContextData>({ me: null } as 
 export const UserProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const [user, setUser] = React.useState<AuthenticatedUser | null>(null)
   const [isFetching, setIsFetching] = React.useState(false)
+  const ability = React.useContext(AbilityContext)
 
   const logout = (): void => {
     setUser(null)
@@ -38,6 +42,10 @@ export const UserProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
     const token = AuthService.getToken()
     if (token) fetch()
   }, [fetch])
+
+  React.useEffect(() => {
+    ability.update(getUserRules(user))
+  }, [ability, user])
 
   return (
     <UserContext.Provider value={{

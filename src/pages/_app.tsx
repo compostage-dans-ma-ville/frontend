@@ -13,7 +13,8 @@ import { SnackbarProvider } from 'notistack'
 import { SWRConfig } from 'swr'
 
 import AuthProvider from '@/components/authentification/AuthProvider'
-import { UserProvider } from '@/contexts'
+import { AbilityContext, UserProvider } from '@/contexts'
+import { AppAbility } from '@/domains/ability'
 import { customTheme } from '@/styles/theme'
 import createEmotionCache from '@/styles/utils/createEmotionCache'
 
@@ -34,14 +35,16 @@ const App: React.FC<MyAppProps> = ({ Component, emotionCache = clientSideEmotion
     >
       <CacheProvider value={emotionCache}>
         <ThemeProvider theme={customTheme}>
-          <UserProvider>
-            <AuthProvider>
-              <SnackbarProvider maxSnack={3}>
-                <CssBaseline />
-                <Component {...pageProps} />
-              </SnackbarProvider>
-            </AuthProvider>
-          </UserProvider>
+          <AbilityContext.Provider value={new AppAbility()}>
+            <UserProvider>
+              <AuthProvider>
+                <SnackbarProvider maxSnack={3}>
+                  <CssBaseline />
+                  <Component {...pageProps} />
+                </SnackbarProvider>
+              </AuthProvider>
+            </UserProvider>
+          </AbilityContext.Provider>
         </ThemeProvider>
       </CacheProvider>
     </SWRConfig>
