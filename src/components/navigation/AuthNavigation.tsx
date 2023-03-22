@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 
 import { useMe } from '@/contexts'
+import { Routes } from '@/domains/Routes'
 
 import UserMenu from './UserMenu'
 
@@ -26,12 +27,12 @@ const AuthNavigation: React.FC = () => {
         ? <UserMenu user={user} logout={logout} />
         : (
           <>
-            <Link href="/authentification/login">
+            <Link href={Routes.login}>
               <Button variant="outlined">
                 {t('login')}
               </Button>
             </Link>
-            <Link href="/authentification/register">
+            <Link href={Routes.register}>
               <Button variant="contained">{t('signIn')}</Button>
             </Link>
           </>

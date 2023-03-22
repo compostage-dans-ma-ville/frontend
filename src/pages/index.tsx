@@ -9,8 +9,10 @@ import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
+import { Can } from '@/components/Can'
 import MainLayout from '@/components/layouts/MainLayout'
 import PageTitle from '@/components/PageTitle'
+import { Routes } from '@/domains/Routes'
 export const getStaticProps: GetStaticProps = async () => ({
   props: {
     ...(await serverSideTranslations('fr', [
@@ -35,9 +37,16 @@ const Home: React.FC = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Button variant='contained' LinkComponent={Link} href="/sites/new" startIcon={<AddLocationRoundedIcon />}>
-        {t('pages:home.refer_site')}
-      </Button>
+      <Can I='create' a='site'>
+        <Button
+          variant='contained'
+          LinkComponent={Link}
+          href={Routes.sitesNew}
+          startIcon={<AddLocationRoundedIcon />}
+        >
+          {t('pages:home.refer_site')}
+        </Button>
+      </Can>
     </MainLayout>
   )
 }

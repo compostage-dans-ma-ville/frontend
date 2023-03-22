@@ -44,5 +44,7 @@
     "zoomIn": "zoom avant",
     "zoomOut": "zoom arrière"
   },
-  "add_address": "Ajouter une adresse"
+  "add_address": "Ajouter une adresse",
+  "ability_check": "Vérification de vos droits",
+  "restricted_to_users": "Cette page est réservée aux membres connectés"
 }

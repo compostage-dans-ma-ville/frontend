@@ -1,6 +1,5 @@
-import yup from '@/helpers/yup-extended'
-
 import { RemoveIndex } from '@/helpers/typing'
+import yup from '@/helpers/yup-extended'
 
 import { descriptionSchema } from './common'
 
@@ -62,4 +61,13 @@ export type User = Omit<UserCreation, 'password' | 'confirmPassword' | 'email' >
   avatar?: string,
   description?: string
 }
-export type AuthenticatedUser = User & { email: string }
+export type AuthenticatedUser = User & {
+  email: string
+  role: UserRole
+ }
+
+// eslint-disable-next-line no-shadow
+export enum UserRole {
+  USER = 'USER',
+  ADMIN = 'ADMIN',
+}

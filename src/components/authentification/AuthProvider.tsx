@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import { useMe } from '@/contexts'
 import { AuthService } from '@/domains/AuthService'
 import HttpStatusCode from '@/domains/HttpStatusCode'
+import { Routes } from '@/domains/Routes'
 
 const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const router = useRouter()
@@ -17,7 +18,7 @@ const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
     if (error?.response?.status === HttpStatusCode.UNAUTHORIZED) {
       logout()
       router.push({
-        pathname: '/authentification/login',
+        pathname: Routes.login,
         query: `redirect_url=${window.location.href}`
       })
     } else Promise.reject(error)
