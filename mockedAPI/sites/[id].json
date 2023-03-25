@@ -16,6 +16,8 @@
     "latitude": 49.1188847,
     "longitude": 6.1749144
   },
+  "isPublic": "b:[#faker:datatype:boolean]",
+  "accessConditions": "[#faker:lorem:paragraph]",
   "schedules": [
     null,
     [],

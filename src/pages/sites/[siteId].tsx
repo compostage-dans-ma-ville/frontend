@@ -1,13 +1,18 @@
 import * as React from 'react'
 
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded'
+import LockOpenRoundedIcon from '@mui/icons-material/LockOpenRounded'
+import LockRoundedIcon from '@mui/icons-material/LockRounded'
+import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
+import Chip from '@mui/material/Chip'
 import Container from '@mui/material/Container'
 import Divider from '@mui/material/Divider'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
+import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 
 import { GetServerSideProps, NextPage } from 'next'
@@ -65,6 +70,19 @@ const SitePage: NextPage<SiteProps> = ({ site }) => {
             <Typography variant="h4" component="h1" >
               {site.name}
             </Typography>
+
+            <Box>
+              <Tooltip title={site.isPublic ? t('pages:site.public_description') : t('pages:site.private_description')}>
+                <Chip
+                  icon={site.isPublic ? <LockOpenRoundedIcon /> : <LockRoundedIcon />}
+                  label={site.isPublic ? t('common:public') : t('common:private')}
+                  color={site.isPublic ? 'success' : 'error'}
+                  size="small"
+                  sx={{ fontWeight: 'bold' }}
+                />
+              </Tooltip>
+
+            </Box>
 
             {site.description && (
               <Typography variant="body1" color="text.secondary" marginLeft={2} marginTop={2}>

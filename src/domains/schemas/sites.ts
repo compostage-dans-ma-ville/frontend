@@ -11,6 +11,8 @@ export type Site = {
   images: string[]
   address: Address
   schedules: Schedule[] // array of 7 SiteSchedule for each day of week
+  isPublic: boolean
+  accessConditions?: string
 }
 
 export const NAME_MAX_LENGTH = 100
