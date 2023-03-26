@@ -36,6 +36,7 @@
     "update_location_on_map": "Vous pouvez ajuster l'emplacement du site sur la carte interactive!",
     "reset_map": "Réinitialiser l'emplacement",
     "position_is_distant": "L'emplacement indiquée est éloignée de l'adresse saisie",
-    "update_localisation": "Modifier l'adresse"
+    "update_localisation": "Modifier l'adresse",
+    "has_schedules": "Ce site a des heures d'ouverture définies."
   }
 }

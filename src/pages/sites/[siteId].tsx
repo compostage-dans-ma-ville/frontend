@@ -105,7 +105,7 @@ const SitePage: NextPage<SiteProps> = ({ site }) => {
 
               </ListItem>
               <Divider variant="inset" component="li" />
-              <ScheduleList schedules={site.schedules}/>
+              {site.schedules && <ScheduleList schedules={site.schedules}/>}
             </List>
           </CardContent>
         </Card>
