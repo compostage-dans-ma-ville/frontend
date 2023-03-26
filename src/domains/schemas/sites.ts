@@ -10,7 +10,7 @@ export type Site = {
   description?: string
   images: string[]
   address: Address
-  schedules: Schedule[] // array of 7 SiteSchedule for each day of week
+  schedules?: Schedule[] // array of 7 SiteSchedule for each day of week
   isPublic: boolean
   accessConditions?: string
 }

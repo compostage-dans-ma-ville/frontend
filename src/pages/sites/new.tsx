@@ -1,6 +1,5 @@
 import * as React from 'react'
 
-import AccessTimeRoundedIcon from '@mui/icons-material/AccessTimeRounded'
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded'
 import LockRoundedIcon from '@mui/icons-material/LockRounded'
 import Alert from '@mui/material/Alert'
@@ -32,14 +31,12 @@ import MainLayout from '@/components/layouts/MainLayout'
 import PageTitle from '@/components/PageTitle'
 
 import AddressInput from '@/components/site/AddressInput'
-import SchedulesInput from '@/components/site/SchedulesInput'
+import SchedulesForm from '@/components/site/forms/SchedulesForm'
 import { createSite } from '@/domains/api'
 import { Routes } from '@/domains/Routes'
 import {
   CreateSite,
-  DAY_OF_WEEK,
   DESCRIPTION_MAX_LENGTH,
-  Schedule,
   siteCreationSchema
 } from '@/domains/schemas'
 
@@ -64,11 +61,9 @@ const SitePage: NextPage = () => {
   const router = useRouter()
   const { enqueueSnackbar } = useSnackbar()
 
-  const defaultValues: CreateSite = {
+  const defaultValues: Partial<CreateSite> = {
     name: '',
     description: '',
-    // @ts-ignore
-    schedules: DAY_OF_WEEK.map(() => ([{ open: '18:00', close: '19:00' }])),
     isPublic: true
   }
 
@@ -76,6 +71,7 @@ const SitePage: NextPage = () => {
     control,
     register,
     handleSubmit,
+    setValue,
     formState: { errors }
   } = useForm<CreateSite>({
     mode: 'onChange',
@@ -163,27 +159,12 @@ const SitePage: NextPage = () => {
                   />
                 </Box>
 
-                <Typography variant='h6' component="h2" mt={3} display="flex" alignItems="center">
-                  <AccessTimeRoundedIcon color="primary" sx={{ mr: 1 }} />
-                  {t('common:schedules')}
-                </Typography>
-
-                <Grid>
-                  <Controller
-                    control={control}
-                    name="schedules"
-                    render={({
-                      field: {
-                        onChange, value
-                      }
-                    }): JSX.Element => (
-                      <SchedulesInput
-                        schedules={value as unknown as Schedule[]}
-                        onChange={(schedules): void => onChange(schedules)}
-                      />
-                    )}
-                  />
-                </Grid>
+                <SchedulesForm
+                  control={control}
+                  name='schedules'
+                  // @ts-ignore
+                  setValue={(value): void => setValue('schedules', value)}
+                />
 
                 <Typography variant='h6' component="h2" mt={3} display="flex" alignItems="center">
                   <LockRoundedIcon color="primary" sx={{ mr: 1 }} />
