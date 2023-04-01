@@ -3,13 +3,16 @@ import {
   PureAbility,
   AbilityClass,
   SubjectRawRule,
-  ExtractSubjectType
+  ExtractSubjectType,
+  createMongoAbility,
+  buildMongoQueryMatcher
 } from '@casl/ability'
 
 import { AuthenticatedUser, UserRole } from './schemas'
 
-type AbilityAction = 'create' | 'read' | 'update' | 'delete'
-type AbilitySubject = 'site' | 'user' |'all';
+type AbilityAction = 'create' | 'read' | 'update' | 'delete' | 'manage'
+type AbilitySubject = 'site' | 'user' |'all' | AuthenticatedUser;
+const conditionsMatcher = buildMongoQueryMatcher()
 
 export const CRUD = ['create', 'read', 'update', 'delete'] as AbilityAction[]
 
@@ -20,17 +23,15 @@ export const AppAbility = PureAbility as AbilityClass<Ability>
 export const getUserRules = (
   user: AuthenticatedUser | null
 ): Rules => {
-  const { can, rules } = new AbilityBuilder(AppAbility)
+  const { can, rules, build } = new AbilityBuilder(createMongoAbility)
 
   if (user === null) return rules
 
-  switch (user.role) {
-  case UserRole.ADMIN:
-    can(CRUD, 'all')
-    break
-  case UserRole.USER: default:
-    can(['read', 'create'], 'site')
-    break
+  can(['read', 'create'], 'site')
+  can(CRUD, 'user', { id: user.id })
+
+  if (user.role === UserRole.ADMIN) {
+    can('manage', 'all')
   }
 
   return rules
