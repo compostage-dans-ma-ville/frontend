@@ -22,6 +22,8 @@ const clientSideEmotionCache = createEmotionCache()
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_BASEURL
 axios.defaults.withCredentials = false
 
+const defaultAbilities = new AppAbility()
+
 export interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
@@ -35,7 +37,7 @@ const App: React.FC<MyAppProps> = ({ Component, emotionCache = clientSideEmotion
     >
       <CacheProvider value={emotionCache}>
         <ThemeProvider theme={customTheme}>
-          <AbilityContext.Provider value={new AppAbility()}>
+          <AbilityContext.Provider value={defaultAbilities}>
             <UserProvider>
               <AuthProvider>
                 <SnackbarProvider maxSnack={3}>
