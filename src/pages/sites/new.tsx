@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import CakeRoundedIcon from '@mui/icons-material/CakeRounded'
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded'
 import LockRoundedIcon from '@mui/icons-material/LockRounded'
 import Alert from '@mui/material/Alert'
@@ -16,9 +17,11 @@ import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
+import { DatePicker } from '@mui/x-date-pickers'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import { GetServerSideProps, NextPage } from 'next'
+import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -29,6 +32,11 @@ import CanOrLogin from '@/components/authentification/CanOrLogin'
 import MainLayout from '@/components/layouts/MainLayout'
 // eslint-disable-next-line import/order
 import PageTitle from '@/components/PageTitle'
+
+const DevTools = dynamic(() => import('@hookform/devtools').then((mod) => mod.DevTool), {
+  loading: () => <p>Loading...</p>,
+  ssr: false
+})
 
 import AddressInput from '@/components/site/AddressInput'
 import SchedulesForm from '@/components/site/forms/SchedulesForm'
@@ -56,7 +64,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
 const SitePage: NextPage = () => {
   const { t } = useTranslation([
     'common',
-    'pages'
+    'pages',
+    'errors'
   ])
   const router = useRouter()
   const { enqueueSnackbar } = useSnackbar()
@@ -216,6 +225,30 @@ const SitePage: NextPage = () => {
                   </Collapse>
                 </Box>
 
+                <Typography variant='h6' component="h2" mt={3} display="flex" alignItems="center">
+                  <CakeRoundedIcon color="primary" sx={{ mr: 1 }} />
+                  {t('pages:site.lauch_date')}
+                </Typography>
+
+                <Box p={2}>
+                  <Controller
+                    control={control}
+                    name="launchDate"
+                    render={({ field: { onChange, ...field } }): JSX.Element => (
+                      <DatePicker
+                        {...field}
+                        views={['year', 'month', 'day']}
+                        onChange={onChange}
+                        slotProps={{
+                          textField: {
+                            helperText: errors?.launchDate?.message && t(errors.launchDate.message as string)
+                          }
+                        }}
+                      />
+                    )}
+                  />
+                </Box>
+
                 <Grid item display="flex" justifyContent="flex-end" mt={3} >
                   <Button
                     type="submit"
@@ -231,6 +264,10 @@ const SitePage: NextPage = () => {
           </Card>
         </Container>
       </CanOrLogin>
+
+      {/*
+      // @ts-ignore */}
+      <DevTools control={control}/>
     </MainLayout>
   )
 }

@@ -11,5 +11,6 @@
   "invalid_login": "L'adresse email et le mot de passe ne correspondent pas",
   "invalid_reset_password_token": "Il semble que le lien de réinitialisation du mot de passe ne soit plus valide.",
   "avatar_image": "Seules les images au formats jpg, jpeg, png avec un poids maximum de 8Mo sont acceptés",
-  "address": "Merci de sélectionner une adresse contenant un numéro d'habitation, un nom de rue ainsi qu'un nom de ville."
+  "address": "Merci de sélectionner une adresse contenant un numéro d'habitation, un nom de rue ainsi qu'un nom de ville.",
+  "date": "Veuillez entrer une date valide"
 }

@@ -11,6 +11,7 @@ export type Site = {
   images: string[]
   address: Address
   schedules?: Schedule[] // array of 7 SiteSchedule for each day of week
+  launchDate?: string
   isPublic: boolean
   accessConditions?: string
 }
@@ -62,6 +63,7 @@ export const siteCreationSchema = yup.object().shape({
   address: yup.object().shape({ ...addressSchema }).defined(),
   schedules: yup.array().of(scheduleSchema),
   isPublic: yup.boolean().default(true),
+  launchDate: yup.date().typeError('errors:date').nullable(),
   accessConditions: descriptionSchema.when('isPublic', (isPublic, schema) => {
     return !isPublic ? schema.required('errors:required_field') : schema
   })

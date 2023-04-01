@@ -37,6 +37,7 @@
     "reset_map": "Réinitialiser l'emplacement",
     "position_is_distant": "L'emplacement indiquée est éloignée de l'adresse saisie",
     "update_localisation": "Modifier l'adresse",
-    "has_schedules": "Ce site a des heures d'ouverture définies."
+    "has_schedules": "Ce site a des heures d'ouverture définies.",
+    "lauch_date": "Date de mise en service"
   }
 }

@@ -3,6 +3,8 @@ import React from 'react'
 
 import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
+import { LocalizationProvider } from '@mui/x-date-pickers'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 import { EmotionCache } from '@emotion/cache'
 import { CacheProvider } from '@emotion/react'
@@ -37,16 +39,19 @@ const App: React.FC<MyAppProps> = ({ Component, emotionCache = clientSideEmotion
     >
       <CacheProvider value={emotionCache}>
         <ThemeProvider theme={customTheme}>
-          <AbilityContext.Provider value={defaultAbilities}>
-            <UserProvider>
-              <AuthProvider>
-                <SnackbarProvider maxSnack={3}>
-                  <CssBaseline />
-                  <Component {...pageProps} />
-                </SnackbarProvider>
-              </AuthProvider>
-            </UserProvider>
-          </AbilityContext.Provider>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <AbilityContext.Provider value={defaultAbilities}>
+              <UserProvider>
+                <AuthProvider>
+                  <SnackbarProvider maxSnack={3}>
+                    <CssBaseline />
+                    <Component {...pageProps} />
+                  </SnackbarProvider>
+                </AuthProvider>
+              </UserProvider>
+            </AbilityContext.Provider>
+          </LocalizationProvider>
+
         </ThemeProvider>
       </CacheProvider>
     </SWRConfig>
