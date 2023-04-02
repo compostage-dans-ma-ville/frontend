@@ -6,6 +6,7 @@ import { ThemeProvider } from '@mui/material/styles'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
+import { createMongoAbility } from '@casl/ability'
 import { EmotionCache } from '@emotion/cache'
 import { CacheProvider } from '@emotion/react'
 import axios from 'axios'
@@ -24,8 +25,6 @@ const clientSideEmotionCache = createEmotionCache()
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_BASEURL
 axios.defaults.withCredentials = false
 
-const defaultAbilities = new AppAbility()
-
 export interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
@@ -40,7 +39,7 @@ const App: React.FC<MyAppProps> = ({ Component, emotionCache = clientSideEmotion
       <CacheProvider value={emotionCache}>
         <ThemeProvider theme={customTheme}>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <AbilityContext.Provider value={defaultAbilities}>
+            <AbilityContext.Provider value={createMongoAbility<AppAbility>()}>
               <UserProvider>
                 <AuthProvider>
                   <SnackbarProvider maxSnack={3}>
@@ -51,7 +50,6 @@ const App: React.FC<MyAppProps> = ({ Component, emotionCache = clientSideEmotion
               </UserProvider>
             </AbilityContext.Provider>
           </LocalizationProvider>
-
         </ThemeProvider>
       </CacheProvider>
     </SWRConfig>
