@@ -9,7 +9,7 @@ import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import { Can } from '@/components/Can'
+import Can from '@/components/Can'
 import MainLayout from '@/components/layouts/MainLayout'
 import PageTitle from '@/components/PageTitle'
 import { Routes } from '@/domains/Routes'

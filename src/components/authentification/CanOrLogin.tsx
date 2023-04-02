@@ -13,7 +13,7 @@ import { useTranslation } from 'next-i18next'
 
 import { useRedirectToLogin } from '@/domains/hooks'
 
-import { Can, CanProps } from '../Can'
+import Can, { CanProps } from '../Can'
 
 export type CanOrLoginProps = CanProps
 const CanOrLogin: React.FC<CanProps> = ({ children, ...restProps }) => {

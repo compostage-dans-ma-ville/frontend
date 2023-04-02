@@ -15,7 +15,7 @@ import dynamic from 'next/dynamic'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import { Can } from '@/components/Can'
+import Can, { an } from '@/components/Can'
 import MainLayout from '@/components/layouts/MainLayout'
 import PageTitle from '@/components/PageTitle'
 import { getUser } from '@/domains/api'
@@ -55,8 +55,6 @@ const UserProfile: NextPage<UserProfileProps> = ({ user }) => {
   ])
   const [editionMode, setEditionMode] = React.useState(false)
 
-  console.log(user)
-
   return (
     <MainLayout>
       <PageTitle title={t('common:profile')} />
@@ -71,7 +69,7 @@ const UserProfile: NextPage<UserProfileProps> = ({ user }) => {
             )
             : (
               <Card>
-                <Can do="update" on={user} >
+                <Can do="update" on={an('user', user)}>
                   <ButtonGroup variant="outlined" sx={{ m: 2, display: 'flex', justifyContent: 'flex-end' }}>
                     <Button onClick={(): void => setEditionMode(true)} startIcon={<EditIcon />}>{t('common:edit')}</Button>
                   </ButtonGroup>
