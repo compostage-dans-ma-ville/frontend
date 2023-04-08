@@ -1,7 +1,9 @@
 import React from 'react'
 
+import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded'
 import Autocomplete from '@mui/material/Autocomplete'
-import Box from '@mui/material/Box'
+import Box, { BoxProps } from '@mui/material/Box'
+import InputAdornment from '@mui/material/InputAdornment'
 import TextField, { TextFieldProps } from '@mui/material/TextField'
 
 import { useTranslation } from 'next-i18next'
@@ -9,14 +11,15 @@ import { useTranslation } from 'next-i18next'
 import { getSearchAddress } from '@/domains/api/addressApi'
 import { ApiAddress } from '@/domains/schemas'
 import { isNumeric } from '@/domains/utils'
-
-export interface AddressSelectProps {
+export interface AddressSelectProps extends Partial<Omit<BoxProps, 'onChange' | 'defaultValue' | 'color'>> {
   address?: ApiAddress
   onChange: (address: ApiAddress) => void
   error?: TextFieldProps['error']
 }
 
-const AddressSelect: React.FC<AddressSelectProps> = ({ address, onChange, error }) => {
+const AddressSelect: React.FC<AddressSelectProps> = ({
+  address, onChange, error, ...restProps
+}) => {
   const { t } = useTranslation([
     'common'
   ])
@@ -52,7 +55,7 @@ const AddressSelect: React.FC<AddressSelectProps> = ({ address, onChange, error 
   const getOptionLabel = ({
     housenumber, street, postcode, city
   }: ApiAddress): string => {
-    return `${housenumber || ''} ${street || ''}${(street || housenumber) && ', '}${postcode} ${city}`
+    return `${housenumber || ''} ${street || ''}${(street || housenumber) ? ', ' : ''}${postcode} ${city}`
   }
 
   React.useEffect(() => {
@@ -61,8 +64,10 @@ const AddressSelect: React.FC<AddressSelectProps> = ({ address, onChange, error 
     }
   }, [fetchAddressMatches, search])
 
+  // TODO: Properly handle key in results
   return (
     <Autocomplete
+      {...restProps}
       disablePortal
       value={address || null}
       onChange={(e, value): void => {
@@ -82,7 +87,17 @@ const AddressSelect: React.FC<AddressSelectProps> = ({ address, onChange, error 
           {/* @ts-ignore */}
           <TextField
             {...params}
+            InputProps={{
+              ...params.InputProps,
+              startAdornment: (
+                <InputAdornment position="start">
+                  <LocationOnRoundedIcon />
+                </InputAdornment>
+              )
+            }}
+            placeholder='22 place Saint Martin Metz'
             variant='outlined'
+            sx={{ backgroundColor: 'white' }}
             required
             label={t('common:address')}
             error={error !== undefined}
@@ -98,15 +113,17 @@ const AddressSelect: React.FC<AddressSelectProps> = ({ address, onChange, error 
           postcode,
           city
         }
-      ): JSX.Element => (
-        <Box
-          component="li"
-          sx={{ fontWeight: 500 }}
-          {...props}
-        >
-          {housenumber} {street}{(street || housenumber) && ', '}{postcode} {city}
-        </Box>
-      )}
+      ): JSX.Element => {
+        return (
+          <Box
+            component="li"
+            sx={{ fontWeight: 500 }}
+            {...props}
+          >
+            {housenumber || ''} {street || ''}{(street || housenumber) ? ', ' : ''}{postcode} {city}
+          </Box>
+        )
+      }}
     />
   )
 }

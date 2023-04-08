@@ -3,11 +3,12 @@ import React from 'react'
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded'
 import LoadingButton from '@mui/lab/LoadingButton'
 
-import L, { LatLng, LatLngExpression, Map } from 'leaflet'
 import { useTranslation } from 'next-i18next'
 import {
   useMap
 } from 'react-leaflet'
+
+import { MapHelper } from '@/helpers/MapHelper'
 
 export interface SitesMapProps {
 }
@@ -17,10 +18,23 @@ const SitesMap: React.FC<SitesMapProps> = () => {
   const { t } = useTranslation([
     'map'
   ])
+  const [displaySearchButton, setDisplaySearchButton] = React.useState(false)
 
   const fetchSites = (): void => {
-
+    console.log(MapHelper.getMapRadius(map))
   }
+
+  const onDragend = React.useCallback((): void => {
+    setDisplaySearchButton(true)
+  }, [setDisplaySearchButton])
+
+  React.useEffect(() => {
+    map.addEventListener('moveend', onDragend)
+
+    return () => {
+      map.removeEventListener('moveend', onDragend)
+    }
+  }, [map, onDragend])
 
   return (
     <>
@@ -35,7 +49,8 @@ const SitesMap: React.FC<SitesMapProps> = () => {
           left: '50%',
           transform: 'translateX(-50%)',
           backgroundColor: 'white!important',
-          zIndex: 1000
+          zIndex: 1000,
+          display: displaySearchButton ? 'flex' : 'none'
         }}
       >
         {t('map:search_in_area')}

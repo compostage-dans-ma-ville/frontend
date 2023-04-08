@@ -15,6 +15,7 @@ export interface ApiGetAddress {
   city: string,
   context: string,
   importance: number,
+  population: number
 }
 
 export interface ApiAddress extends ApiGetAddress {
