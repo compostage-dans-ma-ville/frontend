@@ -15,6 +15,10 @@ export type Site = {
   isPublic: boolean
   accessConditions?: string
 }
+export interface SmallSite extends Pick<Site, 'id' | 'name' | 'isPublic'> {
+  latitude: number
+  longitude: number
+}
 
 export const NAME_MAX_LENGTH = 100
 export const nameSchema = {

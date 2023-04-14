@@ -39,5 +39,9 @@
     "update_localisation": "Modifier l'adresse",
     "has_schedules": "Ce site a des heures d'ouverture définies.",
     "lauch_date": "Date de mise en service"
+  },
+  "ouComposter": {
+    "title": "Où composter",
+    "where": "Où composter à"
   }
 }

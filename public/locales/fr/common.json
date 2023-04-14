@@ -12,7 +12,7 @@
   "login": "Se connecter",
   "logout": "Déconnexion",
   "password": "Mot de passe",
-  "profile": "Profile",
+  "profile": "Profil",
   "save_changes": "Enregistrer les modifications",
   "save": "Enregistrer",
   "signIn": "Créer un compte",
@@ -48,5 +48,7 @@
   "ability_check": "Vérification de vos droits",
   "restricted_to_users": "Cette page est réservée aux membres connectés",
   "public": "Public",
-  "private": "Privé"
+  "private": "Privé",
+  "where_to_compost": "Où composter ?",
+  "more_information": "En savoir plus"
 }

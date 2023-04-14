@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "just a name",
+    "isPublic": true,
+    "latitude": 49.12092285844665,
+    "longitude": 6.1681912402374435
+  },
+  {
+    "id": 2,
+    "name": "just a name",
+    "isPublic": true,
+    "latitude": 49.1186304333722,
+    "longitude": 6.174834161741363
+  },
+  {
+    "id": 3,
+    "name": "just a third name",
+    "isPublic": false,
+    "latitude": 49.12271155311192,
+    "longitude": 6.176619802178514
+  },
+  {
+    "id": 4,
+    "name": "just bla name",
+    "isPublic": false,
+    "latitude": 49.10821475951115,
+    "longitude": 6.1905922069100265
+  }
+]

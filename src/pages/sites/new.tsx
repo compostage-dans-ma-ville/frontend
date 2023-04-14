@@ -34,7 +34,7 @@ import MainLayout from '@/components/layouts/MainLayout'
 import PageTitle from '@/components/PageTitle'
 
 const DevTools = dynamic(() => import('@hookform/devtools').then((mod) => mod.DevTool), {
-  loading: () => <p>Loading...</p>,
+  loading: () => <></>,
   ssr: false
 })
 
