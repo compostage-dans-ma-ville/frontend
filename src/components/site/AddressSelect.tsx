@@ -11,14 +11,16 @@ import { useTranslation } from 'next-i18next'
 import { getSearchAddress } from '@/domains/api/addressApi'
 import { ApiAddress } from '@/domains/schemas'
 import { isNumeric } from '@/domains/utils'
-export interface AddressSelectProps extends Partial<Omit<BoxProps, 'onChange' | 'defaultValue' | 'color'>> {
+export interface AddressSelectProps extends
+Partial<Omit<BoxProps, 'onChange' | 'defaultValue' | 'color'>> {
   address?: ApiAddress
   onChange: (address: ApiAddress) => void
   error?: TextFieldProps['error']
+  label?: TextFieldProps['label'] | null
 }
 
 const AddressSelect: React.FC<AddressSelectProps> = ({
-  address, onChange, error, ...restProps
+  address, onChange, error, label, ...restProps
 }) => {
   const { t } = useTranslation([
     'common'
@@ -99,7 +101,7 @@ const AddressSelect: React.FC<AddressSelectProps> = ({
             variant='outlined'
             sx={{ backgroundColor: 'white' }}
             required
-            label={t('common:address')}
+            label={label === null ? null : (label || t('common:address'))}
             error={error !== undefined}
             helperText={error}
           />

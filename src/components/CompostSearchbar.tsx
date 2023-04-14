@@ -61,7 +61,7 @@ const CompostSearchbar: React.FC<CompostSearchbarProps> = ({ ...props }) => {
           }
         }): JSX.Element => (
           <AddressSelect
-            placeholder=''
+            label={null}
             address={value}
             onChange={onChange}
             sx={{ width: '100%' }}

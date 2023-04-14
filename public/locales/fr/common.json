@@ -49,5 +49,6 @@
   "restricted_to_users": "Cette page est réservée aux membres connectés",
   "public": "Public",
   "private": "Privé",
-  "where_to_compost": "Où composter ?"
+  "where_to_compost": "Où composter ?",
+  "more_information": "En savoir plus"
 }

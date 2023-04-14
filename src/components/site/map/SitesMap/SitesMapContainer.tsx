@@ -4,9 +4,9 @@ import { LatLngExpression, Map } from 'leaflet'
 
 import { MapContainer, MapContainerProps } from '@/components/map'
 
-import SitesMap from './SitesMap'
+import SitesMap, { SitesMapProps } from './SitesMap'
 
-export interface SitesMapContainerProps extends Partial<MapContainerProps> {
+export interface SitesMapContainerProps extends Partial<MapContainerProps>, SitesMapProps {
 }
 
 const DEFAULT_ZOOM = 6
@@ -23,7 +23,7 @@ const SitesMapContainer: React.FC<SitesMapContainerProps> = ({ ...props }) => {
       zoom={props.zoom || DEFAULT_ZOOM}
       height={props.height || '500px'}
     >
-      <SitesMap />
+      <SitesMap { ...props }/>
     </MapContainer>
   )
 }
