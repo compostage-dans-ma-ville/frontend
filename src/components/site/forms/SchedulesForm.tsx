@@ -5,13 +5,13 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import FormGroup from '@mui/material/FormGroup'
 import Grid from '@mui/material/Grid'
 import Switch from '@mui/material/Switch'
-import Typography from '@mui/material/Typography'
 
 import { useTranslation } from 'next-i18next'
 import {
   Controller, UseControllerProps, useWatch
 } from 'react-hook-form'
 
+import FormSection from '@/components/form/FormSection'
 import SchedulesInput from '@/components/site/SchedulesInput'
 import { CreateSite, DAY_OF_WEEK, Schedule } from '@/domains/schemas'
 
@@ -29,12 +29,7 @@ const SchedulesForm: React.FC<SchedulesFormProps> = ({ control, setValue }) => {
   const schedules = useWatch({ control, name: 'schedules' })
 
   return (
-    <>
-      <Typography variant='h6' component="h2" mt={3} display="flex" alignItems="center">
-        <AccessTimeRoundedIcon color="primary" sx={{ mr: 1 }} />
-        {t('common:schedules')}
-      </Typography>
-
+    <FormSection title={t('common:schedules')} Icon={AccessTimeRoundedIcon}>
       <FormGroup sx={{ ml: 2 }}>
         <FormControlLabel
           control={
@@ -66,7 +61,7 @@ const SchedulesForm: React.FC<SchedulesFormProps> = ({ control, setValue }) => {
           />
         </Grid>
       )}
-    </>
+    </FormSection>
   )
 }
 

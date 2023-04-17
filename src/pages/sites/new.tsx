@@ -29,6 +29,7 @@ import { useSnackbar } from 'notistack'
 import { Controller, useForm, useWatch } from 'react-hook-form'
 
 import CanOrLogin from '@/components/authentification/CanOrLogin'
+import FormSection from '@/components/form/FormSection'
 import MainLayout from '@/components/layouts/MainLayout'
 // eslint-disable-next-line import/order
 import PageTitle from '@/components/PageTitle'
@@ -143,12 +144,7 @@ const SitePage: NextPage = () => {
                   </Grid>
                 </Grid>
 
-                <Typography variant='h6' component="h2" mt={3} display="flex" alignItems="center">
-                  <LocationOnRoundedIcon color="primary" sx={{ mr: 1 }} />
-                  {t('common:location')}
-                </Typography>
-
-                <Box p={2}>
+                <FormSection title={t('common:location')} Icon={LocationOnRoundedIcon}>
                   <Controller
                     control={control}
                     name="address"
@@ -167,7 +163,7 @@ const SitePage: NextPage = () => {
                       />
                     )}
                   />
-                </Box>
+                </FormSection>
 
                 <SchedulesForm
                   control={control}
@@ -176,12 +172,7 @@ const SitePage: NextPage = () => {
                   setValue={(value): void => setValue('schedules', value)}
                 />
 
-                <Typography variant='h6' component="h2" mt={3} display="flex" alignItems="center">
-                  <LockRoundedIcon color="primary" sx={{ mr: 1 }} />
-                  {t('pages:site.access')}
-                </Typography>
-
-                <Box p={2}>
+                <FormSection title={t('pages:site.access')} Icon={LockRoundedIcon}>
                   <FormControl>
                     <Controller
                       control={control}
@@ -224,14 +215,9 @@ const SitePage: NextPage = () => {
                       }
                     />
                   </Collapse>
-                </Box>
+                </FormSection>
 
-                <Typography variant='h6' component="h2" mt={3} display="flex" alignItems="center">
-                  <CakeRoundedIcon color="primary" sx={{ mr: 1 }} />
-                  {t('pages:site.lauch_date')}
-                </Typography>
-
-                <Box p={2}>
+                <FormSection title={t('pages:site.lauch_date')} Icon={CakeRoundedIcon}>
                   <Controller
                     control={control}
                     name="launchDate"
@@ -248,7 +234,7 @@ const SitePage: NextPage = () => {
                       />
                     )}
                   />
-                </Box>
+                </FormSection>
 
                 <Grid item display="flex" justifyContent="flex-end" mt={3} >
                   <Button
