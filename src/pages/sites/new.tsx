@@ -55,7 +55,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
         'common',
         'pages',
         'errors',
-        'authentification'
+        'authentification',
+        'map'
       ]))
     }
   }

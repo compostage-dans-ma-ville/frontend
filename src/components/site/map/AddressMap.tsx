@@ -9,6 +9,8 @@ import {
 
 import { ApiAddress } from '@/domains/schemas'
 
+import SitesMap from './SitesMap/SitesMap'
+
 export interface AddressMapProps {
   address: ApiAddress,
   onCenterChange: (center: LatLng) => void
@@ -50,6 +52,7 @@ const AddressMap: React.FC<AddressMapProps> = ({ address, onCenterChange }) => {
           zIndex: 100000
         }}
       />
+      <SitesMap />
     </>
   )
 }
