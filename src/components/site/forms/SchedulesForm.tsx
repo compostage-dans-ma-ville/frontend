@@ -12,7 +12,7 @@ import {
 } from 'react-hook-form'
 
 import FormSection from '@/components/form/FormSection'
-import SchedulesInput from '@/components/site/SchedulesInput'
+import SchedulesInput from '@/components/site/forms/SchedulesInput'
 import { CreateSite, DAY_OF_WEEK, Schedule } from '@/domains/schemas'
 
 const defaultSchedules: Schedule[] = DAY_OF_WEEK.map(() => ([{ open: '18:00', close: '19:00' }]))

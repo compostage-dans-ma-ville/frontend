@@ -1,0 +1,29 @@
+{
+  "id": "n:[id]",
+  "name": "[#faker:lorem:words]",
+  "links": [],
+  "sites": [
+    {
+      "id": 1,
+      "name": "just a name",
+      "isPublic": true,
+      "latitude": 49.12092285844665,
+      "longitude": 6.1681912402374435
+    },
+    {
+      "id": 2,
+      "name": "just another name",
+      "isPublic": true,
+      "latitude": 49.1186304333722,
+      "longitude": 6.174834161741363
+    }
+  ],
+  "members": [
+    {
+      "role": "MEMBER",
+      "userId": "[#faker:datatype:number]"
+    }
+  ],
+  "createdAt": "[#faker:date:past]",
+  "updatedAt": "[#faker:date:recent]"
+}

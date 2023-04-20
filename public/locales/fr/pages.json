@@ -38,7 +38,11 @@
     "position_is_distant": "L'emplacement indiquée est éloignée de l'adresse saisie",
     "update_localisation": "Modifier l'adresse",
     "has_schedules": "Ce site possède des heures d'ouverture définies.",
-    "lauch_date": "Date de mise en service"
+    "lauch_date": "Date de mise en service",
+    "link_organization_to_site": "Lier une organisation à ce site de compostage",
+    "link_organization_benefits": "Il est possible de lier une organisation dont vous êtes membre à un site de compostage. Les membres de l'organisation peuvent alors éditer les informations du site.",
+    "select_my_organizations": "Sélectionner parmis mes organisations",
+    "disassociate_organizations": "Dissocier cette organisation du site"
   },
   "ouComposter": {
     "title": "Où composter",
