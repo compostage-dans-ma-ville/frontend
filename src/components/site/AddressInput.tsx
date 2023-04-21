@@ -1,7 +1,6 @@
 import React from 'react'
 
-import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded'
-import Button, { ButtonProps } from '@mui/material/Button'
+import { ButtonProps } from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 
 import dynamic from 'next/dynamic'
@@ -9,6 +8,8 @@ import { useTranslation } from 'next-i18next'
 
 import { Address } from '@/domains/schemas'
 import { formatAddress } from '@/domains/utils'
+
+import InputButton from '../form/InputButton'
 
 const EditAddresseDialog = dynamic(
   () => import('./EditAddressDialog'),
@@ -36,23 +37,17 @@ const AddressInput: React.FC<AddressInputProps> = ({ address, onChange, ...restP
         close={(): void => setIsModalOpen(false)}
       />
 
-      <Button
+      <InputButton
         {...restProps}
-        variant='outlined'
         onClick={(): void => { setIsModalOpen(true) }}
-        endIcon={<ArrowForwardIosRoundedIcon />}
         sx={{
-          ...restProps.sx,
-          padding: 2,
-          justifyContent: 'space-between',
-          width: '100%',
-          textAlign: 'left'
+          ...restProps.sx
         }}
       >
         <Typography variant='body1' component='span'>
           {address ? formatAddress(address) : t('common:add_address') + ' *'}
         </Typography>
-      </Button>
+      </InputButton>
     </>
   )
 }

@@ -1,11 +1,13 @@
 import React from 'react'
 
+import Diversity2RoundedIcon from '@mui/icons-material/Diversity2Rounded'
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded'
 import LockOpenRoundedIcon from '@mui/icons-material/LockOpenRounded'
 import LockRoundedIcon from '@mui/icons-material/LockRounded'
 import Box from '@mui/material/Box'
 import Chip from '@mui/material/Chip'
 import Divider from '@mui/material/Divider'
+import Grid from '@mui/material/Grid'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
@@ -17,6 +19,7 @@ import { useTranslation } from 'next-i18next'
 import { Site } from '@/domains/schemas'
 
 import ScheduleList from './ScheduleList'
+import OrganizationListItemContent from '../organization/OrganizationListItemContent'
 
 export interface SiteInfoProps {
   site: Site
@@ -44,7 +47,6 @@ const SiteInfo: React.FC<SiteInfoProps> = ({ site }) => {
             sx={{ fontWeight: 'bold' }}
           />
         </Tooltip>
-
       </Box>
 
       {site.description && (
@@ -67,8 +69,36 @@ const SiteInfo: React.FC<SiteInfoProps> = ({ site }) => {
           </Typography>
 
         </ListItem>
-        <Divider variant="inset" component="li" />
-        {site.schedules && <ScheduleList schedules={site.schedules}/>}
+        {site.schedules && (
+          <>
+            <Divider variant="inset" component="li" />
+            <ScheduleList schedules={site.schedules}/>
+          </>
+        )}
+
+        {site.organization && (
+          <>
+            <Divider variant="inset" component="li" />
+            <ListItem alignItems="center">
+              <ListItemAvatar>
+                <Diversity2RoundedIcon fontSize="large" color="primary" />
+              </ListItemAvatar>
+
+              <Grid container>
+                <Grid item width="100%">
+                  <Typography variant='body2'>
+                    {t('pages:site.site_handled_by')}:
+                  </Typography>
+                  <OrganizationListItemContent
+                    organization={site.organization}
+                    showLink
+                  />
+                </Grid>
+              </Grid>
+            </ListItem>
+          </>
+        )}
+
       </List>
     </>
   )

@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import CakeRoundedIcon from '@mui/icons-material/CakeRounded'
+import Diversity2RoundedIcon from '@mui/icons-material/Diversity2Rounded'
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded'
 import LockRoundedIcon from '@mui/icons-material/LockRounded'
 import Alert from '@mui/material/Alert'
@@ -40,6 +41,7 @@ const DevTools = dynamic(() => import('@hookform/devtools').then((mod) => mod.De
 })
 
 import AddressInput from '@/components/site/AddressInput'
+import OrganizationInput from '@/components/site/forms/OrganizationInput'
 import SchedulesForm from '@/components/site/forms/SchedulesForm'
 import { createSite } from '@/domains/api'
 import { Routes } from '@/domains/Routes'
@@ -231,6 +233,23 @@ const SitePage: NextPage = () => {
                             helperText: errors?.launchDate?.message && t(errors.launchDate.message as string)
                           }
                         }}
+                      />
+                    )}
+                  />
+                </FormSection>
+
+                <FormSection title={t('common:responsible_organization')} Icon={Diversity2RoundedIcon}>
+                  <Controller
+                    control={control}
+                    name="organization"
+                    render={({
+                      field: {
+                        onChange, value
+                      }
+                    }): JSX.Element => (
+                      <OrganizationInput
+                        organizationId={value}
+                        onChange={onChange}
                       />
                     )}
                   />

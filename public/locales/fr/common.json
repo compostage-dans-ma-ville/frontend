@@ -50,5 +50,11 @@
   "public": "Public",
   "private": "Privé",
   "where_to_compost": "Où composter ?",
-  "more_information": "En savoir plus"
+  "more_information": "En savoir plus",
+  "composter_type": "Type de composteur",
+  "responsible_organization": "Organisation responsable",
+  "my_organizations": "Mes organisations",
+  "admin": "Admin",
+  "member": "Membre",
+  "open_ressource_new_tab": "Ouvrir la ressource dans une nouvelle page"
 }

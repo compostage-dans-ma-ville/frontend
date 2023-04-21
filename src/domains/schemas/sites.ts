@@ -2,6 +2,7 @@ import { RemoveIndex } from '@/helpers/typing'
 import yup from '@/helpers/yup-extended'
 
 import { descriptionSchema } from './common'
+import { Organization } from './organization'
 
 export type Schedule = Opening[] | null
 export type Site = {
@@ -14,6 +15,7 @@ export type Site = {
   launchDate?: string
   isPublic: boolean
   accessConditions?: string
+  organization?: Omit<Organization, 'sites'>
 }
 export interface SmallSite extends Pick<Site, 'id' | 'name' | 'isPublic'> {
   latitude: number
@@ -70,7 +72,8 @@ export const siteCreationSchema = yup.object().shape({
   launchDate: yup.date().typeError('errors:date').nullable(),
   accessConditions: descriptionSchema.when('isPublic', (isPublic, schema) => {
     return !isPublic ? schema.required('errors:required_field') : schema
-  })
+  }),
+  organization: yup.number()
 })
 
 export type CreateSite = RemoveIndex<yup.InferType<typeof siteCreationSchema>>

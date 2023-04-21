@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import axios from 'axios'
 
+import { getOrganization } from './organization'
 import { AuthenticatedUser, EditUser, User } from '../schemas'
 
 export const getMe = () => {
@@ -24,4 +25,12 @@ export const uploadAvatar = (avatar: Blob) => {
 
 export const updateUser = (userId: number, user: Partial<EditUser>) => {
   return axios.post<User>(`/users/${userId}`, user)
+}
+
+export const getUserOrganizations = (user: AuthenticatedUser) => {
+  const promises = user.organizations.map(async ({ organizationId }) => {
+    return getOrganization(organizationId)
+  })
+
+  return Promise.all(promises)
 }

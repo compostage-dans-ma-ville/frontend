@@ -12,8 +12,8 @@ import {
   DAY_OF_WEEK, Schedule
 } from '@/domains/schemas'
 
-import EditDayOpeningsDialog from './EditDayOpeningsDialog'
-import ScheduleListItem from './ScheduleListItem'
+import EditDayOpeningsDialog from '../EditDayOpeningsDialog'
+import ScheduleListItem from '../ScheduleListItem'
 
 export interface SchedulesInputProps {
   schedules: Schedule[]
