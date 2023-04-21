@@ -40,5 +40,18 @@
       }
     ],
     null
-  ]
+  ],
+  "organization": {
+    "id": "n:[id]",
+    "name": "[#faker:lorem:words]",
+    "links": [],
+    "members": [
+      {
+        "role": "MEMBER",
+        "userId": "[#faker:datatype:number]"
+      }
+    ],
+    "createdAt": "[#faker:date:past]",
+    "updatedAt": "[#faker:date:recent]"
+  }
 }

@@ -16,9 +16,14 @@ import { getUserOrganisationRole } from '@/helpers/user'
 import UserRoleBadge from './UserRoleBadge'
 
 export interface OrganizationListItemProps extends Partial<GridTypeMap['props']> {
-  organization: Organization
+  organization: Omit<Organization, 'sites'>
+  showLink?: boolean
 }
-const OrganizationListItemContent: React.FC<OrganizationListItemProps> = ({ organization, ...props }) => {
+const OrganizationListItemContent: React.FC<OrganizationListItemProps> = ({
+  organization,
+  showLink = false,
+  ...props
+}) => {
   const { t } = useTranslation([
     'common'
   ])
@@ -27,7 +32,7 @@ const OrganizationListItemContent: React.FC<OrganizationListItemProps> = ({ orga
 
   const userRole = React.useMemo(() => {
     if (me) {
-      return getUserOrganisationRole(me, organization)
+      return getUserOrganisationRole(me, organization as Organization)
     }
 
     return undefined
@@ -54,11 +59,17 @@ const OrganizationListItemContent: React.FC<OrganizationListItemProps> = ({ orga
             <UserRoleBadge role={userRole} />
           </Grid>
         )}
-        <Link href={Routes.organization(organization.id)} target="_blank">
-          <IconButton aria-label={t('common:open_ressource_new_tab')} color="primary">
-            <OpenInNewRoundedIcon />
-          </IconButton>
-        </Link>
+        {showLink && (
+          <Link href={Routes.organization(organization.id)} target="_blank">
+            <IconButton
+              aria-label={t('common:open_ressource_new_tab')}
+              color="primary"
+              sx={{ padding: 0 }}
+            >
+              <OpenInNewRoundedIcon />
+            </IconButton>
+          </Link>
+        )}
       </Grid>
     </Grid>
   )

@@ -42,7 +42,8 @@
     "link_organization_to_site": "Lier une organisation à ce site de compostage",
     "link_organization_benefits": "Il est possible de lier une organisation dont vous êtes membre à un site de compostage. Les membres de l'organisation peuvent alors éditer les informations du site.",
     "select_my_organizations": "Sélectionner parmis mes organisations",
-    "disassociate_organizations": "Dissocier cette organisation du site"
+    "disassociate_organizations": "Dissocier cette organisation du site",
+    "site_handled_by": "Ce site est géré par l'organisation"
   },
   "ouComposter": {
     "title": "Où composter",

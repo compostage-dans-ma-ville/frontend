@@ -2,6 +2,7 @@ import { RemoveIndex } from '@/helpers/typing'
 import yup from '@/helpers/yup-extended'
 
 import { descriptionSchema } from './common'
+import { Organization } from './organization'
 
 export type Schedule = Opening[] | null
 export type Site = {
@@ -14,6 +15,7 @@ export type Site = {
   launchDate?: string
   isPublic: boolean
   accessConditions?: string
+  organization?: Omit<Organization, 'sites'>
 }
 export interface SmallSite extends Pick<Site, 'id' | 'name' | 'isPublic'> {
   latitude: number

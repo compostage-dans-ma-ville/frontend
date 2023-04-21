@@ -22,6 +22,7 @@ const OrganizationPreview: React.FC<OrganizationPreviewProps> = ({
         p: 2
       }}
       organization={organization}
+      showLink
     />
   )
 }
