@@ -6,11 +6,11 @@
   "avatar": "https://avatars.githubusercontent.com/u/31794680?v=4",
   "organizations": [
     {
-      "role": "MEMBER",
+      "role": "ADMIN",
       "organizationId": 42
     },
     {
-      "role": "ADMIN",
+      "role": "MEMBER",
       "organizationId": 43
     }
   ]

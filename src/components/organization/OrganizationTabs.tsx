@@ -27,6 +27,7 @@ import { getAddressString } from '@/helpers/site'
 import { getUserFullName } from '@/helpers/user'
 
 import UserRoleChip from './UserRoleChip'
+import Can, { an } from '../Can'
 import IsPublicChip from '../site/IsPublicChip'
 
 type TabName = 'members' | 'sites'
@@ -47,6 +48,10 @@ const OrganizationTabs: React.FC<OrganizationTabsProps> = ({ organization }) => 
   const handleTabChange = (event: React.SyntheticEvent, newValue: TabName): void => {
     setCurrentTab(newValue)
   }
+
+  const organizationSubject = React.useMemo(() => {
+    return an('organization', organization)
+  }, [organization])
 
   return (
     <TabContext value={currentTab}>
@@ -88,17 +93,20 @@ const OrganizationTabs: React.FC<OrganizationTabsProps> = ({ organization }) => 
             ))}
           </List>
 
-          <Grid container justifyContent="center" mt={2}>
-            <Grid item>
-              <Button
-                variant='outlined'
-                startIcon={<AddRoundedIcon />}
-              >
-                {t('pages:organization.add_sites')}
-              </Button>
+          <Can do="update" on={organizationSubject}>
+            <Grid container justifyContent="center" mt={2}>
+              <Grid item>
+                <Button
+                  variant='outlined'
+                  startIcon={<AddRoundedIcon />}
+                >
+                  {t('pages:organization.add_sites')}
+                </Button>
+              </Grid>
             </Grid>
-          </Grid>
+          </Can>
         </TabPanel>
+
         <TabPanel value="members">
           <List sx={{ maxHeight: '400px', overflowY: 'auto' }}>
             {members?.map(({ role, member }) => (
@@ -134,16 +142,18 @@ const OrganizationTabs: React.FC<OrganizationTabsProps> = ({ organization }) => 
             ))}
           </List>
 
-          <Grid container justifyContent="center" mt={2}>
-            <Grid item>
-              <Button
-                variant='outlined'
-                startIcon={<AddRoundedIcon />}
-              >
-                {t('pages:organization.add_member')}
-              </Button>
+          <Can do="update" on={organizationSubject}>
+            <Grid container justifyContent="center" mt={2}>
+              <Grid item>
+                <Button
+                  variant='outlined'
+                  startIcon={<AddRoundedIcon />}
+                >
+                  {t('pages:organization.add_member')}
+                </Button>
+              </Grid>
             </Grid>
-          </Grid>
+          </Can>
         </TabPanel>
       </Box>
     </TabContext>

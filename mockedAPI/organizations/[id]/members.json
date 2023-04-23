@@ -2,7 +2,7 @@
   {
     "role": "ADMIN",
     "member": {
-      "id": 1,
+      "id": 42,
       "firstName": "Johann",
       "lastName": "Chopin",
       "email": "johannchopin@gmail.com",
