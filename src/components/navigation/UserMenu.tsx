@@ -16,6 +16,7 @@ import Typography from '@mui/material/Typography'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 
+import { Routes } from '@/domains/Routes'
 import { AuthenticatedUser } from '@/domains/schemas'
 
 export interface UserMenuProps {
@@ -63,7 +64,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, logout }) => {
 
         <Divider />
 
-        <Link href={`/users/${user.id}`}>
+        <Link href={Routes.user(user.id)}>
           <MenuItem onClick={handleCloseUserMenu}>
             <ListItemIcon>
               <AccountCircleRoundedIcon fontSize="small" />

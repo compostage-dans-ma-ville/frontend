@@ -1,16 +1,15 @@
 import React from 'react'
 
-import Chip, { ChipTypeMap } from '@mui/material/Chip'
-import { OverridableComponent } from '@mui/material/OverridableComponent'
+import Chip, { ChipProps } from '@mui/material/Chip'
 
 import { useTranslation } from 'next-i18next'
 
 import { OrganizationRole } from '@/domains/schemas/organization'
 
-export interface UserRoleBadgeProps extends Partial<OverridableComponent<ChipTypeMap<{}, 'div'>>> {
+export interface UserRoleChipProps extends Partial<ChipProps> {
   role: OrganizationRole
 }
-const UserRoleBadge: React.FC<UserRoleBadgeProps> = ({ role, ...props }) => {
+const UserRoleChip: React.FC<UserRoleChipProps> = ({ role, ...props }) => {
   const { t } = useTranslation([
     'common'
   ])
@@ -22,8 +21,8 @@ const UserRoleBadge: React.FC<UserRoleBadgeProps> = ({ role, ...props }) => {
   }
 
   return (
-    <Chip {...props} label= {getTranslation()} />
+    <Chip {...props} size={props?.size || 'small'} label= {getTranslation()} />
   )
 }
 
-export default UserRoleBadge
+export default UserRoleChip

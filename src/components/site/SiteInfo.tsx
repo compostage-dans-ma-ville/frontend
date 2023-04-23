@@ -2,22 +2,19 @@ import React from 'react'
 
 import Diversity2RoundedIcon from '@mui/icons-material/Diversity2Rounded'
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded'
-import LockOpenRoundedIcon from '@mui/icons-material/LockOpenRounded'
-import LockRoundedIcon from '@mui/icons-material/LockRounded'
 import Box from '@mui/material/Box'
-import Chip from '@mui/material/Chip'
 import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
-import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 
 import { useTranslation } from 'next-i18next'
 
 import { Site } from '@/domains/schemas'
 
+import IsPublicChip from './IsPublicChip'
 import ScheduleList from './ScheduleList'
 import OrganizationListItemContent from '../organization/OrganizationListItemContent'
 
@@ -38,15 +35,7 @@ const SiteInfo: React.FC<SiteInfoProps> = ({ site }) => {
       </Typography>
 
       <Box>
-        <Tooltip title={site.isPublic ? t('pages:site.public_description') : t('pages:site.private_description')}>
-          <Chip
-            icon={site.isPublic ? <LockOpenRoundedIcon /> : <LockRoundedIcon />}
-            label={site.isPublic ? t('common:public') : t('common:private')}
-            color={site.isPublic ? 'success' : 'error'}
-            size="small"
-            sx={{ fontWeight: 'bold' }}
-          />
-        </Tooltip>
+        <IsPublicChip isPublic={site.isPublic}/>
       </Box>
 
       {site.description && (

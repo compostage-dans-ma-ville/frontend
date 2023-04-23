@@ -3,6 +3,7 @@ export class Routes {
   static register = '/authentification/register'
   static sites = '/sites'
   static organizations = '/organizations'
+  static users = '/users'
   static sitesNew = `${Routes.sites}/new`
   static site = (siteId: string | number): string => `${Routes.sites}/${siteId}`
   static ouComposter = (placeId?: string): string => {
@@ -11,4 +12,5 @@ export class Routes {
     return base
   }
   static organization = (organizationId: string | number): string => `${Routes.organizations}/${organizationId}`
+  static user = (userId: string | number): string => `${Routes.users}/${userId}`
 }

@@ -3,98 +3,52 @@
     "id": 1,
     "name": "Rue des Vinaigriers",
     "isPublic": true,
-    "latitude": 48.872970,
-    "longitude": 2.359282
+    "address": {
+      "houseNumber": "3",
+      "streetName": "[#faker:address:streetName]",
+      "zipCode": 57000,
+      "city": "Metz",
+      "latitude": 48.872970,
+      "longitude": 2.359282
+    }
   },
   {
     "id": 2,
     "name": "Rue du Château d'Eau",
     "isPublic": true,
-    "latitude": 48.869770,
-    "longitude": 2.356950
+    "address": {
+      "houseNumber": "3",
+      "streetName": "[#faker:address:streetName]",
+      "zipCode": 57000,
+      "city": "Metz",
+      "latitude": 48.869770,
+      "longitude": 2.356950
+    }
   },
   {
     "id": 3,
     "name": "Rue de Paradis",
     "isPublic": false,
-    "latitude": 48.875090,
-    "longitude": 2.352510
+    "address": {
+      "houseNumber": "3",
+      "streetName": "[#faker:address:streetName]",
+      "zipCode": 57000,
+      "city": "Metz",
+      "latitude": 48.875090,
+      "longitude": 2.352510
+    }
   },
   {
     "id": 4,
     "name": "Boulevard de la Chapelle",
     "isPublic": false,
-    "latitude": 48.883970,
-    "longitude": 2.357870
-  },
-  {
-    "id": 5,
-    "name": "Rue de la Roquette",
-    "isPublic": true,
-    "latitude": 48.856790,
-    "longitude": 2.373910
-  },
-  {
-    "id": 6,
-    "name": "Rue de Lappe",
-    "isPublic": true,
-    "latitude": 48.854230,
-    "longitude": 2.371640
-  },
-  {
-    "id": 7,
-    "name": "Rue du Faubourg Saint-Antoine",
-    "isPublic": true,
-    "latitude": 48.853220,
-    "longitude": 2.378820
-  },
-  {
-    "id": 8,
-    "name": "Rue de la Roquette",
-    "isPublic": false,
-    "latitude": 48.857810,
-    "longitude": 2.374440
-  },
-  {
-    "id": 9,
-    "name": "Avenue de la République",
-    "isPublic": false,
-    "latitude": 48.867460,
-    "longitude": 2.363620
-  },
-  {
-    "id": 10,
-    "name": "Rue de Belleville",
-    "isPublic": true,
-    "latitude": 48.871710,
-    "longitude": 2.387320
-  },
-  {
-    "id": 11,
-    "name": "Rue de la Roquette",
-    "isPublic": true,
-    "latitude": 48.858050,
-    "longitude": 2.374420
-  },
-  {
-    "id": 12,
-    "name": "Rue Oberkampf",
-    "isPublic": true,
-    "latitude": 48.864930,
-    "longitude": 2.378670
-  },
-  {
-    "id": 13,
-    "name": "Rue du Chemin Vert",
-    "isPublic": false,
-    "latitude": 48.856470,
-    "longitude": 2.371820
-  },
-  {
-    "id": 14,
-    "name": "Rue du Faubourg Saint-Denis",
-    "isPublic": false,
-    "latitude": 48.875400,
-    "longitude": 2.353680
+    "address": {
+      "houseNumber": "3",
+      "streetName": "[#faker:address:streetName]",
+      "zipCode": 57000,
+      "city": "Metz",
+      "latitude": 48.883970,
+      "longitude": 2.357870
+    }
   }
 ]

@@ -188,8 +188,8 @@ const SitePage: NextPage = () => {
                           aria-label={t('pages:site.specify_site_visibility')}
                           name="radio-buttons-group"
                         >
-                          <FormControlLabel value={true} control={<Radio />} label={t('pages:site.public_description')} />
-                          <FormControlLabel value={false} control={<Radio />} label={t('pages:site.private_description')} />
+                          <FormControlLabel value={true} control={<Radio />} label={t('common:public_site_description')} />
+                          <FormControlLabel value={false} control={<Radio />} label={t('common:private_site_description')} />
                         </RadioGroup>
                       )}
                     />
