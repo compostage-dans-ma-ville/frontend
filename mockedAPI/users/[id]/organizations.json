@@ -1,0 +1,30 @@
+[
+  {
+    "role": "ADMIN",
+    "organization": {
+      "id": 1,
+      "name": "[#faker:lorem:words]",
+      "description": "[#faker:lorem:paragraph]",
+      "links": [
+        "https://cv-johannchopin.web.app",
+        "https://github.com/johannchopin"
+      ],
+      "createdAt": "[#faker:date:past]",
+      "updatedAt": "[#faker:date:recent]"
+    }
+  },
+  {
+    "role": "MEMBER",
+    "organization": {
+      "id": 2,
+      "name": "[#faker:lorem:words]",
+      "description": "[#faker:lorem:paragraph]",
+      "links": [
+        "https://cv-johannchopin.web.app",
+        "https://github.com/johannchopin"
+      ],
+      "createdAt": "[#faker:date:past]",
+      "updatedAt": "[#faker:date:recent]"
+    }
+  }
+]

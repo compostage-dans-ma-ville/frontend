@@ -98,7 +98,7 @@ const EditAvatar: React.FC<EditAvatarProps> = ({ user }) => {
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             <AvatarEditor
               ref={editor}
-              image={imageSource}
+              image={imageSource as string}
               width={200}
               height={200}
               borderRadius={200}

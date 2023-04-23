@@ -117,9 +117,9 @@ const OrganizationPage: NextPage<OrganizationPageProps> = ({ organization }) => 
               })}
             </Grid>
 
-            <Grid container mt={1} justifyContent="center">
+            <Grid container mt={2} justifyContent="center">
               <Grid item xs={12} md={8}>
-                <OrganizationTabs organizationId={organization.id} />
+                <OrganizationTabs organization={organization} />
               </Grid>
             </Grid>
           </CardContent>

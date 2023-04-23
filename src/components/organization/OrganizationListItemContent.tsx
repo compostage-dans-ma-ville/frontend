@@ -8,35 +8,25 @@ import Typography from '@mui/material/Typography'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 
-import { UserContext } from '@/contexts'
 import { Routes } from '@/domains/Routes'
-import { Organization } from '@/domains/schemas/organization'
-import { getUserOrganisationRole } from '@/helpers/user'
+import { Organization, OrganizationRole } from '@/domains/schemas/organization'
 
 import UserRoleChip from './UserRoleChip'
 
 export interface OrganizationListItemProps extends Partial<GridTypeMap['props']> {
-  organization: Omit<Organization, 'sites'>
+  organization: Omit<Organization, 'sites' | 'members'>
+  role?: OrganizationRole | undefined
   showLink?: boolean
 }
 const OrganizationListItemContent: React.FC<OrganizationListItemProps> = ({
   organization,
+  role,
   showLink = false,
   ...props
 }) => {
   const { t } = useTranslation([
     'common'
   ])
-
-  const { me } = React.useContext(UserContext)
-
-  const userRole = React.useMemo(() => {
-    if (me) {
-      return getUserOrganisationRole(me, organization as Organization)
-    }
-
-    return undefined
-  }, [me, organization])
 
   return (
     <Grid
@@ -54,9 +44,9 @@ const OrganizationListItemContent: React.FC<OrganizationListItemProps> = ({
       </Grid>
 
       <Grid item display="flex" alignItems="center">
-        {userRole && (
+        {role && (
           <Grid item>
-            <UserRoleChip role={userRole} />
+            <UserRoleChip role={role} />
           </Grid>
         )}
         {showLink && (

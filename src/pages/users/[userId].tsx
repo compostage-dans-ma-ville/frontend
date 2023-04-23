@@ -18,6 +18,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Can, { an } from '@/components/Can'
 import MainLayout from '@/components/layouts/MainLayout'
 import PageTitle from '@/components/PageTitle'
+import UserTabs from '@/components/user/UserTabs'
 import { getUser } from '@/domains/api'
 import { AuthenticatedUser } from '@/domains/schemas'
 
@@ -94,6 +95,12 @@ const UserProfile: NextPage<UserProfileProps> = ({ user }) => {
                       </Grid>
                     </Grid>
                   )}
+
+                  <Grid container mt={2} justifyContent="center">
+                    <Grid item xs={12} md={8}>
+                      <UserTabs user={user} />
+                    </Grid>
+                  </Grid>
                 </CardContent>
               </Card>
             )
