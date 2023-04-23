@@ -21,7 +21,7 @@ import { useTranslation } from 'next-i18next'
 import InputButton from '@/components/form/InputButton'
 import OrganizationListItemContent from '@/components/organization/OrganizationListItemContent'
 import { UserContext } from '@/contexts'
-import { getUserOrganizations } from '@/domains/api'
+import { getMeOrganizations } from '@/domains/api'
 import { Organization } from '@/domains/schemas/organization'
 
 import OrganizationPreview from './OrganizationPreview'
@@ -47,7 +47,7 @@ const OrganizationInput: React.FC<OrganizationInputProps> = ({ organizationId, o
 
   React.useEffect(() => {
     if (me) {
-      getUserOrganizations(me).then((resData) => {
+      getMeOrganizations(me).then((resData) => {
         setUserOrganization(resData.map(({ data }) => data))
       })
     }

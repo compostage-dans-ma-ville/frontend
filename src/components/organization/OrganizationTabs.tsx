@@ -22,7 +22,7 @@ import { useTranslation } from 'next-i18next'
 
 import { useOrganizationMembers, useOrganizationSites } from '@/domains/api/hooks'
 import { Routes } from '@/domains/Routes'
-import { OrganizationRole } from '@/domains/schemas/organization'
+import { Organization, OrganizationRole } from '@/domains/schemas/organization'
 import { getAddressString } from '@/helpers/site'
 import { getUserFullName } from '@/helpers/user'
 
@@ -32,16 +32,16 @@ import IsPublicChip from '../site/IsPublicChip'
 type TabName = 'members' | 'sites'
 
 export interface OrganizationTabsProps {
-  organizationId: number
+  organization: Organization
 }
 
-const OrganizationTabs: React.FC<OrganizationTabsProps> = ({ organizationId }) => {
+const OrganizationTabs: React.FC<OrganizationTabsProps> = ({ organization }) => {
   const { t } = useTranslation([
     'common',
     'pages'
   ])
-  const { sites } = useOrganizationSites(organizationId)
-  const { members } = useOrganizationMembers(organizationId)
+  const { sites } = useOrganizationSites(organization.id)
+  const { members } = useOrganizationMembers(organization.id)
   const [currentTab, setCurrentTab] = React.useState<TabName>('sites')
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: TabName): void => {
