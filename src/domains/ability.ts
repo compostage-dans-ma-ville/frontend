@@ -8,9 +8,10 @@ import {
 } from '@casl/ability'
 
 import { AuthenticatedUser, UserRole } from './schemas'
+import { OrganizationRole } from './schemas/organization'
 
 export type AbilityAction = 'create' | 'read' | 'update' | 'delete' | 'manage'
-export type AbilitySubject = 'site' | 'user' |'all' | AuthenticatedUser;
+export type AbilitySubject = 'site' | 'user' |'all' | 'organization' | AuthenticatedUser;
 
 export const CRUD = ['create', 'read', 'update', 'delete'] as AbilityAction[]
 
@@ -37,6 +38,12 @@ export const getUserRules = (
   if (user.role === UserRole.ADMIN) {
     can('manage', 'all')
   }
+
+  user.organizations.forEach(({ organizationId, role }) => {
+    if (role === OrganizationRole.ADMIN) {
+      can('manage', 'organization', { id: organizationId })
+    }
+  })
 
   return rules
 }

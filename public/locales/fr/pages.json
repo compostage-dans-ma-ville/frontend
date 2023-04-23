@@ -29,9 +29,7 @@
     "opening_of": "Horaires du",
     "add_opening": "Ajouter une horaire",
     "access": "Accès",
-    "specify_site_visibility": "Ce site est il publique?",
-    "public_description": "Ce site est publique",
-    "private_description": "Ce site est privé et accessible qu'à partir de certaines conditions",
+    "specify_site_visibility": "Ce site est il public?",
     "access_description": "Merci de préciser quelles sont les conditions pour pouvoir accéder à ce site de compostage.",
     "update_location_on_map": "Vous pouvez ajuster l'emplacement du site sur la carte interactive!",
     "reset_map": "Réinitialiser l'emplacement",
@@ -48,5 +46,9 @@
   "ouComposter": {
     "title": "Où composter",
     "where": "Où composter à"
+  },
+  "organization": {
+    "add_sites": "Associer des sites de compostage à cette organisation",
+    "add_member": "Ajouter un membre"
   }
 }

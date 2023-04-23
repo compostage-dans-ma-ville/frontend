@@ -1,7 +1,11 @@
 {
   "id": "n:[id]",
   "name": "[#faker:lorem:words]",
-  "links": [],
+  "description": "[#faker:lorem:paragraph]",
+  "links": [
+    "https://cv-johannchopin.web.app",
+    "https://github.com/johannchopin"
+  ],
   "sites": [
     {
       "id": 1,

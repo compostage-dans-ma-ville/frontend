@@ -17,10 +17,7 @@ export type Site = {
   accessConditions?: string
   organization?: Omit<Organization, 'sites'>
 }
-export interface SmallSite extends Pick<Site, 'id' | 'name' | 'isPublic'> {
-  latitude: number
-  longitude: number
-}
+export type SmallSite = Pick<Site, 'id' | 'name' | 'isPublic' | 'address'>
 
 export const NAME_MAX_LENGTH = 100
 export const nameSchema = {

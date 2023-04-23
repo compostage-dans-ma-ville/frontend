@@ -13,7 +13,7 @@ import { Routes } from '@/domains/Routes'
 import { Organization } from '@/domains/schemas/organization'
 import { getUserOrganisationRole } from '@/helpers/user'
 
-import UserRoleBadge from './UserRoleBadge'
+import UserRoleChip from './UserRoleChip'
 
 export interface OrganizationListItemProps extends Partial<GridTypeMap['props']> {
   organization: Omit<Organization, 'sites'>
@@ -56,7 +56,7 @@ const OrganizationListItemContent: React.FC<OrganizationListItemProps> = ({
       <Grid item display="flex" alignItems="center">
         {userRole && (
           <Grid item>
-            <UserRoleBadge role={userRole} />
+            <UserRoleChip role={userRole} />
           </Grid>
         )}
         {showLink && (

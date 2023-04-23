@@ -78,7 +78,7 @@ const SitesMap: React.FC<SitesMapProps> = ({
     const icon = selectedSite?.id === site.id ? selectedSiteIcon : siteIcon
 
     const marker = new L.Marker(
-      new L.LatLng(site.latitude, site.longitude),
+      new L.LatLng(site.address.latitude, site.address.longitude),
       { icon }
     )
 

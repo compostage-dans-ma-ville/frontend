@@ -52,9 +52,16 @@
   "where_to_compost": "Où composter ?",
   "more_information": "En savoir plus",
   "composter_type": "Type de composteur",
+  "organization": "Organisation",
   "responsible_organization": "Organisation responsable",
   "my_organizations": "Mes organisations",
   "admin": "Admin",
   "member": "Membre",
-  "open_ressource_new_tab": "Ouvrir la ressource dans une nouvelle page"
+  "member_other": "Membres",
+  "open_ressource": "Ouvrir la ressource",
+  "open_ressource_new_tab": "Ouvrir la ressource dans une nouvelle page",
+  "site": "Site de compostage",
+  "site_other": "Sites de compostage",
+  "public_site_description": "Ce site est public",
+  "private_site_description": "Ce site est privé et accessible qu'à partir de certaines conditions"
 }
