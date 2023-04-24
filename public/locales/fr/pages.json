@@ -1,6 +1,7 @@
 {
   "home": {
-    "refer_site": "Référencer un site de compostage"
+    "refer_site": "Référencer un site de compostage",
+    "compost_near_position": "Où composter prêt de ma position ?"
   },
   "register": {
     "title": "Inscription"

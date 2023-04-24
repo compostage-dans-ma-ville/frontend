@@ -1,6 +1,6 @@
 import React from 'react'
 
-import SearchRoundedIcon from '@mui/icons-material/SearchRounded'
+import ReplayRoundedIcon from '@mui/icons-material/ReplayRounded'
 import LoadingButton from '@mui/lab/LoadingButton'
 import { useTheme } from '@mui/material/styles'
 
@@ -135,7 +135,7 @@ const SitesMap: React.FC<SitesMapProps> = ({
     <>
       <LoadingButton
         variant="outlined"
-        startIcon={<SearchRoundedIcon />}
+        startIcon={<ReplayRoundedIcon />}
         size='small'
         color="primary"
         onClick={fetchSites}

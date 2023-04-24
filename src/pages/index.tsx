@@ -12,6 +12,7 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import Can from '@/components/Can'
+import CompostNearMeButton from '@/components/CompostNearMeButton'
 import CompostSearchbar from '@/components/CompostSearchbar'
 import MainLayout from '@/components/layouts/MainLayout'
 import PageTitle from '@/components/PageTitle'
@@ -21,6 +22,7 @@ export const getStaticProps: GetStaticProps = async () => ({
   props: {
     ...(await serverSideTranslations('fr', [
       'common',
+      'errors',
       'pages',
       'map'
     ]))
@@ -57,6 +59,10 @@ const Home: React.FC = () => {
             </Grid>
           </Grid>
         </Can>
+
+        <Grid item mt={4} >
+          <CompostNearMeButton />
+        </Grid>
 
         <Grid item mt={4} >
           <CompostSearchbar />
