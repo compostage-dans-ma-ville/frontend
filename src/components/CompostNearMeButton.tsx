@@ -18,20 +18,19 @@ const CompostNearMeButton: React.FC<CompostNearMeButtonProps> = () => {
   const onGetLocation = async ({ latitude, longitude }: Location): Promise<void> => {
     setIsLoading(true)
     const { data } = await getAddressFromCoord(latitude, longitude)
+    const address = data.features[0]?.properties
 
-    if (data.features[0]) {
-      const placeId = getAddressPlaceId(data.features[0].properties)
+    const placeId = getAddressPlaceId(address || { city: 'paris', postcode: 75000 })
 
-      const searchParams: Record<string, string> = {}
-      searchParams.latitude = latitude.toString()
-      searchParams.longitude = longitude.toString()
-      searchParams.radius = '500'
+    const searchParams: Record<string, string> = {}
+    searchParams.latitude = latitude.toString()
+    searchParams.longitude = longitude.toString()
+    searchParams.radius = '500'
 
-      router.push({
-        pathname: Routes.ouComposter(placeId),
-        query: searchParams
-      })
-    }
+    router.push({
+      pathname: Routes.ouComposter(placeId),
+      query: searchParams
+    })
   }
 
   return (
