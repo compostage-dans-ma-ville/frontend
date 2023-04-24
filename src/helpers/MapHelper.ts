@@ -2,6 +2,10 @@ import { Map } from 'leaflet'
 
 import { ApiAddress } from '@/domains/schemas'
 
+export const getAddressPlaceId = (address: Pick<ApiAddress, 'city' | 'postcode'>): string => {
+  return encodeURI(`${address.city}-${address.postcode}`.toLocaleLowerCase().replace(/ /g, '-'))
+}
+
 export class MapHelper {
   static getMapRadius(map: Map): number {
     const mapBoundNorthEast = map.getBounds().getNorthEast()

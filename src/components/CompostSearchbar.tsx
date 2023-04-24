@@ -9,7 +9,7 @@ import { Controller, useForm, useWatch } from 'react-hook-form'
 
 import { Routes } from '@/domains/Routes'
 import { ApiAddress } from '@/domains/schemas'
-import { getDefaultRadiusForAddress } from '@/helpers/MapHelper'
+import { getAddressPlaceId, getDefaultRadiusForAddress } from '@/helpers/MapHelper'
 
 import AddressSelect from './site/AddressSelect'
 
@@ -34,7 +34,7 @@ const CompostSearchbar: React.FC<CompostSearchbarProps> = ({ ...props }) => {
   const goToSite = React.useCallback((): void => {
     if (address) {
       const { lat, lon, type } = address
-      const placeId = encodeURI(`${address.city}-${address.postcode}`.toLocaleLowerCase().replace(/ /g, '-'))
+      const placeId = getAddressPlaceId(address)
 
       const searchParams: Record<string, string> = {}
       if (type !== 'municipality') {
