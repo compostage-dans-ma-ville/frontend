@@ -31,7 +31,7 @@ export const getStaticProps: GetStaticProps = async () => ({
   props: {
     ...(await serverSideTranslations('fr', [
       'common',
-      'authentification',
+      'authentication',
       'errors',
       'pages'
     ]))
@@ -41,7 +41,7 @@ export const getStaticProps: GetStaticProps = async () => ({
 const Login: React.FC = () => {
   const { t } = useTranslation([
     'common',
-    'authentification',
+    'authentication',
     'errors',
     'pages'
   ])
@@ -90,7 +90,7 @@ const Login: React.FC = () => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            {t('authentification:login_title')}
+            {t('authentication:login_title')}
           </Typography>
           <Box component="form" onSubmit={handleSubmit(login)} noValidate sx={{ mt: 1 }}>
             {loginErrored && <Alert severity="error" sx={{ my: 3 }}>{t('errors:invalid_login')}</Alert>
@@ -128,18 +128,18 @@ const Login: React.FC = () => {
               loading={isLoading}
               sx={{ mt: 3, mb: 2 }}
             >
-              {t('authentification:login')}
+              {t('authentication:login')}
             </LoadingButton>
 
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <MuiLink href={Routes.register} component={Link} variant="body2">
-                  {t('authentification:no_account')}
+                  {t('authentication:no_account')}
                 </MuiLink>
               </Grid>
               <Grid item>
-                <MuiLink href="/authentification/forgot-password" component={Link} variant="body2">
-                  {t('authentification:forgot_pwd')}
+                <MuiLink href="/authentication/forgot-password" component={Link} variant="body2">
+                  {t('authentication:forgot_pwd')}
                 </MuiLink>
               </Grid>
             </Grid>

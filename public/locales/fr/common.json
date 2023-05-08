@@ -1,4 +1,5 @@
 {
+  "back_home": "Aller à la page d'accueil",
   "cancel": "Annuler",
   "confirm_password": "Confirmer le mot de passe",
   "description": "Description",
@@ -64,5 +65,11 @@
   "site": "Site de compostage",
   "site_other": "Sites de compostage",
   "public_site_description": "Ce site est public",
-  "private_site_description": "Ce site est privé et accessible qu'à partir de certaines conditions"
+  "private_site_description": "Ce site est privé et accessible qu'à partir de certaines conditions",
+  "validate_email": "Validez mon email",
+  "check_inbox": "Vérifiez votre boîte de réception",
+  "check_inbox_detail": "Pour nous assurer que vous êtes bien vous, cliquez sur le lien dans l'email que nous avons envoyé à <b>{{email}}</b> (n'oubliez pas de vérifier vos spams).",
+  "resend_email": "Renvoyer un email de validation",
+  "valide_email_later": "Je le validerai plus tard",
+  "email_successfully_sent": "L'email a été envoyé avec succès!"
 }

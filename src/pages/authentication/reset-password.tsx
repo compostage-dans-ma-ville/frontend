@@ -14,7 +14,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import { ResetPassword as ResetPasswordComponent } from '@/components/authentification/ResetPassword'
+import { ResetPassword as ResetPasswordComponent } from '@/components/authentication/ResetPassword'
 import MainLayout from '@/components/layouts/MainLayout'
 import PageTitle from '@/components/PageTitle'
 
@@ -22,7 +22,7 @@ export const getStaticProps: GetStaticProps = async () => ({
   props: {
     ...(await serverSideTranslations('fr', [
       'common',
-      'authentification',
+      'authentication',
       'errors',
       'pages'
     ]))
@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps = async () => ({
 const ResetPassword: React.FC = () => {
   const { t } = useTranslation([
     'common',
-    'authentification',
+    'authentication',
     'errors',
     'pages'
   ])
@@ -57,20 +57,20 @@ const ResetPassword: React.FC = () => {
             <VpnKeyOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            {t('authentification:reset_password')}
+            {t('authentication:reset_password')}
           </Typography>
           {token
             ? <ResetPasswordComponent token={token} />
             : (
               <>
                 <Alert severity="error" sx={{ mt: 2 }}>{t('errors:invalid_reset_password_token')}</Alert>
-                <Link href="/authentification/forgot-password">
+                <Link href="/authentication/forgot-password">
                   <Button
                     fullWidth
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
                   >
-                    {t('authentification:reset_password')}
+                    {t('authentication:reset_password')}
                   </Button>
                 </Link>
 

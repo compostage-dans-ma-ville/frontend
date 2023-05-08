@@ -22,3 +22,11 @@ export const updatePassword = ({
 }: UpdatePassword & {token: string}): Promise<AxiosResponse> => {
   return axios.post('/auth/reset-password', { password, token })
 }
+
+export const sendEmailValidationToken = (): Promise<AxiosResponse> => {
+  return axios.post('auth/send-email-validation-token')
+}
+
+export const activateEmailFromToken = (token: string): Promise<AxiosResponse> => {
+  return axios.post(`auth/activate/${token}`)
+}

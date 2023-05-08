@@ -47,6 +47,13 @@ export const customTheme = createTheme(
           })
         }
       },
+      MuiDialog: {
+        styleOverrides: {
+          root: ({ theme }) => theme.unstable_sx({
+            backdropFilter: 'blur(3px)'
+          })
+        }
+      },
       MuiCssBaseline: {
         styleOverrides: {
           body: {

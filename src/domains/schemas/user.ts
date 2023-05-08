@@ -66,6 +66,7 @@ export type User = Omit<UserCreation, 'password' | 'confirmPassword' | 'email' >
 export type AuthenticatedUser = User & {
   email: string
   role: UserRole
+  isEmailConfirmed: boolean
  }
 
 // eslint-disable-next-line no-shadow

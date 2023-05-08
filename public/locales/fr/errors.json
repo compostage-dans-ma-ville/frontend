@@ -16,5 +16,6 @@
   "location": {
     "failed": "Echec de la géolocalisation de votre appareil!",
     "need_rights": "Votre accord est nécessaire pour accéder à la localisation!"
-  }
+  },
+  "send_reset_password": "Une erreur s'est produite lors de l'envoi de l'email. Veuillez vérifier que l'email est valide et connu de nos services."
 }

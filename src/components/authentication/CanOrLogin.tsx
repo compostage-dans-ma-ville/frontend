@@ -19,7 +19,7 @@ export type CanOrLoginProps = CanProps
 const CanOrLogin: React.FC<CanProps> = ({ children, ...restProps }) => {
   const { t } = useTranslation([
     'common',
-    'authentification'
+    'authentication'
   ])
   const { link } = useRedirectToLogin()
 
@@ -75,7 +75,7 @@ const CanOrLogin: React.FC<CanProps> = ({ children, ...restProps }) => {
                   <Grid item mt={2} justifyContent='center'>
                     <Link href={link}>
                       <Button variant="contained">
-                        {t('authentification:login_title')}
+                        {t('authentication:login_title')}
                       </Button>
                     </Link>
                   </Grid>

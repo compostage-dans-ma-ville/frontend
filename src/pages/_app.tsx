@@ -15,8 +15,9 @@ import { appWithTranslation } from 'next-i18next'
 import { SnackbarProvider } from 'notistack'
 import { SWRConfig } from 'swr'
 
-import AuthProvider from '@/components/authentification/AuthProvider'
-import { AbilityContext, UserProvider } from '@/contexts'
+import AuthProvider from '@/components/authentication/AuthProvider'
+import ValidateEmailDialog from '@/components/authentication/ValidateEmailDialog'
+import { AbilityContext, UserProvider, ValidateEmailDialogProvider } from '@/contexts'
 import { AppAbility } from '@/domains/ability'
 import { customTheme } from '@/styles/theme'
 import createEmotionCache from '@/styles/utils/createEmotionCache'
@@ -43,8 +44,11 @@ const App: React.FC<MyAppProps> = ({ Component, emotionCache = clientSideEmotion
               <UserProvider>
                 <AuthProvider>
                   <SnackbarProvider maxSnack={3}>
-                    <CssBaseline />
-                    <Component {...pageProps} />
+                    <ValidateEmailDialogProvider>
+                      <CssBaseline />
+                      <Component {...pageProps} />
+                      <ValidateEmailDialog />
+                    </ValidateEmailDialogProvider>
                   </SnackbarProvider>
                 </AuthProvider>
               </UserProvider>

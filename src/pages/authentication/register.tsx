@@ -22,7 +22,7 @@ import { useForm } from 'react-hook-form'
 
 import MainLayout from '@/components/layouts/MainLayout'
 import PageTitle from '@/components/PageTitle'
-import { useMe } from '@/contexts'
+import { useMe, useValidateEmailDialog } from '@/contexts'
 import { registerUser as apiRegisterUser } from '@/domains/api'
 import { AuthService } from '@/domains/AuthService'
 import { Routes } from '@/domains/Routes'
@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps = async () => ({
   props: {
     ...(await serverSideTranslations('fr', [
       'common',
-      'authentification',
+      'authentication',
       'errors',
       'pages'
     ]))
@@ -42,12 +42,13 @@ export const getStaticProps: GetStaticProps = async () => ({
 const Register: React.FC = () => {
   const { t } = useTranslation([
     'common',
-    'authentification',
+    'authentication',
     'errors',
     'pages'
   ])
   const { enqueueSnackbar } = useSnackbar()
   const { fetch } = useMe()
+  const { open: openValidateEmailDialog } = useValidateEmailDialog()
 
   const router = useRouter()
   const redirection = router.query.redirect_url as string
@@ -66,6 +67,7 @@ const Register: React.FC = () => {
       AuthService.setToken(data.token)
       fetch()
       router.push(redirection || '/')
+      openValidateEmailDialog()
     }).catch((error: AxiosError) => {
       if (error?.response?.status === 409) {
         enqueueSnackbar(t('errors:email_already_exist'), { variant: 'error' })
@@ -91,7 +93,7 @@ const Register: React.FC = () => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            {t('authentification:create_account')}
+            {t('authentication:create_account')}
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit(registerUser)} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -170,12 +172,12 @@ const Register: React.FC = () => {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              {t('authentification:create_account_action')}
+              {t('authentication:create_account_action')}
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <MuiLink href={Routes.login} component={Link} variant="body2">
-                  {t('authentification:already_account')}
+                  {t('authentication:already_account')}
                 </MuiLink>
               </Grid>
             </Grid>

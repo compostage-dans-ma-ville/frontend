@@ -21,7 +21,9 @@ const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
         pathname: Routes.login,
         query: `redirect_url=${window.location.href}`
       })
-    } else Promise.reject(error)
+    }
+
+    return Promise.reject(error)
   })
 
   axios.interceptors.request.use(

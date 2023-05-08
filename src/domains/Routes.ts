@@ -1,6 +1,6 @@
 export class Routes {
-  static login = '/authentification/login'
-  static register = '/authentification/register'
+  static login = '/authentication/login'
+  static register = '/authentication/register'
   static sites = '/sites'
   static organizations = '/organizations'
   static users = '/users'

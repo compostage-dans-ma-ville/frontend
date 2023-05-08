@@ -39,7 +39,7 @@ const Custom404: React.FC = () => {
         <h1>404</h1>
         <Typography sx={{ mb: 2 }} >{t('pages:404.not_found')}</Typography>
         <Link href="/">
-          <Button variant="contained">{t('pages:404.back_home')}</Button>
+          <Button variant="contained">{t('common:back_home')}</Button>
         </Link>
       </Box>
     </MainLayout>

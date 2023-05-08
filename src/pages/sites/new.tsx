@@ -29,7 +29,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useSnackbar } from 'notistack'
 import { Controller, useForm, useWatch } from 'react-hook-form'
 
-import CanOrLogin from '@/components/authentification/CanOrLogin'
+import CanOrLogin from '@/components/authentication/CanOrLogin'
 import FormSection from '@/components/form/FormSection'
 import MainLayout from '@/components/layouts/MainLayout'
 // eslint-disable-next-line import/order
@@ -58,7 +58,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
         'common',
         'pages',
         'errors',
-        'authentification',
+        'authentication',
         'map'
       ]))
     }

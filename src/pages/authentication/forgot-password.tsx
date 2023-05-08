@@ -8,8 +8,8 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import { ForgotPassword as ForgotPasswordComponent } from '@/components/authentification/ForgotPassword'
-import { ResetPassword } from '@/components/authentification/ResetPassword'
+import { ForgotPassword as ForgotPasswordComponent } from '@/components/authentication/ForgotPassword'
+import { ResetPassword } from '@/components/authentication/ResetPassword'
 import MainLayout from '@/components/layouts/MainLayout'
 import PageTitle from '@/components/PageTitle'
 
@@ -17,7 +17,7 @@ export const getStaticProps: GetStaticProps = async () => ({
   props: {
     ...(await serverSideTranslations('fr', [
       'common',
-      'authentification',
+      'authentication',
       'errors',
       'pages'
     ]))
@@ -27,7 +27,7 @@ export const getStaticProps: GetStaticProps = async () => ({
 const ForgotPassword: React.FC = () => {
   const { t } = useTranslation([
     'common',
-    'authentification',
+    'authentication',
     'errors',
     'pages'
   ])

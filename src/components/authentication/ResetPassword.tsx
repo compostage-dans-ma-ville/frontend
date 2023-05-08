@@ -12,6 +12,7 @@ import { useForm } from 'react-hook-form'
 
 import LoadingButton from '@/components/LoadingButton'
 import { updatePassword as apiUpdatePassword } from '@/domains/api'
+import { Routes } from '@/domains/Routes'
 import { UpdatePassword, updatePasswordSchema } from '@/domains/schemas'
 
 export interface ResetPasswordProps {
@@ -20,7 +21,7 @@ export interface ResetPasswordProps {
 export const ResetPassword: React.FC<ResetPasswordProps> = ({ token }) => {
   const { t } = useTranslation([
     'common',
-    'authentification',
+    'authentication',
     'errors',
     'pages'
   ])
@@ -43,12 +44,10 @@ export const ResetPassword: React.FC<ResetPasswordProps> = ({ token }) => {
     setIsLoading(true)
 
     apiUpdatePassword({ ...data, token }).then(() => {
-      // TODO: handle user creation
-      router.push('/')
+      router.push(Routes.login)
     }).catch(() => {
       setErrored(true)
       setIsLoading(false)
-      // TODO: handle all errors
     })
   }
 
@@ -72,7 +71,6 @@ export const ResetPassword: React.FC<ResetPasswordProps> = ({ token }) => {
               type="password"
               id="password"
               error={!!errors.password}
-              autoComplete="new-password"
               helperText={errors?.password?.message && t(errors.password.message as string)}
             />
           </Grid>
@@ -86,7 +84,6 @@ export const ResetPassword: React.FC<ResetPasswordProps> = ({ token }) => {
               type="password"
               id="confirmPassword"
               error={!!errors.confirmPassword}
-              autoComplete="new-password"
               helperText={errors.confirmPassword && t('errors:pwd_not_same')}
             />
           </Grid>
@@ -98,7 +95,7 @@ export const ResetPassword: React.FC<ResetPasswordProps> = ({ token }) => {
           loading={isLoading}
           sx={{ mt: 3, mb: 2 }}
         >
-          {t('authentification:reset_password')}
+          {t('authentication:reset_password')}
         </LoadingButton>
       </Box>
     </>
