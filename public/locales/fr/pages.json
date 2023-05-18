@@ -21,6 +21,8 @@
     "delete_avatar": "Supprimer mon avatar"
   },
   "site": {
+    "helpful_information": "Informations utiles",
+    "households_amount": "Nombre de foyers participants",
     "composting_site": "Site de compostage",
     "more_schedule": "Voir plus d'horaires",
     "close_at": "Ferme à {{hour}}",
@@ -40,6 +42,7 @@
     "link_organization_to_site": "Lier une organisation à ce site de compostage",
     "link_organization_benefits": "Il est possible de lier une organisation dont vous êtes membre à un site de compostage. Les membres de l'organisation peuvent alors éditer les informations du site.",
     "select_my_organizations": "Sélectionner parmis mes organisations",
+    "treated_waste": "Quantité de déchets traités à l'année",
     "disassociate_organizations": "Dissocier cette organisation du site",
     "site_handled_by": "Ce site est géré par l'organisation"
   },

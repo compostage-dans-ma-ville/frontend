@@ -16,6 +16,8 @@ export type Site = {
   isPublic: boolean
   accessConditions?: string
   organization?: Omit<Organization, 'sites'>
+  householdsAmount?: number
+  treatedWaste?: number
 }
 export type SmallSite = Pick<Site, 'id' | 'name' | 'isPublic' | 'address'>
 
@@ -70,7 +72,14 @@ export const siteCreationSchema = yup.object().shape({
   accessConditions: descriptionSchema.when('isPublic', (isPublic, schema) => {
     return !isPublic ? schema.required('errors:required_field') : schema
   }),
-  organization: yup.number()
+  householdsAmount: yup.number()
+    .allowUndefined()
+    .typeError('errors:number')
+    .positive('errors:positive_number'),
+  treatedWaste: yup.number()
+    .allowUndefined()
+    .typeError('errors:number')
+    .positive('errors:positive_number')
 })
 
 export type CreateSite = RemoveIndex<yup.InferType<typeof siteCreationSchema>>

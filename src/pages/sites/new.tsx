@@ -1,7 +1,6 @@
 import * as React from 'react'
 
-import CakeRoundedIcon from '@mui/icons-material/CakeRounded'
-import Diversity2RoundedIcon from '@mui/icons-material/Diversity2Rounded'
+import InfoRoundedIcon from '@mui/icons-material/InfoRounded'
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded'
 import LockRoundedIcon from '@mui/icons-material/LockRounded'
 import Alert from '@mui/material/Alert'
@@ -31,6 +30,7 @@ import { Controller, useForm, useWatch } from 'react-hook-form'
 
 import CanOrLogin from '@/components/authentication/CanOrLogin'
 import FormSection from '@/components/form/FormSection'
+import WeightInput from '@/components/form/WeightInput'
 import MainLayout from '@/components/layouts/MainLayout'
 // eslint-disable-next-line import/order
 import PageTitle from '@/components/PageTitle'
@@ -41,7 +41,6 @@ const DevTools = dynamic(() => import('@hookform/devtools').then((mod) => mod.De
 })
 
 import AddressInput from '@/components/site/AddressInput'
-import OrganizationInput from '@/components/site/forms/OrganizationInput'
 import SchedulesForm from '@/components/site/forms/SchedulesForm'
 import { createSite } from '@/domains/api'
 import { Routes } from '@/domains/Routes'
@@ -219,40 +218,57 @@ const SitePage: NextPage = () => {
                   </Collapse>
                 </FormSection>
 
-                <FormSection title={t('pages:site.lauch_date')} Icon={CakeRoundedIcon}>
-                  <Controller
-                    control={control}
-                    name="launchDate"
-                    render={({ field: { onChange, ...field } }): JSX.Element => (
-                      <DatePicker
-                        {...field}
-                        views={['year', 'month', 'day']}
-                        onChange={onChange}
-                        slotProps={{
-                          textField: {
-                            helperText: errors?.launchDate?.message && t(errors.launchDate.message as string)
-                          }
-                        }}
-                      />
-                    )}
-                  />
-                </FormSection>
-
-                <FormSection title={t('common:responsible_organization')} Icon={Diversity2RoundedIcon}>
-                  <Controller
-                    control={control}
-                    name="organization"
-                    render={({
-                      field: {
-                        onChange, value
+                <FormSection title={t('pages:site.helpful_information')} Icon={InfoRoundedIcon}>
+                  <Grid container direction="column" gap={2}>
+                    <Controller
+                      control={control}
+                      name="launchDate"
+                      render={({ field: { onChange, ...field } }): JSX.Element => (
+                        <DatePicker
+                          {...field}
+                          views={['year', 'month', 'day']}
+                          label={t('pages:site.lauch_date')}
+                          onChange={onChange}
+                          slotProps={{
+                            textField: {
+                              helperText: errors?.launchDate?.message
+                                && t(errors.launchDate.message as string)
+                            }
+                          }}
+                        />
+                      )}
+                    />
+                    <TextField
+                      {...register('householdsAmount')}
+                      type='number'
+                      fullWidth
+                      label={t('pages:site.households_amount')}
+                      error={!!errors.householdsAmount}
+                      helperText={
+                        errors?.householdsAmount?.message
+                        && t(errors.householdsAmount.message as string)
                       }
-                    }): JSX.Element => (
-                      <OrganizationInput
-                        organizationId={value}
-                        onChange={onChange}
-                      />
-                    )}
-                  />
+                    />
+                    <Controller
+                      control={control}
+                      name="treatedWaste"
+                      render={({
+                        field: { ...props }
+                      }): JSX.Element => (
+                        <WeightInput
+                          {...props}
+                          type='number'
+                          fullWidth
+                          label={t('pages:site.treated_waste')}
+                          error={!!errors.treatedWaste}
+                          helperText={
+                            errors?.treatedWaste?.message
+                              && t(errors.treatedWaste.message as string)
+                          }/>
+                      )}
+                    />
+
+                  </Grid>
                 </FormSection>
 
                 <Grid item display="flex" justifyContent="flex-end" mt={3} >

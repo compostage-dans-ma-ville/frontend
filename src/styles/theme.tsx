@@ -7,13 +7,22 @@ export const customTheme = createTheme(
   {
     palette: {
       primary: {
-        main: '#0A6259'
+        main: '#00523b'
       },
       secondary: {
-        main: '#000'
+        main: '#110B11'
+      },
+      success: {
+        main: '#038857'
+      },
+      warning: {
+        main: '#fd9406'
+      },
+      info: {
+        main: '#1E91D6'
       },
       error: {
-        main: '#FD7064'
+        main: '#ff5541'
       },
       background: {
         default: '#FEFFF6'
@@ -59,6 +68,13 @@ export const customTheme = createTheme(
           body: {
             backgroundColor: '#FEFFF6 !important'
           }
+        }
+      },
+      MuiInputAdornment: {
+        styleOverrides: {
+          root: ({ theme }) => theme.unstable_sx({
+            backdropFilter: 'blur(3px)'
+          })
         }
       }
     }
