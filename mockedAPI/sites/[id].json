@@ -1,6 +1,6 @@
 {
   "id": "n:[id]",
-  "name": "A beautifull site",
+  "name": "[#faker:lorem:words]",
   "description": "[#faker:lorem:paragraph]",
   "avatar": "https://avatars.githubusercontent.com/u/31794680?v=4",
   "images": [
