@@ -1,6 +1,5 @@
 import React from 'react'
 
-import ClearRoundedIcon from '@mui/icons-material/ClearRounded'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Card from '@mui/material/Card'
@@ -13,13 +12,13 @@ import { useTranslation } from 'next-i18next'
 import { useSnackbar } from 'notistack'
 import { useForm, useWatch } from 'react-hook-form'
 
-import { updateUser as apiUpdateUser } from '@/domains/api'
-import { useUser } from '@/domains/api/hooks'
+import { useUpdateUser } from '@/domains/api/hooks'
 import {
   DESCRIPTION_MAX_LENGTH, EditUser, editUserSchema, User
 } from '@/domains/schemas'
 
 import EditAvatar from './EditAvatar'
+import GoBackButton from '../navigation/GoBackButton'
 
 export interface EditUserFormProps {
   user: User
@@ -33,14 +32,14 @@ const EditUserForm: React.FC<EditUserFormProps> = ({ user, goBack }) => {
     'pages'
   ])
 
-  const { mutate } = useUser(user.id)
+  const { trigger } = useUpdateUser(user.id)
   const { enqueueSnackbar } = useSnackbar()
 
   const {
     control,
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors, isDirty }
   } = useForm<EditUser>({
     mode: 'onChange',
     resolver: yupResolver(editUserSchema),
@@ -50,8 +49,7 @@ const EditUserForm: React.FC<EditUserFormProps> = ({ user, goBack }) => {
   })
 
   const updateUser = (editedUser: EditUser): void => {
-    apiUpdateUser(user.id, editedUser).then(() => {
-      mutate()
+    trigger(editedUser).then(() => {
       goBack()
       enqueueSnackbar(t('common:change_saved'), { variant: 'success' })
     }).catch(() => {
@@ -63,6 +61,10 @@ const EditUserForm: React.FC<EditUserFormProps> = ({ user, goBack }) => {
   return (
     <Card sx={{ mx: 3 }} >
       <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+
+        <Grid container>
+          <GoBackButton onGoBack={goBack} label={t('pages:user.back_to_user')} />
+        </Grid>
 
         <EditAvatar user={user} />
 
@@ -108,20 +110,10 @@ const EditUserForm: React.FC<EditUserFormProps> = ({ user, goBack }) => {
 
           <Grid sx={{ display: 'flex', justifyContent: 'flex-end', my: 3 }}>
             <Button
-              type="button"
-              fullWidth
-              variant="outlined"
-              color='error'
-              startIcon={<ClearRoundedIcon />}
-              onClick={goBack}
-              sx={{ mr: 2 }}
-            >
-              {t('common:cancel')}
-            </Button>
-            <Button
               type="submit"
               fullWidth
               variant="contained"
+              disabled={!isDirty}
             >
               {t('common:save')}
             </Button>

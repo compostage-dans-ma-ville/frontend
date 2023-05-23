@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import useSWR, { SWRConfiguration } from 'swr'
 
+import { Organization } from '@/domains/schemas/organization'
+
 import { getOrganization, getOrganizationMembers, getOrganizationSites } from '../organization'
 
-export const useOrganization = (organizationId: string | number, config?: SWRConfiguration) => {
+export const useOrganization = (organizationId: string | number, config?: SWRConfiguration<Organization>) => {
   const {
     data, error, mutate, isLoading
-  } = useSWR(
+  } = useSWR<Organization>(
     `/organizations/${organizationId}`,
     () => getOrganization(organizationId).then((res) => res.data),
     config

@@ -18,7 +18,8 @@
   },
   "user": {
     "adjust_zoom": "Ajuster le zoom",
-    "delete_avatar": "Supprimer mon avatar"
+    "delete_avatar": "Supprimer mon avatar",
+    "back_to_user": "Revenir à l'utilisateur"
   },
   "site": {
     "helpful_information": "Informations utiles",
