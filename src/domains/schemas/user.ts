@@ -3,6 +3,7 @@ import yup from '@/helpers/yup-extended'
 
 import { descriptionSchema } from './common'
 import { OrganizationRole } from './organization'
+import { SiteRole } from './sites'
 
 export const passwordSchema = {
   password: yup
@@ -62,6 +63,7 @@ export type User = Omit<UserCreation, 'password' | 'confirmPassword' | 'email' >
   avatar?: string
   description?: string
   organizations: {role: OrganizationRole, organizationId: number}[]
+  sites: {role: SiteRole, siteId: number}[]
 }
 export type AuthenticatedUser = User & {
   email: string

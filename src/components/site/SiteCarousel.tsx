@@ -60,10 +60,10 @@ const SiteCarousel: React.FC<SiteCarouselProps> = ({ images }) => {
       </SwipeableViews>
       <Button
         size="small"
+        variant='contained'
         color='secondary'
         onClick={handleBack}
         disabled={activeStep === 0}
-        variant='contained'
         sx={{
           position: 'absolute',
           top: '50%',

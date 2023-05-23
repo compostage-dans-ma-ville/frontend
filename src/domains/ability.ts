@@ -7,7 +7,7 @@ import {
   MongoQuery
 } from '@casl/ability'
 
-import { AuthenticatedUser, UserRole } from './schemas'
+import { AuthenticatedUser, SiteRole, UserRole } from './schemas'
 import { OrganizationRole } from './schemas/organization'
 
 export type AbilityAction = 'create' | 'read' | 'update' | 'delete' | 'manage'
@@ -42,6 +42,12 @@ export const getUserRules = (
   user.organizations.forEach(({ organizationId, role }) => {
     if (role === OrganizationRole.ADMIN) {
       can('manage', 'organization', { id: organizationId })
+    }
+  })
+
+  user.sites.forEach(({ siteId, role }) => {
+    if (role === SiteRole.ADMIN || role === SiteRole.REFEREE) {
+      can('manage', 'site', { id: siteId })
     }
   })
 

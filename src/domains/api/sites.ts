@@ -20,3 +20,7 @@ export const getSite = (siteId: number | string) => {
 export const createSite = (siteData: CreateSite) => {
   return axios.post<Site>('/sites', siteData)
 }
+
+export const updateSite = (siteId: number, siteData: CreateSite) => {
+  return axios.put<Site>(`/sites/${siteId}`, siteData)
+}

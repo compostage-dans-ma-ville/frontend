@@ -44,7 +44,8 @@
     "select_my_organizations": "Sélectionner parmis mes organisations",
     "treated_waste": "Quantité de déchets traités à l'année",
     "disassociate_organizations": "Dissocier cette organisation du site",
-    "site_handled_by": "Ce site est géré par l'organisation"
+    "site_handled_by": "Ce site est géré par l'organisation",
+    "back_to_site": "Revenir au site"
   },
   "ouComposter": {
     "title": "Où composter",

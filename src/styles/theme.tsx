@@ -19,7 +19,7 @@ export const customTheme = createTheme(
         main: '#00523b'
       },
       secondary: {
-        main: '#110B11'
+        main: '#000'
       },
       success: {
         main: '#038857'
@@ -64,6 +64,11 @@ export const customTheme = createTheme(
           iconMapping: {
             info: <TipsAndUpdatesRoundedIcon />
           }
+        },
+        styleOverrides: {
+          root: ({ theme }) => theme.unstable_sx({
+            border: 'none'
+          })
         }
       },
       MuiButton: {
@@ -74,10 +79,10 @@ export const customTheme = createTheme(
           })
         }
       },
-      MuiDialog: {
+      MuiChip: {
         styleOverrides: {
           root: ({ theme }) => theme.unstable_sx({
-            backdropFilter: 'blur(3px)'
+            border: 'solid black 1px'
           })
         }
       },
@@ -86,6 +91,28 @@ export const customTheme = createTheme(
           body: {
             backgroundColor: '#FEFFF6 !important'
           }
+        }
+      },
+      MuiDialog: {
+        styleOverrides: {
+          root: ({ theme }) => theme.unstable_sx({
+            backdropFilter: 'blur(3px)'
+          })
+        }
+      },
+      MuiDivider: {
+        styleOverrides: {
+          root: ({ theme }) => theme.unstable_sx({
+            borderColor: 'rgba(0,0,0,0.4)'
+          })
+        }
+      },
+      MuiPaper: {
+        styleOverrides: {
+          root: ({ theme }) => theme.unstable_sx({
+            boxShadow: 'none',
+            border: 'solid black 2px'
+          })
         }
       },
       MuiInputAdornment: {
