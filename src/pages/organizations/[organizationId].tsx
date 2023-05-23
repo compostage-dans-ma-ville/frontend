@@ -54,7 +54,6 @@ const OrganizationPage: NextPage<OrganizationPageProps> = ({ organization }) => 
   const { t } = useTranslation([
     'common'
   ])
-
   return (
     <MainLayout>
       <PageTitle title={[organization.name, t('common:organization')]} />

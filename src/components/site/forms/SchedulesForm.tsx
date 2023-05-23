@@ -34,7 +34,7 @@ const SchedulesForm: React.FC<SchedulesFormProps> = ({ control, setValue }) => {
         <FormControlLabel
           control={
             <Switch
-              value={schedules !== undefined}
+              checked={schedules !== undefined}
               onChange={(e, checked): void => setValue(checked ? defaultSchedules : undefined)}
             />
           }

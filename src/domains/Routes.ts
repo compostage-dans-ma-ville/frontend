@@ -1,4 +1,5 @@
 export class Routes {
+  static home = '/'
   static login = '/authentication/login'
   static register = '/authentication/register'
   static sites = '/sites'

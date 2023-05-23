@@ -14,5 +14,15 @@
       "role": "MEMBER",
       "organizationId": 43
     }
+  ],
+  "sites": [
+    {
+      "role": "ADMIN",
+      "siteId": 42
+    },
+    {
+      "role": "MEMBER",
+      "siteId": 43
+    }
   ]
 }

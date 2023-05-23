@@ -144,8 +144,17 @@ const Page: NextPage<PageProps> = ({
           ModalProps={{
             keepMounted: true
           }}
+          PaperProps={{
+            sx: {
+              border: 'none'
+            }
+          }}
         >
-          <Card sx={{ overflowY: 'scroll', maxHeight: '70vh' }}>
+          <Card sx={{
+            overflowY: 'scroll',
+            maxHeight: '70vh',
+            border: 'none'
+          }}>
             <CardContent>
               {selectedSite && (
                 <>

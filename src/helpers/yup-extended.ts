@@ -6,6 +6,10 @@ yup.addMethod<yup.StringSchema>(yup.string, 'emptyAsUndefined', function () {
   return this.transform((value) => (value || undefined))
 })
 
+yup.addMethod<yup.NumberSchema>(yup.number, 'allowUndefined', function () {
+  return this.transform((currentValue, originalValue) => originalValue === '' ? undefined : currentValue).notRequired()
+})
+
 declare module 'yup' {
   interface StringSchema<
     TType extends Maybe<string> = string | undefined,
@@ -13,6 +17,14 @@ declare module 'yup' {
     TOut extends TType = TType
   > extends yup.BaseSchema<TType, TContext, TOut> {
     emptyAsUndefined(): StringSchema<TType, TContext>;
+  }
+
+  interface NumberSchema<
+    TType extends Maybe<number> = number | undefined,
+    TContext extends AnyObject = AnyObject,
+    TOut extends TType = TType
+  > extends yup.BaseSchema<TType, TContext, TOut> {
+    allowUndefined(): NumberSchema<TType, TContext>;
   }
 }
 

@@ -1,23 +1,17 @@
 {
-  "id": "n:[id]",
-  "name": "A beautifull site",
+  "id": 1,
+  "name": "Update",
+  "isPublic": true,
   "description": "[#faker:lorem:paragraph]",
-  "avatar": "https://avatars.githubusercontent.com/u/31794680?v=4",
-  "images": [
-    "https://tse3.mm.bing.net/th?id=OIP.IcWsaHc_L9nKtZHRqJPYmgHaFj&pid=Api",
-    "https://tse1.mm.bing.net/th?id=OIP.6aeVlnZfyrkJgR5H8DY2MAHaFj&pid=Api",
-    "https://www.gardeningknowhow.com/wp-content/uploads/2014/05/compost-pile.jpg"
-  ],
   "address": {
     "houseNumber": "3",
-    "streetName": "Rue du palais",
+    "streetName": "[#faker:address:streetName]",
     "zipCode": 57000,
     "city": "Metz",
-    "latitude": 49.1188847,
-    "longitude": 6.1749144
+    "latitude": 49.12092285844665,
+    "longitude": 6.1681912402374435
   },
-  "isPublic": "b:[#faker:datatype:boolean]",
-  "accessConditions": "[#faker:lorem:paragraph]",
+  "images": [],
   "schedules": [
     null,
     [],

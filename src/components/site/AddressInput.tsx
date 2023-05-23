@@ -10,10 +10,14 @@ import { Address } from '@/domains/schemas'
 import { formatAddress } from '@/domains/utils'
 
 import InputButton from '../form/InputButton'
+import LazyLoadingLoader from '../LazyLoadingLoader'
 
 const EditAddresseDialog = dynamic(
   () => import('./EditAddressDialog'),
-  { ssr: false }
+  {
+    loading: LazyLoadingLoader,
+    ssr: false
+  }
 )
 
 export interface AddressInputProps extends Omit<ButtonProps, 'onChange'> {

@@ -1,12 +1,15 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import axios from 'axios'
-import useSWR from 'swr'
+import axios, { AxiosResponse } from 'axios'
+import useSWR, { SWRConfiguration } from 'swr'
+import useSWRMutation from 'swr/mutation'
 
-import { User } from '../../schemas/user'
-import { getUserOrganizations } from '../user'
+import { EditUser, User } from '../../schemas/user'
+import { getUserOrganizations, updateUser } from '../user'
 
-export const useUser = <T = User>(id?: number) => {
-  const path = `/users/${id || 'me'}`
+const pathToUser = (id?: number | string) => `/users/${id || 'me'}`
+
+export const useUser = <T = User>(id?: number, config?: SWRConfiguration<T>) => {
+  const path = pathToUser(id)
 
   const {
     data, mutate, error, isLoading
@@ -14,7 +17,8 @@ export const useUser = <T = User>(id?: number) => {
     path,
     () => axios
       .get(path)
-      .then(res => res.data)
+      .then(res => res.data),
+    config
   )
 
   return {
@@ -22,6 +26,29 @@ export const useUser = <T = User>(id?: number) => {
     error,
     user: data,
     mutate
+  }
+}
+
+export const useUpdateUser = (userId: number) => {
+  const {
+    data, error, trigger, isMutating
+  } = useSWRMutation<
+    AxiosResponse<User>,
+    any,
+    string,
+    EditUser
+  >(pathToUser(userId), (url, { arg }) => updateUser(userId, arg), {
+    populateCache(result) {
+      return result.data
+    },
+    revalidate: false
+  })
+
+  return {
+    data,
+    isMutating,
+    error,
+    trigger
   }
 }
 

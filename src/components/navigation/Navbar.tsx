@@ -6,9 +6,9 @@ import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import IconButton from '@mui/material/IconButton'
 import { useTheme } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
 import useMediaQuery from '@mui/material/useMediaQuery'
 
+import Image from 'next/image'
 import Link from 'next/link'
 
 import Navigation from '@/components/navigation/Navigation'
@@ -25,13 +25,7 @@ const Navbar: React.FC = () => {
       <Container sx={{ py: { xs: 2, md: 3 } }}>
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Link href="/">
-            <Typography
-              variant="h4"
-              component="h1"
-              sx={{ fontWeight: 700, '& span': { color: 'primary.main' } }}
-            >
-            Com<span>postage</span>
-            </Typography>
+            <Image src="/images/icon.svg" alt='les 3 bacs' width={80} height={30} />
           </Link>
 
           <Box sx={{ ml: 'auto', display: { xs: 'inline-flex', md: 'none' } }}>

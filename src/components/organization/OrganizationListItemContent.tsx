@@ -36,6 +36,7 @@ const OrganizationListItemContent: React.FC<OrganizationListItemProps> = ({
       direction="row"
       alignItems="center"
       justifyContent="space-between"
+      flexWrap="nowrap"
     >
       <Grid item>
         <Typography variant='body1' fontWeight="bold">

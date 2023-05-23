@@ -1,6 +1,7 @@
 {
   "back_home": "Aller à la page d'accueil",
   "cancel": "Annuler",
+  "confirm": "Confirmer",
   "confirm_password": "Confirmer le mot de passe",
   "description": "Description",
   "edit": "Modifier",
@@ -71,5 +72,8 @@
   "check_inbox_detail": "Pour nous assurer que vous êtes bien vous, cliquez sur le lien dans l'email que nous avons envoyé à <b>{{email}}</b> (n'oubliez pas de vérifier vos spams).",
   "resend_email": "Renvoyer un email de validation",
   "valide_email_later": "Je le validerai plus tard",
-  "email_successfully_sent": "L'email a été envoyé avec succès!"
+  "email_successfully_sent": "L'email a été envoyé avec succès!",
+  "see_actions": "Voir les actions",
+  "loading": "Chargement",
+  "saved_modification": "Modifications enregistrés avec succès!"
 }

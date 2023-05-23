@@ -25,7 +25,7 @@ export const uploadAvatar = (avatar: Blob) => {
 }
 
 export const updateUser = (userId: number, user: Partial<EditUser>) => {
-  return axios.post<User>(`/users/${userId}`, user)
+  return axios.put<User>(`/users/${userId}`, user)
 }
 
 export const getMeOrganizations = (user: AuthenticatedUser) => {

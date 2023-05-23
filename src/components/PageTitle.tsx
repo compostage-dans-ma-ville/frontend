@@ -11,7 +11,7 @@ const PageTitle: React.FC<PageTitleProps> = ({ title }) => {
 
   return (
     <Head>
-      <title>{`${stringTitle} • Compostage dans ma ville`}</title>
+      <title>{`${stringTitle} • les 3 bacs`}</title>
     </Head>
   )
 }

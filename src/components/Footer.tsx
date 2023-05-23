@@ -5,6 +5,7 @@ import Container from '@mui/material/Container'
 import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 
+import Image from 'next/image'
 import Link from 'next/link'
 
 const StyledBox = styled(Box)(({ theme }) => ({
@@ -50,13 +51,8 @@ const Footer: React.FC = () => {
     <Box component="footer">
       <Container maxWidth="lg">
         <StyledBox py={6} display="flex" flexWrap="wrap" alignItems="center">
-          <Typography
-            variant="h4"
-            component="h2"
-            sx={{ fontWeight: 700, '& span': { color: 'primary.main' } }}
-          >
-            Com<span>postage</span>
-          </Typography>
+          <Image src="/images/icon-with-text.svg" alt='les 3 bacs' width={130} height={60} />
+
           <Box component="nav">
             <Link href="#" color="textPrimary">{content.link1}</Link>
             <Link href="#" color="textPrimary">{content.link2}</Link>
