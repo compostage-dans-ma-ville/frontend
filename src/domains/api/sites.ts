@@ -24,3 +24,7 @@ export const createSite = (siteData: CreateSite) => {
 export const updateSite = (siteId: number, siteData: CreateSite) => {
   return axios.put<Site>(`/sites/${siteId}`, siteData)
 }
+
+export const deleteSite = (siteId: number | string) => {
+  return axios.delete<void>(`/sites/${siteId}`)
+}

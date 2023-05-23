@@ -31,7 +31,7 @@ export const customTheme = createTheme(
         main: '#1E91D6'
       },
       error: {
-        main: '#ff5541'
+        main: '#CC0000'
       },
       background: {
         default: '#FEFFF6'
@@ -73,9 +73,21 @@ export const customTheme = createTheme(
       },
       MuiButton: {
         styleOverrides: {
-          root: ({ theme }) => theme.unstable_sx({
+          root: ({ theme, ownerState }) => theme.unstable_sx({
             textTransform: 'none',
-            width: 'fit-content'
+            width: 'fit-content',
+            ':hover': {
+              boxShadow: 'none'
+            },
+            ...(ownerState.variant === 'contained'
+             && {
+               border: 'solid black 1px',
+               boxShadow: 'none',
+
+               ...(ownerState.disabled && {
+                 borderColor: 'transparent'
+               })
+             })
           })
         }
       },

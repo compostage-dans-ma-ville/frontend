@@ -46,7 +46,10 @@
     "treated_waste": "Quantité de déchets traités à l'année",
     "disassociate_organizations": "Dissocier cette organisation du site",
     "site_handled_by": "Ce site est géré par l'organisation",
-    "back_to_site": "Revenir au site"
+    "back_to_site": "Revenir au site",
+    "site_deletion": "Suppression d'un site",
+    "site_deletion_description": "Vous êtes sur le point de supprimer le site \"{{name}}\". Cette action n'est pas réversible.",
+    "delete_site": "Supprimer ce site"
   },
   "ouComposter": {
     "title": "Où composter",
