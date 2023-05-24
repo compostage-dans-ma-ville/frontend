@@ -1,0 +1,60 @@
+{
+  "without_hesitation": {
+    "Déchets de cuisine": [
+      "épluchures et fanes",
+      "marc de café",
+      "filtres en papier",
+      "pain",
+      "laitages",
+      "croûtes de fromage",
+      "fruits et légumes abîmés"
+    ],
+    "Déchets de jardin": [
+      "tontes de gazon",
+      "feuilles mortes",
+      "tailles de haie",
+      "branches",
+      "paille",
+      "écorces",
+      "fleurs fanées"
+    ],
+    "Certains déchets de maison": [
+      "mouchoirs en papier",
+      "essuie-tout",
+      "cendres de bois",
+      "sciures",
+      "copeaux",
+      "papier journal",
+      "carton brun (boîtes d'œufs, rouleaux de papier toilette...)",
+      "plantes d'intérieur"
+    ]
+  },
+  "with_moderation": {
+    "Déchets très ligneux ou durs": [
+      "tailles",
+      "branches",
+      "os",
+      "noyaux",
+      "trognons de chou"
+    ],
+    "Mauvaises herbes": null,
+    "Coquillages et coquilles d'œufs": null,
+    "Viande": null,
+    "Végétaux malades": null
+  },
+  "to_avoid": {
+    "Produits synthétiques non biodégradables": [
+      "verre",
+      "métaux",
+      "plastiques",
+      "tissus",
+      "contenu des sacs d'aspirateur"
+    ],
+    "Couches-culottes": null,
+    "Sacs plastiques": null,
+    "Produits chimiques": [
+      "huile de vidange",
+      "bois vernis ou peints"
+    ]
+  }
+}

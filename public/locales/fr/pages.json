@@ -49,7 +49,11 @@
     "back_to_site": "Revenir au site",
     "site_deletion": "Suppression d'un site",
     "site_deletion_description": "Vous êtes sur le point de supprimer le site \"{{name}}\". Cette action n'est pas réversible.",
-    "delete_site": "Supprimer ce site"
+    "delete_site": "Supprimer ce site",
+    "what_to_compost": "Quels déchets composter?",
+    "without_hesitation": "Sans hésitation",
+    "with_moderation": "Avec modération",
+    "to_avoid": "Surtout pas!"
   },
   "ouComposter": {
     "title": "Où composter",
