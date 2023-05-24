@@ -16,6 +16,7 @@ import PageTitle from '@/components/PageTitle'
 import SiteActions from '@/components/site/SiteActions'
 import SiteCarousel from '@/components/site/SiteCarousel'
 import SiteInfo from '@/components/site/SiteInfo'
+import WhatToCompost from '@/components/site/WhatToCompost/WhatToCompost'
 import { getSite } from '@/domains/api'
 import { useSite } from '@/domains/api/hooks'
 import { Site } from '@/domains/schemas'
@@ -41,7 +42,8 @@ export const getServerSideProps: GetServerSideProps<SiteProps> = async ({ params
       ...(await serverSideTranslations('fr', [
         'common',
         'pages',
-        'errors'
+        'errors',
+        'whatToCompost'
       ])),
       site,
       edition: false
@@ -76,6 +78,7 @@ const SitePage: NextPage<SiteProps> = ({ site: siteProp, edition }) => {
                     <SiteActions setEditionMode={setEditionMode} site={site} />
                   </Can>
                   <SiteInfo site={site}/>
+                  <WhatToCompost />
                 </>
               )
             }

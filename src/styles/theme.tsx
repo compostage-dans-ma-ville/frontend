@@ -66,8 +66,18 @@ export const customTheme = createTheme(
           }
         },
         styleOverrides: {
+          root: ({ theme, ownerState }) => theme.unstable_sx({
+            ...((ownerState.variant === 'filled' || ownerState.variant === 'standard')
+             && {
+               border: 'none'
+             })
+          })
+        }
+      },
+      MuiAccordion: {
+        styleOverrides: {
           root: ({ theme }) => theme.unstable_sx({
-            border: 'none'
+            marginTop: 1
           })
         }
       },
