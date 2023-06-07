@@ -4,10 +4,10 @@ import Chip, { ChipProps } from '@mui/material/Chip'
 
 import { useTranslation } from 'next-i18next'
 
-import { OrganizationRole } from '@/domains/schemas/organization'
+import { OrganizationRole, SiteRole } from '@/domains/schemas'
 
 export interface UserRoleChipProps extends Partial<ChipProps> {
-  role: OrganizationRole
+  role: OrganizationRole | SiteRole
 }
 const UserRoleChip: React.FC<UserRoleChipProps> = ({ role, ...props }) => {
   const { t } = useTranslation([
@@ -17,6 +17,7 @@ const UserRoleChip: React.FC<UserRoleChipProps> = ({ role, ...props }) => {
   const getTranslation = (): string => {
     if (role === OrganizationRole.ADMIN) return t('common:admin')
     if (role === OrganizationRole.MEMBER) return t('common:member')
+    if (role === SiteRole.REFEREE) return t('common:referee')
     return ''
   }
 

@@ -3,6 +3,7 @@ import yup from '@/helpers/yup-extended'
 
 import { descriptionSchema } from './common'
 import { Organization } from './organization'
+import { User } from './user'
 
 // eslint-disable-next-line no-shadow
 export enum SiteRole {
@@ -61,6 +62,11 @@ export interface Opening {
 
 export type DayOfWeek = 0 | 1 | 2 | 3 | 4 | 5 | 6
 export const DAY_OF_WEEK = [0, 1, 2, 3, 4, 5, 6] as DayOfWeek[]
+
+export interface SiteMember {
+  role: SiteRole,
+  member: User
+}
 
 // @ts-expect-error Hour type doesn't match the string type
 export const openingsSchema: yup.SchemaOf<Opening> = yup.object().shape({

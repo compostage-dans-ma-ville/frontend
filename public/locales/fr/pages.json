@@ -50,10 +50,14 @@
     "site_deletion": "Suppression d'un site",
     "site_deletion_description": "Vous êtes sur le point de supprimer le site \"{{name}}\". Cette action n'est pas réversible.",
     "delete_site": "Supprimer ce site",
+    "member_deletion": "Suppression d'un membre",
+    "delete_member": "Supprimer ce membre",
+    "member_deletion_description": "Vous êtes sur le point de supprimer l'utilisateur \"{{name}}\". Cette action n'est pas réversible.",
     "what_to_compost": "Quels déchets composter?",
     "without_hesitation": "Sans hésitation",
     "with_moderation": "Avec modération",
-    "to_avoid": "Surtout pas!"
+    "to_avoid": "Surtout pas!",
+    "our_team": "Notre équipe"
   },
   "ouComposter": {
     "title": "Où composter",

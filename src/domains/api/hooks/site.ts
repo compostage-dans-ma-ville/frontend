@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { AxiosResponse } from 'axios'
 import useSWR, { SWRConfiguration } from 'swr'
+import useSWRInfinite from 'swr/infinite'
 import useSWRMutation from 'swr/mutation'
 
-import { CreateSite, Site } from '@/domains/schemas'
+import { CreateSite, Site, SiteMember } from '@/domains/schemas'
 
+import { Paginated } from '../helpers'
 import {
-  createSite, deleteSite, getSite, updateSite
+  createSite, deleteSite, getSite, getSiteMembers, updateSite
 } from '../sites'
 
 const createSiteKey = 'createSite' as const
@@ -77,12 +79,52 @@ export const useDeleteSite = (siteId: number) => {
     AxiosResponse,
     any,
     string
-  >(`delete/site/${siteId}`, () => deleteSite(siteId), {})
+  >(`delete/site/${siteId}`, () => deleteSite(siteId))
 
   return {
     data,
     isMutating,
     error,
     trigger
+  }
+}
+
+export const useGetSiteMembers = (siteId: number) => {
+  const PER_PAGE = 50
+  const siteMembersKey = (index: number, previousPageData: AxiosResponse<Paginated<SiteMember>> | null) => {
+    const previousPageWasTheLast = previousPageData !== null
+      && previousPageData?.data.links.next === undefined
+
+    if (previousPageWasTheLast) return null
+
+    return { url: `/sites/${siteId}/members`, page: index + 1, items: PER_PAGE } as const
+  }
+
+  const {
+    data,
+    size,
+    isValidating,
+    setSize,
+    mutate
+  } = useSWRInfinite<
+    AxiosResponse<Paginated<SiteMember>>,
+    any,
+    typeof siteMembersKey
+  >(
+    siteMembersKey,
+    (fetcherData) => getSiteMembers(
+      siteId,
+      { page: fetcherData.page, items: fetcherData.items }
+    ),
+    { revalidateFirstPage: false }
+  )
+
+  return {
+    data,
+    isLoading: isValidating,
+    mutate,
+    size,
+    setSize,
+    canLoadMore: data ? data[data.length - 1].data.links.next !== undefined : true
   }
 }

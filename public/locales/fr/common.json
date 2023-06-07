@@ -61,6 +61,7 @@
   "my_organizations": "Mes organisations",
   "admin": "Admin",
   "member": "Membre",
+  "referee": "Référent",
   "member_other": "Membres",
   "open_ressource": "Ouvrir la ressource",
   "open_ressource_new_tab": "Ouvrir la ressource dans une nouvelle page",
@@ -76,5 +77,6 @@
   "email_successfully_sent": "L'email a été envoyé avec succès!",
   "see_actions": "Voir les actions",
   "loading": "Chargement",
-  "saved_modification": "Modifications enregistrés avec succès!"
+  "saved_modification": "Modifications enregistrés avec succès!",
+  "display_more": "Afficher plus"
 }
