@@ -1,0 +1,46 @@
+{
+  "data": [
+    {
+      "role": "ADMIN",
+      "member": {
+        "id": "1[q:page]",
+        "firstName": "Johann",
+        "lastName": "Chopin",
+        "email": "johannchopin@gmail.com",
+        "avatar": "https://avatars.githubusercontent.com/u/31794680?v=4",
+        "description": "[#faker:lorem:paragraph]"
+      }
+    },
+    {
+      "role": "REFEREE",
+      "member": {
+        "id": "2[q:page]",
+        "firstName": "[#faker:name:firstName]",
+        "lastName": "[#faker:name:lastName]",
+        "email": "johannchopin@gmail.com",
+        "description": "[#faker:lorem:paragraph]"
+      }
+    },
+    {
+      "role": "MEMBER",
+      "member": {
+        "id": "3[q:page]",
+        "firstName": "[#faker:name:firstName]",
+        "lastName": "[#faker:name:lastName]",
+        "email": "johannchopin@gmail.com",
+        "description": "[#faker:lorem:paragraph]"
+      }
+    }
+  ],
+  "pagination": {
+    "pageNumber": 1,
+    "pageSize": 3,
+    "totalCont": 20
+  },
+  "links": {
+    "prev": "",
+    "next": "",
+    "last": "",
+    "first": ""
+  }
+}

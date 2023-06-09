@@ -1,4 +1,5 @@
 {
+  "add": "Ajouter",
   "back_home": "Aller à la page d'accueil",
   "cancel": "Annuler",
   "confirm": "Confirmer",
@@ -22,7 +23,7 @@
   "update_avatar": "Modifier votre avatar",
   "upload_image": "Importer une image",
   "welcome": "Bienvenue",
-  "change_saved": "Modifications enregistrés avec succès",
+  "change_saved": "Modifications enregistrés avec succès!",
   "next": "Suivant",
   "previous": "Précèdent",
   "closed": "Fermé",
@@ -61,6 +62,7 @@
   "my_organizations": "Mes organisations",
   "admin": "Admin",
   "member": "Membre",
+  "referee": "Référent",
   "member_other": "Membres",
   "open_ressource": "Ouvrir la ressource",
   "open_ressource_new_tab": "Ouvrir la ressource dans une nouvelle page",
@@ -68,7 +70,7 @@
   "site_other": "Sites de compostage",
   "public_site_description": "Ce site est public",
   "private_site_description": "Ce site est privé et accessible qu'à partir de certaines conditions",
-  "validate_email": "Validez mon email",
+  "validate_email": "Valider mon email",
   "check_inbox": "Vérifiez votre boîte de réception",
   "check_inbox_detail": "Pour nous assurer que vous êtes bien vous, cliquez sur le lien dans l'email que nous avons envoyé à <b>{{email}}</b> (n'oubliez pas de vérifier vos spams).",
   "resend_email": "Renvoyer un email de validation",
@@ -76,5 +78,6 @@
   "email_successfully_sent": "L'email a été envoyé avec succès!",
   "see_actions": "Voir les actions",
   "loading": "Chargement",
-  "saved_modification": "Modifications enregistrés avec succès!"
+  "saved_modification": "Modifications enregistrés avec succès!",
+  "display_more": "Afficher plus"
 }

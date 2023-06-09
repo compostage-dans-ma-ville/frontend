@@ -4,7 +4,6 @@ import AddRoundedIcon from '@mui/icons-material/AddRounded'
 import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded'
 import TabContext from '@mui/lab/TabContext'
 import TabPanel from '@mui/lab/TabPanel'
-import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
@@ -15,20 +14,18 @@ import ListItemAvatar from '@mui/material/ListItemAvatar'
 import ListItemText from '@mui/material/ListItemText'
 import Tab from '@mui/material/Tab'
 import Tabs from '@mui/material/Tabs'
-import Typography from '@mui/material/Typography'
 
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 
 import { useOrganizationMembers, useOrganizationSites } from '@/domains/api/hooks'
 import { Routes } from '@/domains/Routes'
-import { Organization, OrganizationRole } from '@/domains/schemas/organization'
+import { Organization } from '@/domains/schemas/organization'
 import { getAddressString } from '@/helpers/site'
-import { getUserFullName } from '@/helpers/user'
 
-import UserRoleChip from './UserRoleChip'
 import Can, { an } from '../Can'
 import IsPublicChip from '../site/IsPublicChip'
+import UserListItem from '../UserListItem'
 
 type TabName = 'members' | 'sites'
 
@@ -110,35 +107,11 @@ const OrganizationTabs: React.FC<OrganizationTabsProps> = ({ organization }) => 
         <TabPanel value="members">
           <List sx={{ maxHeight: '400px', overflowY: 'auto' }}>
             {members?.map(({ role, member }) => (
-              <ListItem
+              <UserListItem
                 key={member.id}
-                secondaryAction={
-                  <Link href={Routes.user(member.id)}>
-                    <IconButton
-                      aria-label={t('common:open_ressource')}
-                      color="primary"
-                      sx={{ padding: 0 }}
-                    >
-                      <VisibilityRoundedIcon />
-                    </IconButton>
-                  </Link>
-                }
-              >
-                <ListItemAvatar>
-                  <Avatar src={member.avatar} />
-                </ListItemAvatar>
-
-                <Grid container alignItems="center" columnGap={2}>
-                  <Grid item>
-                    <Typography>
-                      {getUserFullName(member)}
-                    </Typography>
-                  </Grid>
-                  <Grid item>
-                    {role !== OrganizationRole.MEMBER && <UserRoleChip role={role}/>}
-                  </Grid>
-                </Grid>
-              </ListItem>
+                user={member}
+                role={role}
+              />
             ))}
           </List>
 

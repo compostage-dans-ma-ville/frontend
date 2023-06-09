@@ -3,12 +3,13 @@ import yup from '@/helpers/yup-extended'
 
 import { descriptionSchema } from './common'
 import { Organization } from './organization'
+import { User, emailSchema } from './user'
 
 // eslint-disable-next-line no-shadow
 export enum SiteRole {
   MEMBER = 'MEMBER',
-  ADMIN = 'ADMIN',
-  REFEREE = 'REFEREE'
+  REFEREE = 'REFEREE',
+  ADMIN = 'ADMIN'
 }
 export type Schedule = Opening[] | null
 export type Site = {
@@ -62,6 +63,11 @@ export interface Opening {
 export type DayOfWeek = 0 | 1 | 2 | 3 | 4 | 5 | 6
 export const DAY_OF_WEEK = [0, 1, 2, 3, 4, 5, 6] as DayOfWeek[]
 
+export interface SiteMember {
+  role: SiteRole,
+  member: User
+}
+
 // @ts-expect-error Hour type doesn't match the string type
 export const openingsSchema: yup.SchemaOf<Opening> = yup.object().shape({
   open: yup.string().required('errors:required_field'),
@@ -89,4 +95,10 @@ export const siteCreationSchema: yup.SchemaOf<Omit<Site, 'id' | 'images' | 'orga
     .positive('errors:positive_number')
 })
 
+export const addMemberToSiteSchema = yup.object().shape({
+  ...emailSchema,
+  role: yup.mixed<SiteRole>().oneOf(Object.values(SiteRole), 'testesr').required('errors:required_field').default(SiteRole.MEMBER)
+})
+
+export type CreateSiteMember = RemoveIndex<yup.InferType<typeof addMemberToSiteSchema>>
 export type CreateSite = RemoveIndex<yup.InferType<typeof siteCreationSchema>>

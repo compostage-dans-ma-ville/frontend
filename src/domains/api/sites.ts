@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import axios from 'axios'
 
-import { CreateSite, Site, SmallSite } from '../schemas'
+import { Paginated, PaginationQueryParams } from './helpers'
+import {
+  CreateSite, CreateSiteMember, Site, SiteMember, SmallSite
+} from '../schemas'
 
 export interface GetSitesParams {
   latitude?: number
@@ -27,4 +30,20 @@ export const updateSite = (siteId: number, siteData: CreateSite) => {
 
 export const deleteSite = (siteId: number | string) => {
   return axios.delete<void>(`/sites/${siteId}`)
+}
+
+export const getSiteMembers = (siteId: number | string, params?: PaginationQueryParams) => {
+  return axios.get<Paginated<SiteMember>>(`/sites/${siteId}/members`, { params })
+}
+
+export const deleteSiteMember = (siteId: number | string, userId: number | string) => {
+  return axios.delete<void>(`/sites/${siteId}/members/${userId}`)
+}
+
+export const createSiteMember = (siteId: number, data: CreateSiteMember) => {
+  return axios.put<void>(`/sites/${siteId}/members`, data)
+}
+
+export const updateSiteMember = (siteId: number, memberId: number, data: Pick<SiteMember, 'role'>) => {
+  return axios.patch<Site>(`/sites/${siteId}/members/${memberId}`, data)
 }

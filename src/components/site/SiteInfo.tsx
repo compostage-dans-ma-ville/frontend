@@ -16,6 +16,7 @@ import { Site } from '@/domains/schemas'
 
 import IsPublicChip from './IsPublicChip'
 import ScheduleList from './ScheduleList'
+import TeamList from './TeamList'
 import OrganizationListItemContent from '../organization/OrganizationListItemContent'
 
 export interface SiteInfoProps {
@@ -88,6 +89,8 @@ const SiteInfo: React.FC<SiteInfoProps> = ({ site }) => {
           </>
         )}
 
+        <Divider variant="inset" component="li" />
+        <TeamList site={site} />
       </List>
     </>
   )

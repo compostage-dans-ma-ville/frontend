@@ -7,12 +7,14 @@ import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 
 import { useMe } from '@/contexts'
+import { useRedirectToLogin } from '@/domains/hooks'
 import { Routes } from '@/domains/Routes'
 
 import UserMenu from './UserMenu'
 
 const AuthNavigation: React.FC = () => {
   const { t } = useTranslation('common')
+  const { link } = useRedirectToLogin()
 
   const { me: user, logout } = useMe()
 
@@ -27,7 +29,7 @@ const AuthNavigation: React.FC = () => {
         ? <UserMenu user={user} logout={logout} />
         : (
           <>
-            <Link href={Routes.login}>
+            <Link href={link}>
               <Button variant="outlined">
                 {t('login')}
               </Button>
