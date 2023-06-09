@@ -8,8 +8,8 @@ import { User } from './user'
 // eslint-disable-next-line no-shadow
 export enum SiteRole {
   MEMBER = 'MEMBER',
-  ADMIN = 'ADMIN',
-  REFEREE = 'REFEREE'
+  REFEREE = 'REFEREE',
+  ADMIN = 'ADMIN'
 }
 export type Schedule = Opening[] | null
 export type Site = {

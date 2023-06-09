@@ -39,3 +39,7 @@ export const getSiteMembers = (siteId: number | string, params?: PaginationQuery
 export const deleteSiteMember = (siteId: number | string, userId: number | string) => {
   return axios.delete<void>(`/sites/${siteId}/members/${userId}`)
 }
+
+export const updateSiteMember = (siteId: number, memberId: number, data: Pick<SiteMember, 'role'>) => {
+  return axios.patch<Site>(`/sites/${siteId}/members/${memberId}`, data)
+}

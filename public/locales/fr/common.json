@@ -69,7 +69,7 @@
   "site_other": "Sites de compostage",
   "public_site_description": "Ce site est public",
   "private_site_description": "Ce site est privé et accessible qu'à partir de certaines conditions",
-  "validate_email": "Validez mon email",
+  "validate_email": "Valider mon email",
   "check_inbox": "Vérifiez votre boîte de réception",
   "check_inbox_detail": "Pour nous assurer que vous êtes bien vous, cliquez sur le lien dans l'email que nous avons envoyé à <b>{{email}}</b> (n'oubliez pas de vérifier vos spams).",
   "resend_email": "Renvoyer un email de validation",

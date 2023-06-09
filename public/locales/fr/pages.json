@@ -57,7 +57,17 @@
     "without_hesitation": "Sans hésitation",
     "with_moderation": "Avec modération",
     "to_avoid": "Surtout pas!",
-    "our_team": "Notre équipe"
+    "our_team": "Notre équipe",
+    "edit_member": "Modification du membre",
+    "impossible_to_edit_admin": "Il n'est pas possible de modifier un administrateur",
+    "info_role_referee": "Le rôle de référent définit quels membres sont les référents du site de compostage et donc une personne de contact.",
+    "warning_role_referee": "Attention! Attribuer le role référent à un utilisateur lui permettera de modifier les informations du site ainsi que modifier, ajouter ou supprimer des membres.",
+    "warning_role_admin": "Attention! Attribuer le role administrateur à un utilisateur lui permettera de modifier les informations du site ainsi que modifier, ajouter ou supprimer des membres. Les membres avec le role administrateur ne peuvent pas être modifié ou supprimé. Cette action n'est pas réversible.",
+    "roleEnum": {
+      "MEMBER": "Membre",
+      "ADMIN": "Administrateur",
+      "REFEREE": "Référent"
+    }
   },
   "ouComposter": {
     "title": "Où composter",

@@ -12,9 +12,9 @@
       }
     },
     {
-      "role": "REFEREE",
+      "role": "MEMBER",
       "member": {
-        "id": "2[q:page]",
+        "id": "3[q:page]",
         "firstName": "[#faker:name:firstName]",
         "lastName": "[#faker:name:lastName]",
         "email": "johannchopin@gmail.com",
@@ -22,9 +22,9 @@
       }
     },
     {
-      "role": "MEMBER",
+      "role": "REFEREE",
       "member": {
-        "id": "3[q:page]",
+        "id": "2[q:page]",
         "firstName": "[#faker:name:firstName]",
         "lastName": "[#faker:name:lastName]",
         "email": "johannchopin@gmail.com",

@@ -1,11 +1,13 @@
 import React from 'react'
 
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded'
+import EditIcon from '@mui/icons-material/Edit'
 import ExpandLessRoundedIcon from '@mui/icons-material/ExpandLessRounded'
 import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded'
 import Groups2RoundedIcon from '@mui/icons-material/Groups2Rounded'
 import LoadingButton from '@mui/lab/LoadingButton'
 import Collapse from '@mui/material/Collapse'
+import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
 import ListItemButton from '@mui/material/ListItemButton'
@@ -20,12 +22,19 @@ import { useSnackbar } from 'notistack'
 import { AbilityContext, useConfirm } from '@/contexts'
 import { deleteSiteMember } from '@/domains/api'
 import { useGetSiteMembers } from '@/domains/api/hooks'
-import { Site, SiteMember } from '@/domains/schemas'
+import { Site, SiteMember, SiteRole } from '@/domains/schemas'
 import { getUserFullName } from '@/helpers/user'
 
+import EditSiteMemberDialog from './EditSiteMemberDialog'
 import { an } from '../Can'
 import DropdownActions from '../DropdownActions'
 import UserListItem from '../UserListItem'
+
+const sortTeamListOrder: Record<SiteRole, number> = {
+  [SiteRole.REFEREE]: 0,
+  [SiteRole.ADMIN]: 1,
+  [SiteRole.MEMBER]: 2
+}
 
 export interface TeamListProps {
   site: Site
@@ -49,10 +58,16 @@ const TeamList: React.FC<TeamListProps> = ({ site }) => {
   const { enqueueSnackbar } = useSnackbar()
 
   const [open, setOpen] = React.useState(false)
+  const [memberToEdit, setMemberToEdit] = React.useState<SiteMember | undefined>(undefined)
+  const [editMemberOpen, setEditMemberOpen] = React.useState(false)
 
   const ability = React.useContext(AbilityContext)
 
-  const members = data ? data.reduce((acc, elmt) => [...acc, ...elmt.data.data], [] as SiteMember[]) : []
+  const members = data
+    ? data
+      .reduce((acc, elmt) => [...acc, ...elmt.data.data], [] as SiteMember[])
+      .sort((a, b) => sortTeamListOrder[a.role] - sortTeamListOrder[b.role])
+    : []
 
   const onMemberDelete = (userId: number): void => {
     deleteSiteMember(site.id, userId).then(() => {
@@ -91,6 +106,18 @@ const TeamList: React.FC<TeamListProps> = ({ site }) => {
               <DropdownActions
                 sx={{ padding: 0, ml: 0.5 }}
               >
+                <MenuItem onClick={(): void => {
+                  setMemberToEdit({ role, member })
+                  setEditMemberOpen(true)
+                }}>
+                  <ListItemIcon>
+                    <EditIcon />
+                  </ListItemIcon>
+                  <ListItemText>{t('common:edit')}</ListItemText>
+                </MenuItem>
+
+                <Divider />
+
                 <MenuItem onClick={(): void => confirm(
                   t('pages:site.member_deletion'),
                   t('pages:site.member_deletion_description', { name: getUserFullName(member) }),
@@ -125,6 +152,16 @@ const TeamList: React.FC<TeamListProps> = ({ site }) => {
           </Grid>
         )}
       </Collapse>
+
+      {memberToEdit && (
+        <EditSiteMemberDialog
+          isOpen={editMemberOpen}
+          member={memberToEdit}
+          site={site}
+          onSuccess={(): void => { mutate() }}
+          close={(): void => { setEditMemberOpen(false) }}
+        />
+      )}
     </>
   )
 }
