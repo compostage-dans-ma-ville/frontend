@@ -5,7 +5,9 @@ import EditIcon from '@mui/icons-material/Edit'
 import ExpandLessRoundedIcon from '@mui/icons-material/ExpandLessRounded'
 import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded'
 import Groups2RoundedIcon from '@mui/icons-material/Groups2Rounded'
+import PersonAddAltRoundedIcon from '@mui/icons-material/PersonAddAltRounded'
 import LoadingButton from '@mui/lab/LoadingButton'
+import Button from '@mui/material/Button'
 import Collapse from '@mui/material/Collapse'
 import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid'
@@ -25,8 +27,9 @@ import { useGetSiteMembers } from '@/domains/api/hooks'
 import { Site, SiteMember, SiteRole } from '@/domains/schemas'
 import { getUserFullName } from '@/helpers/user'
 
+import AddSiteMemberDialog from './AddSiteMemberDialog'
 import EditSiteMemberDialog from './EditSiteMemberDialog'
-import { an } from '../Can'
+import Can, { an } from '../Can'
 import DropdownActions from '../DropdownActions'
 import UserListItem from '../UserListItem'
 
@@ -60,6 +63,7 @@ const TeamList: React.FC<TeamListProps> = ({ site }) => {
   const [open, setOpen] = React.useState(false)
   const [memberToEdit, setMemberToEdit] = React.useState<SiteMember | undefined>(undefined)
   const [editMemberOpen, setEditMemberOpen] = React.useState(false)
+  const [addMemberOpen, setAddMemberOpen] = React.useState(false)
 
   const ability = React.useContext(AbilityContext)
 
@@ -97,6 +101,19 @@ const TeamList: React.FC<TeamListProps> = ({ site }) => {
       </ListItemButton>
 
       <Collapse in={open} sx={{ mx: 2 }}>
+        <Can do='update' on={an('site', site)}>
+          <Grid container my={2} pl={2}>
+            <Button
+              variant='outlined'
+              color='secondary'
+              startIcon={<PersonAddAltRoundedIcon />}
+              onClick={(): void => setAddMemberOpen(true)}
+            >
+              {t('pages:site.add_member')}
+            </Button>
+          </Grid>
+        </Can>
+
         {members.map(({ role, member }) => (
           <UserListItem
             key={member.id}
@@ -162,6 +179,11 @@ const TeamList: React.FC<TeamListProps> = ({ site }) => {
           close={(): void => { setEditMemberOpen(false) }}
         />
       )}
+      <AddSiteMemberDialog
+        isOpen={addMemberOpen}
+        site={site}
+        close={(): void => { setAddMemberOpen(false) }}
+      />
     </>
   )
 }

@@ -3,7 +3,7 @@ import yup from '@/helpers/yup-extended'
 
 import { descriptionSchema } from './common'
 import { Organization } from './organization'
-import { User } from './user'
+import { User, emailSchema } from './user'
 
 // eslint-disable-next-line no-shadow
 export enum SiteRole {
@@ -95,4 +95,10 @@ export const siteCreationSchema: yup.SchemaOf<Omit<Site, 'id' | 'images' | 'orga
     .positive('errors:positive_number')
 })
 
+export const addMemberToSiteSchema = yup.object().shape({
+  ...emailSchema,
+  role: yup.mixed<SiteRole>().oneOf(Object.values(SiteRole), 'testesr').required('errors:required_field').default(SiteRole.MEMBER)
+})
+
+export type CreateSiteMember = RemoveIndex<yup.InferType<typeof addMemberToSiteSchema>>
 export type CreateSite = RemoveIndex<yup.InferType<typeof siteCreationSchema>>

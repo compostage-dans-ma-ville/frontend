@@ -1,6 +1,5 @@
 import React from 'react'
 
-import Alert from '@mui/material/Alert'
 import Button from '@mui/material/Button'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
@@ -72,18 +71,8 @@ const EditSiteMemberDialog: React.FC<EditSiteMemberDialogProps> = ({
               onChange={setUserRole}
               label={'Role'}
               disabled={member.role === SiteRole.ADMIN}
+              showHints={member.role !== userRole}
             />
-
-            {member.role !== SiteRole.REFEREE && userRole === SiteRole.REFEREE && (
-              <>
-                <Alert sx={{ mt: 2 }} severity="info">{t('pages:site.info_role_referee')}</Alert>
-                <Alert sx={{ mt: 2 }} severity="error">{t('pages:site.warning_role_referee')}</Alert>
-              </>
-            )}
-
-            {member.role !== SiteRole.ADMIN && userRole === SiteRole.ADMIN && (
-              <Alert sx={{ mt: 2 }} severity="error">{t('pages:site.warning_role_admin')}</Alert>
-            )}
           </div>
         </Tooltip>
 

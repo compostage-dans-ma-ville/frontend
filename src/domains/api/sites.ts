@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import { Paginated, PaginationQueryParams } from './helpers'
 import {
-  CreateSite, Site, SiteMember, SmallSite
+  CreateSite, CreateSiteMember, Site, SiteMember, SmallSite
 } from '../schemas'
 
 export interface GetSitesParams {
@@ -38,6 +38,10 @@ export const getSiteMembers = (siteId: number | string, params?: PaginationQuery
 
 export const deleteSiteMember = (siteId: number | string, userId: number | string) => {
   return axios.delete<void>(`/sites/${siteId}/members/${userId}`)
+}
+
+export const createSiteMember = (siteId: number, data: CreateSiteMember) => {
+  return axios.put<void>(`/sites/${siteId}/members`, data)
 }
 
 export const updateSiteMember = (siteId: number, memberId: number, data: Pick<SiteMember, 'role'>) => {

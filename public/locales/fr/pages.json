@@ -63,6 +63,9 @@
     "info_role_referee": "Le rôle de référent définit quels membres sont les référents du site de compostage et donc une personne de contact.",
     "warning_role_referee": "Attention! Attribuer le role référent à un utilisateur lui permettera de modifier les informations du site ainsi que modifier, ajouter ou supprimer des membres.",
     "warning_role_admin": "Attention! Attribuer le role administrateur à un utilisateur lui permettera de modifier les informations du site ainsi que modifier, ajouter ou supprimer des membres. Les membres avec le role administrateur ne peuvent pas être modifié ou supprimé. Cette action n'est pas réversible.",
+    "add_member": "Inviter un membre",
+    "add_member_description": "Vous pouvez inviter un membre à ce site au moyen de son mail de contact. Si l'utilisateur n'existe pas encore, il lui sera d'abord demandé de créer un compte. L'utilisateur devra accepter l'invitation pour être listé comme membre.",
+    "add_member_success": "Invitation envoyé avec succès!",
     "roleEnum": {
       "MEMBER": "Membre",
       "ADMIN": "Administrateur",
