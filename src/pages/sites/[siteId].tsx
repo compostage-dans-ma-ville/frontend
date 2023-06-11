@@ -6,6 +6,7 @@ import Container from '@mui/material/Container'
 
 import { GetServerSideProps, NextPage } from 'next'
 import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
@@ -16,6 +17,7 @@ import PageTitle from '@/components/PageTitle'
 import SiteActions from '@/components/site/SiteActions'
 import SiteCarousel from '@/components/site/SiteCarousel'
 import SiteInfo from '@/components/site/SiteInfo'
+import ValidateInvitationDialog from '@/components/site/ValidateInvitationDialog'
 import WhatToCompost from '@/components/site/WhatToCompost/WhatToCompost'
 import { getSite } from '@/domains/api'
 import { useSite } from '@/domains/api/hooks'
@@ -60,6 +62,17 @@ const SitePage: NextPage<SiteProps> = ({ site: siteProp, edition }) => {
   const fetcher = useSite(siteProp.id, { fallbackData: siteProp })
   const site = fetcher.site as Site
 
+  const router = useRouter()
+  const invitationToken = router.query.invitation as string | undefined
+
+  const [isInvitationDialogOpen, setIsInvitationDialogOpen] = React.useState(false)
+
+  React.useEffect(() => {
+    if (invitationToken) {
+      setIsInvitationDialogOpen(true)
+    }
+  }, [invitationToken])
+
   return (
     <MainLayout>
       <PageTitle title={[site.name, t('pages:site.composting_site')]} />
@@ -86,6 +99,15 @@ const SitePage: NextPage<SiteProps> = ({ site: siteProp, edition }) => {
           </CardContent>
         </Card>
       </Container>
+
+      {invitationToken && (
+        <ValidateInvitationDialog
+          open={isInvitationDialogOpen}
+          close={(): void => { setIsInvitationDialogOpen(false) }}
+          site={site}
+          token={invitationToken}
+        />
+      )}
 
     </MainLayout>
   )

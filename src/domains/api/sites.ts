@@ -44,6 +44,10 @@ export const createSiteMember = (siteId: number, data: CreateSiteMember) => {
   return axios.put<void>(`/sites/${siteId}/members`, data)
 }
 
+export const addMemberToSite = (siteId: number, token: string) => {
+  return axios.post<void>(`/sites/${siteId}/members`, { token })
+}
+
 export const updateSiteMember = (siteId: number, memberId: number, data: Pick<SiteMember, 'role'>) => {
   return axios.patch<Site>(`/sites/${siteId}/members/${memberId}`, data)
 }

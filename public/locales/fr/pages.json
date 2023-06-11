@@ -66,6 +66,11 @@
     "add_member": "Inviter un membre",
     "add_member_description": "Vous pouvez inviter un membre à ce site au moyen de son mail de contact. Si l'utilisateur n'existe pas encore, il lui sera d'abord demandé de créer un compte. L'utilisateur devra accepter l'invitation pour être listé comme membre.",
     "add_member_success": "Invitation envoyé avec succès!",
+    "go_to_site": "Accéder au site",
+    "invitation": {
+      "success": "Vous avez été ajouté au site \"{{siteName}}\".",
+      "error": "Une erreur s'est produite lors de votre ajout au site \"{{siteName}}\". L'erreur la plus probable est que l'invitation a expiré. Veuillez demander une nouvelle invitation."
+    },
     "roleEnum": {
       "MEMBER": "Membre",
       "ADMIN": "Administrateur",

@@ -8,6 +8,7 @@ import { CreateSite, Site, SiteMember } from '@/domains/schemas'
 
 import { Paginated } from '../helpers'
 import {
+  addMemberToSite,
   createSite, deleteSite, getSite, getSiteMembers, updateSite
 } from '../sites'
 
@@ -126,5 +127,22 @@ export const useGetSiteMembers = (siteId: number) => {
     size,
     setSize,
     canLoadMore: data ? data[data.length - 1].data.links.next !== undefined : true
+  }
+}
+
+export const useAddMemberToSite = (siteId: number, token: string, config?: SWRConfiguration) => {
+  const {
+    data, error, mutate, isLoading
+  } = useSWR(
+    ['invite-user', siteId, token],
+    () => addMemberToSite(siteId, token).then((res) => res.data),
+    config
+  )
+
+  return {
+    data,
+    isLoading,
+    error,
+    mutate
   }
 }
