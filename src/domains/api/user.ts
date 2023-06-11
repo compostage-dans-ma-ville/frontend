@@ -1,8 +1,11 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import axios from 'axios'
 
+import { Paginated, PaginationQueryParams } from './helpers'
 import { getOrganization } from './organization'
-import { AuthenticatedUser, EditUser, User } from '../schemas'
+import {
+  AuthenticatedUser, EditUser, User, UserSite
+} from '../schemas'
 import { OrganizationRole, SmallOrganization } from '../schemas/organization'
 
 export const getMe = () => {
@@ -38,4 +41,8 @@ export const getMeOrganizations = (user: AuthenticatedUser) => {
 
 export const getUserOrganizations = (userId: string | number) => {
   return axios.get<{role: OrganizationRole, organization: SmallOrganization}[]>(`/users/${userId}/organizations`)
+}
+
+export const getUserSites = (userId: string | number, params?: PaginationQueryParams) => {
+  return axios.get<Paginated<UserSite>>(`/users/${userId}/sites`, { params })
 }

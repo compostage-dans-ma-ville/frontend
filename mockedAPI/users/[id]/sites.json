@@ -1,0 +1,47 @@
+{
+  "data": [
+    {
+      "role": "ADMIN",
+      "site": {
+        "id": 42,
+        "name": "Site 42",
+        "isPublic": true,
+        "address": {
+          "houseNumber": "3",
+          "streetName": "[#faker:address:streetName]",
+          "zipCode": 57000,
+          "city": "Metz",
+          "latitude": 49.12092285844665,
+          "longitude": 6.1681912402374435
+        }
+      }
+    },
+    {
+      "role": "MEMBER",
+      "site": {
+        "id": 43,
+        "name": "Site 43",
+        "isPublic": false,
+        "address": {
+          "houseNumber": "3",
+          "streetName": "[#faker:address:streetName]",
+          "zipCode": 57000,
+          "city": "Metz",
+          "latitude": 49.12092285844665,
+          "longitude": 6.1681912402374435
+        }
+      }
+    }
+  ],
+  "pagination": {
+    "pageNumber": 1,
+    "pageSize": 3,
+    "totalCont": 20
+  },
+  "links": {
+    "prev": "",
+    "last": "",
+    "next": "",
+    "first": ""
+  }
+}

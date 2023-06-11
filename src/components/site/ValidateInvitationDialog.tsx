@@ -42,7 +42,7 @@ const ValidateInvitationDialog: React.FC<ValidateInvitationDialogProps> = ({
   return (
     <Dialog
       {...props}
-      maxWidth='xl'
+      maxWidth='md'
       fullWidth={true}
       open={open}
       onClose={close}
