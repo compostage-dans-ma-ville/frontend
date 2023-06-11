@@ -52,7 +52,7 @@
     "delete_site": "Supprimer ce site",
     "member_deletion": "Suppression d'un membre",
     "delete_member": "Supprimer ce membre",
-    "member_deletion_description": "Vous êtes sur le point de supprimer l'utilisateur \"{{name}}\". Cette action n'est pas réversible.",
+    "member_deletion_description": "Vous êtes sur le point de supprimer l'utilisateur \"{{name}}\" du site \"{{siteName}}\".",
     "what_to_compost": "Quels déchets composter?",
     "without_hesitation": "Sans hésitation",
     "with_moderation": "Avec modération",

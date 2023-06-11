@@ -137,7 +137,7 @@ const TeamList: React.FC<TeamListProps> = ({ site }) => {
 
                 <MenuItem onClick={(): void => confirm(
                   t('pages:site.member_deletion'),
-                  t('pages:site.member_deletion_description', { name: getUserFullName(member) }),
+                  t('pages:site.member_deletion_description', { name: getUserFullName(member), siteName: site.name }),
                   () => { onMemberDelete(member.id) },
                   {
                     confirmText: t('pages:site.delete_member'),
