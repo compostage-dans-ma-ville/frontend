@@ -59,7 +59,7 @@ const ScheduleList: React.FC<ScheduleListProps> = ({ schedules }) => {
 
         <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
           <Box>
-            <Typography variant='h6' component="span" color={isOpen ? 'success.main' : 'error.main'} fontWeight="bold">{t(isOpen ? 'common:open' : 'common:closed')}</Typography>
+            <Typography variant='h5' component="span" color={isOpen ? 'success.main' : 'error.main'} fontWeight="bold">{t(isOpen ? 'common:open' : 'common:closed')}</Typography>
             <Typography component="span">
               {(currentOpenedSlot || nextOpenedSlot) && ' • '}
               {

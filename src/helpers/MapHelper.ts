@@ -1,6 +1,9 @@
-import { Map } from 'leaflet'
+import { LatLngTuple, Map } from 'leaflet'
 
 import { ApiAddress } from '@/domains/schemas'
+
+export const DEFAULT_ZOOM = 7
+export const DEFAULT_CENTER: LatLngTuple = [47.088465592015716, 2.3898765708647445]
 
 export const getAddressPlaceId = (address: Pick<ApiAddress, 'city' | 'postcode'>): string => {
   return encodeURI(`${address.city}-${address.postcode}`.toLocaleLowerCase().replace(/ /g, '-'))

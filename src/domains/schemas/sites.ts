@@ -16,6 +16,7 @@ export type Site = {
   id: number
   name: string
   description?: string
+  website?: string
   images: string[]
   address: Address
   schedules?: Schedule[] // array of 7 SiteSchedule for each day of week
@@ -79,6 +80,7 @@ export const siteCreationSchema: yup.SchemaOf<Omit<Site, 'id' | 'images' | 'orga
   ...nameSchema,
   description: descriptionSchema,
   address: yup.object().shape({ ...addressSchema }).defined(),
+  website: yup.string().url('errors:website').optional(),
   schedules: yup.array().of(scheduleSchema).optional(),
   isPublic: yup.boolean().default(true),
   launchDate: yup.date().typeError('errors:date').optional(),
@@ -99,6 +101,10 @@ export const addMemberToSiteSchema = yup.object().shape({
   ...emailSchema,
   role: yup.mixed<SiteRole>().oneOf(Object.values(SiteRole), 'testesr').required('errors:required_field').default(SiteRole.MEMBER)
 })
+export const sendInvitationSchema = yup.object().shape({
+  description: descriptionSchema.required('errors:required_field').min(30, 'errors:min30')
+})
 
 export type CreateSiteMember = RemoveIndex<yup.InferType<typeof addMemberToSiteSchema>>
 export type CreateSite = RemoveIndex<yup.InferType<typeof siteCreationSchema>>
+export type SendInvitation = RemoveIndex<yup.InferType<typeof sendInvitationSchema>>

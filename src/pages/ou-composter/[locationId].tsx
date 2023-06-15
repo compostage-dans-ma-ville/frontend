@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import AddLocationRoundedIcon from '@mui/icons-material/AddLocationRounded'
 import OpenInNewRoundedIcon from '@mui/icons-material/OpenInNewRounded'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
@@ -8,6 +9,8 @@ import CardContent from '@mui/material/CardContent'
 import Container from '@mui/material/Container'
 import Drawer from '@mui/material/Drawer'
 import Grid from '@mui/material/Grid'
+import List from '@mui/material/List'
+import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
 
 import { LatLngExpression } from 'leaflet'
@@ -18,14 +21,17 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import MainLayout from '@/components/layouts/MainLayout'
+import EmbedMapLink from '@/components/map/EmbedMapLink'
 import PageTitle from '@/components/PageTitle'
 import SiteInfo from '@/components/site/SiteInfo'
+import SiteListItem from '@/components/site/SiteListItem'
 import { getSite, getSites } from '@/domains/api'
 import { getAddressFromMunicipality, getToNormalizedAddress } from '@/domains/api/addressApi'
 import { useIsMobile } from '@/domains/hooks'
 import { Routes } from '@/domains/Routes'
 import { ApiAddress, Site, SmallSite } from '@/domains/schemas'
 import { getDefaultRadiusForAddress, getZoomLevelFromRadius } from '@/helpers/MapHelper'
+import { titleFont } from '@/styles/fonts'
 
 const SitesMapContainer = dynamic(
   () => import('@/components/site/map/SitesMap/SitesMapContainer'),
@@ -86,31 +92,67 @@ const Page: NextPage<PageProps> = ({
   const mapCenter: LatLngExpression = center || [address.lat, address.lon]
   const zoom = (radius && getZoomLevelFromRadius(radius))
     || getZoomLevelFromRadius(getDefaultRadiusForAddress(address))
-  const [sitesOnMap, setSitesOnMap] = React.useState<SmallSite[]>(sites)
   const [selectedSite, setSelectedSite] = React.useState<Site | null>(null)
 
   const getSiteInfos = (siteId: number): void => {
     getSite(siteId).then(({ data }) => setSelectedSite(data))
   }
 
+  const publicSites = React.useMemo(() => {
+    return sites.filter(({ isPublic }) => isPublic)
+  }, [sites])
+
+  const noSites = sites.length <= 0
+
   return (
     <MainLayout>
       <PageTitle title={[address.name, t('pages:ouComposter.title')]} />
 
       <Container maxWidth="md">
-        <Typography component="h1" variant="h5">
+        <Typography variant="h1">
           {t('pages:ouComposter.where')}{' '}{address.name}?
+        </Typography>
+
+        {noSites && (
+          <Grid my={4} container justifyContent="center">
+            <Typography mb={2} fontWeight="bold">
+              {t('pages:ouComposter.no_sites', { city: address.city })}
+            </Typography>
+
+            <Button
+              variant='contained'
+              size='large'
+              LinkComponent={Link}
+              href={Routes.sitesNew}
+              startIcon={<AddLocationRoundedIcon />}
+            >
+              {t('pages:home.refer_site')}
+            </Button>
+          </Grid>
+        )}
+
+        <Typography mt={2}>
+          {noSites ? t('pages:ouComposter.help_us') : (
+            <>
+              {t('pages:ouComposter.sites', { city: address.city, count: sites.length })}
+              {t('pages:ouComposter.public_sites', { count: publicSites.length })}
+              {' '}{t('pages:ouComposter.check_map')}
+            </>
+          )}
+
         </Typography>
 
         <Box mt={2}>
           <SitesMapContainer
             center={mapCenter}
             zoom={zoom}
-            sites={sitesOnMap}
             selectedSite={selectedSite as unknown as SmallSite}
-            onSitesChange={setSitesOnMap}
             onSiteClick={({ id }): void => getSiteInfos(id)}
           />
+
+          <Grid container justifyContent="flex-end" mt={1}>
+            <EmbedMapLink />
+          </Grid>
         </Box>
 
         {(selectedSite && !isMobile) && (
@@ -133,6 +175,25 @@ const Page: NextPage<PageProps> = ({
               <SiteInfo site={selectedSite}/>
             </CardContent>
           </Card>
+        )}
+
+        {!noSites && (
+          <>
+            <Typography mt={4} mb={2} variant='h2' fontFamily={titleFont.style.fontFamily}>
+              {t('pages:ouComposter.sites_list')}:
+            </Typography>
+
+            <Paper>
+              <List>
+                {sites?.map((site) => (
+                  <SiteListItem
+                    key={site.id}
+                    site={site}
+                  />
+                ))}
+              </List>
+            </Paper>
+          </>
         )}
       </Container>
 

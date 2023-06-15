@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography'
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { useTranslation } from 'next-i18next'
 
 const StyledBox = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
@@ -38,6 +39,10 @@ const StyledBox = styled(Box)(({ theme }) => ({
 }))
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation([
+    'common'
+  ])
+
   const content = {
     brand: { image: 'https://webstockreview.net/images/google-clipart-emblem-3.png' },
     copy: '© 2023 compostage All rights reserved.',
@@ -51,7 +56,7 @@ const Footer: React.FC = () => {
     <Box component="footer">
       <Container maxWidth="lg">
         <StyledBox py={6} display="flex" flexWrap="wrap" alignItems="center">
-          <Image src="/images/icon-with-text.svg" alt='les 3 bacs' width={130} height={60} />
+          <Image src="/images/icon-with-text.svg" alt={t('common:app_name')} width={130} height={60} />
 
           <Box component="nav">
             <Link href="#" color="textPrimary">{content.link1}</Link>
@@ -59,7 +64,7 @@ const Footer: React.FC = () => {
             <Link href="#" color="textPrimary">{content.link3}</Link>
             <Link href="#" color="textPrimary">{content.link4}</Link>
           </Box>
-          <Typography color="textSecondary" component="p" variant="caption" gutterBottom={false}>{content.copy}</Typography>
+          <Typography color="textSecondary" variant="caption" gutterBottom={false}>{content.copy}</Typography>
         </StyledBox>
       </Container>
     </Box>

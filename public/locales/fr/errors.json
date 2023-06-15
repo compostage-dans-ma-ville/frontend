@@ -3,6 +3,7 @@
   "min_length": "Ce champs doit avoir minimum {{min}} charactères",
   "max_length": "Ce champs doit avoir maximum {{max}} charactères",
   "min3": "Ce champs doit avoir minimum 3 charactères",
+  "min30": "Ce champs doit avoir minimum 30 charactères",
   "number": "Veuillez entrer un nombre valide",
   "positive_number": "Veuillez entrer un nombre positif",
   "valid_number": "Veuillez entrer un nombre valide",
@@ -20,5 +21,9 @@
     "failed": "Echec de la géolocalisation de votre appareil!",
     "need_rights": "Votre accord est nécessaire pour accéder à la localisation!"
   },
-  "send_reset_password": "Une erreur s'est produite lors de l'envoi de l'email. Veuillez vérifier que l'email est valide et connu de nos services."
+  "site": {
+    "invitation": "Vous avez déjà envoyé une demande d'invitation à ce site. Merci de patienter 1 semaine pour envoyer une nouvelle demande."
+  },
+  "send_reset_password": "Une erreur s'est produite lors de l'envoi de l'email. Veuillez vérifier que l'email est valide et connu de nos services.",
+  "website": "Veuillez entrer une url valide"
 }

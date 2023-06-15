@@ -1,4 +1,5 @@
 {
+  "app_name": "les 3 bacs",
   "add": "Ajouter",
   "back_home": "Aller à la page d'accueil",
   "cancel": "Annuler",
@@ -79,5 +80,10 @@
   "see_actions": "Voir les actions",
   "loading": "Chargement",
   "saved_modification": "Modifications enregistrés avec succès!",
-  "display_more": "Afficher plus"
+  "display_more": "Afficher plus",
+  "integration": "Intégration",
+  "parameter": "Paramètre",
+  "the_map": "La carte",
+  "join": "Rejoindre",
+  "website": "Site web"
 }

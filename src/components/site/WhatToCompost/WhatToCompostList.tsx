@@ -13,7 +13,7 @@ const WhatToCompostList: React.FC<WhatToCompostListProps> = ({ items }) => {
       {Object.entries(items).map(([title, entries]) => (
         <React.Fragment key={title}>
           <ListItem sx={{ px: 0 }}>
-            <Typography fontWeight="bold" component="h4" variant='body1'>{title}</Typography>
+            <Typography fontWeight="bold" variant='h4'>{title}</Typography>
           </ListItem>
           {entries && (
             <List sx={{ p: 0, pl: 2, listStyleType: 'disc' }}>

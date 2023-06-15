@@ -64,7 +64,7 @@ const SitePage: NextPage = () => {
           <Card>
             <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 
-              <Typography variant='h4' component='h1'>{t('pages:site.site_creation')}</Typography>
+              <Typography variant='h1'>{t('pages:site.site_creation')}</Typography>
               <EditSiteForm onSubmit={onSubmit} isLoading={isMutating} />
             </CardContent>
           </Card>

@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import { Paginated, PaginationQueryParams } from './helpers'
 import {
-  CreateSite, CreateSiteMember, Site, SiteMember, SmallSite
+  CreateSite, CreateSiteMember, SendInvitation, Site, SiteMember, SmallSite
 } from '../schemas'
 
 export interface GetSitesParams {
@@ -50,4 +50,8 @@ export const addMemberToSite = (siteId: number, token: string) => {
 
 export const updateSiteMember = (siteId: number, memberId: number, data: Pick<SiteMember, 'role'>) => {
   return axios.patch<Site>(`/sites/${siteId}/members/${memberId}`, data)
+}
+
+export const sendSiteInvitation = (siteId: number, data: SendInvitation) => {
+  return axios.put<void>(`/sites/${siteId}/members/invitations`, data)
 }

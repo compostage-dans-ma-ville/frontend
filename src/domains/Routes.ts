@@ -14,4 +14,7 @@ export class Routes {
   }
   static organization = (organizationId: string | number): string => `${Routes.organizations}/${organizationId}`
   static user = (userId: string | number): string => `${Routes.users}/${userId}`
+  static map = '/map'
+  static embeddedMap = '/map/embed'
+  static embeddedMapIntegration = '/map/integration'
 }

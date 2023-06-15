@@ -42,6 +42,7 @@
     "reset_map": "Réinitialiser l'emplacement",
     "position_is_distant": "L'emplacement indiquée est éloignée de l'adresse saisie",
     "update_localisation": "Modifier l'adresse",
+    "join": "Rejoindre le site \"{{name}}\"",
     "has_schedules": "Ce site possède des heures d'ouverture définies.",
     "lauch_date": "Date de mise en service",
     "link_organization_to_site": "Lier une organisation à ce site de compostage",
@@ -70,6 +71,8 @@
     "add_member": "Inviter un membre",
     "add_member_description": "Vous pouvez inviter un membre à ce site au moyen de son mail de contact. Si l'utilisateur n'existe pas encore, il lui sera d'abord demandé de créer un compte. L'utilisateur devra accepter l'invitation pour être listé comme membre.",
     "add_member_success": "Invitation envoyé avec succès!",
+    "send_invitation_description": "Pour faire une demande d'invitation, il est important que vous fassiez partie de l'équipe qui s'occupe du site de compostage. Veuillez vous présenter aux administrateurs pour qu'ils puissent vous reconnaître facilement et accepter votre demande avec plaisir.",
+    "send_invitation_success": "Demande d'invitation envoyé avec succès!",
     "go_to_site": "Accéder au site",
     "invitation": {
       "success": "Vous avez été ajouté au site \"{{siteName}}\".",
@@ -83,10 +86,39 @@
   },
   "ouComposter": {
     "title": "Où composter",
-    "where": "Où composter à"
+    "where": "Où composter à",
+    "sites": "La ville de {{city}} dispose actuellement de {{count}} site de compostage",
+    "sites_other": "La ville de {{city}} dispose actuellement de {{count}} sites de compostage",
+    "public_sites_one": ", dont 1 est public.",
+    "public_sites_zero": " qui sont tous privés.",
+    "public_sites_other": ", dont {{count}} sont publics.",
+    "check_map": "La carte interactive ci-dessous permet d'explorer les différents sites.",
+    "sites_list": "Liste des sites de compostage",
+    "no_sites": "Il ne semble pas y avoir de sites de compostage référencés à {{city}} pour le moment.",
+    "help_us": "Aidez les autres utilisateurs à trouver un site de compostage près de chez eux en répertoriant les sites manquants."
   },
   "organization": {
     "add_sites": "Associer des sites de compostage à cette organisation",
     "add_member": "Ajouter un membre"
+  },
+  "integration": {
+    "title": "Intégration de la carte interactive",
+    "description": "Nous mettons à disposition une carte interactive des différents sites de compostage référencés, que vous pouvez intégrer directement sur votre site web. Cela est possible à l'aide d'un simple code HTML utilisant une iframe qu'il vous suffit de copier-coller dans le code de votre site:",
+    "_description": "Il est très simple d'intégrer la carte interactive des sites de compostage sur votre site web au moyen d'une iframe.",
+    "map_description": "Ce code affichera la carte interactive centrée sur la ville de Metz avec un rayon de 1000 mètres. Il vous est bien évidemment possible de modifier l'emplacement de la carte ainsi que son niveau de zoom. Voir la section <a href='#iframeParams' style='color: blue'>Paramètres de l'iframe</a> pour en savoir plus.",
+    "url_description": "L'URL permettant d'afficher la carte interactive se compose de 3 paramètres obligatoires <code>latitude</code>, <code>longitude</code> et <code>radius</code>:",
+    "see_section": "Voir la section",
+    "iframe_parameters": {
+      "title": "Paramètres de l'iframe",
+      "src": "Il s'agit de l'url vers la carte interactive incluant les paramètres le localisation. Voir la section <a href='#urlParams' style='color: blue'>Paramètres de l'URL</a> pour en savoir plus.",
+      "height": "La hauteur en pixel de l'iframe",
+      "width": "La largeur en pixel de l'iframe"
+    },
+    "url_parameters": {
+      "title": "Paramètres de l'URL",
+      "latitude": "La latitude du centre de la carte au format décimal (Example: 49.235714817131054).",
+      "longitude": "La longitude du centre de la carte au format décimal (Example: 6.985372490936282).",
+      "radius": "La distance en mètres à partir du centre de la carte à afficher."
+    }
   }
 }

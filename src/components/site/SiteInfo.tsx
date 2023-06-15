@@ -1,8 +1,11 @@
 import React from 'react'
 
 import Diversity2RoundedIcon from '@mui/icons-material/Diversity2Rounded'
+import InsertLinkRoundedIcon from '@mui/icons-material/InsertLinkRounded'
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded'
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid'
 import List from '@mui/material/List'
@@ -10,6 +13,7 @@ import ListItem from '@mui/material/ListItem'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
 import Typography from '@mui/material/Typography'
 
+import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 
 import { Site } from '@/domains/schemas'
@@ -21,9 +25,10 @@ import OrganizationListItemContent from '../organization/OrganizationListItemCon
 
 export interface SiteInfoProps {
   site: Site
+  allowActions?: boolean
 }
 
-const SiteInfo: React.FC<SiteInfoProps> = ({ site }) => {
+const SiteInfo: React.FC<SiteInfoProps> = ({ site, allowActions = true }) => {
   const { t } = useTranslation([
     'common',
     'pages'
@@ -31,7 +36,7 @@ const SiteInfo: React.FC<SiteInfoProps> = ({ site }) => {
 
   return (
     <>
-      <Typography variant="h4" component="h1" >
+      <Typography variant="h4" component="h1">
         {site.name}
       </Typography>
 
@@ -57,12 +62,47 @@ const SiteInfo: React.FC<SiteInfoProps> = ({ site }) => {
             {site.address.zipCode}&nbsp;
             {site.address.city}
           </Typography>
-
         </ListItem>
+
+        {site.website && (
+          <>
+            <Divider variant="inset" component="li" />
+            <ListItem alignItems="center">
+              <ListItemAvatar>
+                <InsertLinkRoundedIcon fontSize="large" color="primary" />
+              </ListItemAvatar>
+
+              <Button LinkComponent={Link} href={site.website}>
+                <Typography fontWeight="bold" noWrap>
+                  {site.website}
+                </Typography>
+              </Button>
+            </ListItem>
+          </>
+        )}
+
         {site.schedules && (
           <>
             <Divider variant="inset" component="li" />
             <ScheduleList schedules={site.schedules}/>
+          </>
+        )}
+
+        {site.accessConditions && (
+          <>
+            <Divider variant="inset" component="li" />
+            <ListItem alignItems="center">
+              <ListItemAvatar>
+                <LockOutlinedIcon fontSize="large" color="primary" />
+              </ListItemAvatar>
+
+              <Box>
+                <Typography variant='body1' component="p" fontWeight="bold">{t('common:access_condition')}</Typography>
+                <Typography variant='body2' sx={{ whiteSpace: 'pre-wrap' }}>
+                  {site.accessConditions}
+                </Typography>
+              </Box>
+            </ListItem>
           </>
         )}
 
@@ -90,7 +130,7 @@ const SiteInfo: React.FC<SiteInfoProps> = ({ site }) => {
         )}
 
         <Divider variant="inset" component="li" />
-        <TeamList site={site} />
+        <TeamList site={site} allowActions={allowActions}/>
       </List>
     </>
   )

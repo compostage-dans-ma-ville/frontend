@@ -11,6 +11,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import MainLayout from '@/components/layouts/MainLayout'
 import PageTitle from '@/components/PageTitle'
+import { titleFont } from '@/styles/fonts'
 
 export const getStaticProps: GetStaticProps = async () => ({
   props: {
@@ -33,14 +34,13 @@ const Custom404: React.FC = () => {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
+        alignItems: 'center',
         textAlign: 'center',
         my: 10
       }}>
-        <h1>404</h1>
-        <Typography sx={{ mb: 2 }} >{t('pages:404.not_found')}</Typography>
-        <Link href="/">
-          <Button variant="contained">{t('common:back_home')}</Button>
-        </Link>
+        <Typography variant="h1">404</Typography>
+        <Typography sx={{ mb: 2 }} fontSize="1.5rem" fontFamily={titleFont.style.fontFamily}>{t('pages:404.not_found')}</Typography>
+        <Button LinkComponent={Link} href='/' variant="contained">{t('common:back_home')}</Button>
       </Box>
     </MainLayout>
   )

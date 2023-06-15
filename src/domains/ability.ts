@@ -10,7 +10,7 @@ import {
 import { AuthenticatedUser, SiteRole, UserRole } from './schemas'
 import { OrganizationRole } from './schemas/organization'
 
-export type AbilityAction = 'create' | 'read' | 'update' | 'delete' | 'manage'
+export type AbilityAction = 'create' | 'read' | 'update' | 'delete' | 'join' | 'manage'
 export type AbilitySubject = 'site' | 'user' |'all' | 'organization' | AuthenticatedUser;
 
 export const CRUD = ['create', 'read', 'update', 'delete'] as AbilityAction[]
@@ -27,11 +27,11 @@ export const getDefaultAbilityBuilder = (): AbilityBuilder<AppAbility> => {
 export const getUserRules = (
   user: AuthenticatedUser | null
 ): Rules => {
-  const { can, rules } = getDefaultAbilityBuilder()
+  const { can, cannot, rules } = getDefaultAbilityBuilder()
 
   if (user === null) return rules
 
-  can(['read', 'create'], 'site')
+  can(['read', 'create', 'join'], 'site')
 
   can(CRUD, 'user', { id: user.id })
 
@@ -49,6 +49,8 @@ export const getUserRules = (
     if (role === SiteRole.ADMIN || role === SiteRole.REFEREE) {
       can('manage', 'site', { id: siteId })
     }
+
+    cannot('join', 'site', { id: siteId })
   })
 
   return rules

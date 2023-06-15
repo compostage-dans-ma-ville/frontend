@@ -19,6 +19,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import MainLayout from '@/components/layouts/MainLayout'
 import PageTitle from '@/components/PageTitle'
 import { activateEmailFromToken } from '@/domains/api'
+import { titleFont } from '@/styles/fonts'
 
 export const getServerSideProps: GetServerSideProps = async () => ({
   props: {
@@ -61,9 +62,8 @@ const ActivateToken: React.FC = () => {
             <>
               <LinearProgress />
               <Typography
-                variant='h5'
+                variant='h2'
                 color="primary.main"
-                component="h2"
                 sx={{
                   margin: 2,
                   display: 'flex',
@@ -101,8 +101,8 @@ const ActivateToken: React.FC = () => {
               <Typography
                 sx={{ mt: 2 }}
                 textAlign='center'
-                component="h2"
-                variant='h5'
+                variant='h2'
+                fontFamily={titleFont.style.fontFamily}
                 fontWeight="bold"
               >
                 {t(emailValidated ? 'authentication:email_checked' : 'authentication:email_not_checked')}

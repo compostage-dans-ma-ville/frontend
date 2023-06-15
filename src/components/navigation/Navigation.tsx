@@ -3,53 +3,46 @@ import * as React from 'react'
 import Box from '@mui/material/Box'
 
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+
+import { Routes } from '@/domains/Routes'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const navigations = [
-  {
-    label: 'Home',
-    path: '/' // '/',
-  },
-  {
-    label: 'Courses',
-    path: 'popular-course' // '/popular-course',
-  },
-  {
-    label: 'Testimonial',
-    path: 'testimonial' // '/testimonial',
-  },
-  {
-    label: 'Mentor',
-    path: 'mentors' // '/mentors',
-  }
-]
 
 const Navigation: React.FC = () => {
+  const { t } = useTranslation([
+    'common'
+  ])
+  const router = useRouter()
+
+  const navigations = [
+    {
+      label: t('common:the_map'),
+      path: Routes.map
+    }
+  ]
+
   return (
-    <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' } }}>
-      {[].map(({ path: destination, label }) => (
+    <Box sx={{ display: 'flex', justifyContent: 'flex-end', flexDirection: { xs: 'column', md: 'row' } }}>
+      {navigations.map(({ path, label }) => (
         <Box
           component={Link}
-          key={destination}
-          href={destination}
+          key={path}
+          href={path}
           sx={{
             position: 'relative',
-            color: 'text.disabled',
             cursor: 'pointer',
-            fontWeight: 600,
             display: 'inline-flex',
             alignItems: 'center',
             justifyContent: 'center',
             px: { xs: 0, md: 3 },
             mb: { xs: 3, md: 0 },
-            fontSize: { xs: '1.2rem', md: 'inherit' },
-            ...(destination === '/' && {
-              color: 'primary.main'
+            fontSize: { xs: '1.4rem', md: '1.4rem' },
+            ...(router.pathname.startsWith(path) && {
+              color: 'primary.main',
+              fontWeight: 'bold'
             }),
-
-            '& > div': { display: 'none' },
-
-            '&.current>div': { display: 'block' },
 
             '&:hover': {
               color: 'primary.main',
@@ -59,14 +52,6 @@ const Navigation: React.FC = () => {
             }
           }}
         >
-          <Box
-            sx={{
-              position: 'absolute',
-              top: 12,
-              transform: 'rotate(3deg)',
-              '& img': { width: 44, height: 'auto' }
-            }}
-          />
           {label}
         </Box>
       ))}

@@ -8,11 +8,11 @@ export interface OrganizationCounterProps {
 }
 const OrganizationCounter: React.FC<OrganizationCounterProps> = ({ count, label }) => {
   return (
-    <Typography component="p">
-      <Typography color="primary.main" variant='h6' component="span" fontWeight="bold" textAlign="center">
+    <Typography>
+      <Typography color="primary.main" component="span" fontWeight="bold" textAlign="center">
         {count}{' '}
       </Typography>
-      <Typography variant='h6' component="span" textAlign="center">
+      <Typography component="span" textAlign="center">
         {label}
       </Typography>
     </Typography>

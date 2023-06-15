@@ -3,6 +3,7 @@
   "name": "Site numéro [id]",
   "description": "[#faker:lorem:paragraph]",
   "avatar": "https://avatars.githubusercontent.com/u/31794680?v=4",
+  "website": "https://avatars.githubusercontent.com/u/31794680?v=4",
   "images": [
     "https://tse3.mm.bing.net/th?id=OIP.IcWsaHc_L9nKtZHRqJPYmgHaFj&pid=Api",
     "https://tse1.mm.bing.net/th?id=OIP.6aeVlnZfyrkJgR5H8DY2MAHaFj&pid=Api",
@@ -17,7 +18,7 @@
     "longitude": 6.1749144
   },
   "isPublic": false,
-  "accessConditions": "[#faker:lorem:paragraph]",
+  "accessConditions": "[#faker:lorem:paragraphs]",
   "schedules": [
     null,
     [],
@@ -41,18 +42,5 @@
     ],
     null
   ],
-  "organization": {
-    "id": "n:[id]",
-    "name": "[#faker:lorem:words]",
-    "links": [],
-    "members": [
-      {
-        "role": "MEMBER",
-        "userId": "[#faker:datatype:number]"
-      }
-    ],
-    "createdAt": "[#faker:date:past]",
-    "updatedAt": "[#faker:date:recent]"
-  },
   "householdsAmount": 21
 }

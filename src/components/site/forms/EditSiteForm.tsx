@@ -97,6 +97,16 @@ const EditSiteForm: React.FC<EditSiteFormProps> = ({
             }
           />
         </Grid>
+
+        <Grid item xs={12}>
+          <TextField
+            {...register('website')}
+            fullWidth
+            error={!!errors.website}
+            label={t('common:website')}
+            helperText={errors?.website?.message && t(errors.website.message as string)}
+          />
+        </Grid>
       </Grid>
 
       <FormSection title={t('common:location')} Icon={LocationOnRoundedIcon}>
