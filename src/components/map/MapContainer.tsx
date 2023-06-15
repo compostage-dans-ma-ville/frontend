@@ -4,7 +4,7 @@ import AddRoundedIcon from '@mui/icons-material/AddRounded'
 import RemoveRoundedIcon from '@mui/icons-material/RemoveRounded'
 import Button from '@mui/material/Button'
 import ButtonGroup from '@mui/material/ButtonGroup'
-import Paper from '@mui/material/Paper'
+import Paper, { PaperProps as PaperPropsType } from '@mui/material/Paper'
 
 import { Map } from 'leaflet'
 import { useTranslation } from 'next-i18next'
@@ -21,12 +21,14 @@ const MAX_ZOOM = 19
 
 export interface MapContainerProps extends LeafletMapContainerProps {
   height: number | string
+  PaperProps?: PaperPropsType
 }
 
 // @ts-ignore
 const _MapContainer: React.ForwardRefRenderFunction<Map, MapContainerProps> = ({
   height,
   children,
+  PaperProps,
   ...restProps
 }, ref: React.MutableRefObject<Map> | null) => {
   const { t } = useTranslation([
@@ -34,7 +36,10 @@ const _MapContainer: React.ForwardRefRenderFunction<Map, MapContainerProps> = ({
   ])
 
   return (
-    <Paper sx={{ overflow: 'hidden', position: 'relative' }}>
+    <Paper
+      {...PaperProps}
+      sx={{ overflow: 'hidden', position: 'relative', ...PaperProps?.sx }}
+    >
       <ButtonGroup
         orientation="vertical"
         sx={{
@@ -72,7 +77,7 @@ const _MapContainer: React.ForwardRefRenderFunction<Map, MapContainerProps> = ({
         <TileLayer
           maxNativeZoom={MAX_ZOOM}
           maxZoom={MAX_ZOOM}
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          attribution='<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {children}

@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
             <Link href="#" color="textPrimary">{content.link3}</Link>
             <Link href="#" color="textPrimary">{content.link4}</Link>
           </Box>
-          <Typography color="textSecondary" component="p" variant="caption" gutterBottom={false}>{content.copy}</Typography>
+          <Typography color="textSecondary" variant="caption" gutterBottom={false}>{content.copy}</Typography>
         </StyledBox>
       </Container>
     </Box>

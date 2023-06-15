@@ -89,7 +89,7 @@ const Login: React.FC = () => {
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography variant="h1">
             {t('authentication:login_title')}
           </Typography>
           <Box component="form" onSubmit={handleSubmit(login)} noValidate sx={{ mt: 1 }}>

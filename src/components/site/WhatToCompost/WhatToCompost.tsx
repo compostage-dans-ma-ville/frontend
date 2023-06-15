@@ -32,14 +32,14 @@ const WhatToCompost: React.FC<WhatToCompostProps> = ({ ...props }) => {
 
   return (
     <Box mt={2} mx={2} {...props}>
-      <Typography variant='h5' component="h2" color="primary.main" display="flex" alignItems="center">
+      <Typography variant="h2" color="primary.main" display="flex" alignItems="center">
         {t('pages:site.what_to_compost')}
       </Typography>
 
       <Box mt={2}>
         <Accordion sx={{ borderColor: 'success.main' }}>
           <AccordionSummary expandIcon={<ExpandMoreRoundedIcon />}>
-            <Typography variant='h6' component="h3" display="flex" alignItems="center">
+            <Typography variant='h3' display="flex" alignItems="center">
               <ThumbUpAltRoundedIcon sx={{ color: 'success.main' }} />
               <Typography component="span" ml={1} fontWeight="bold">
                 {t('pages:site.without_hesitation')}
@@ -53,7 +53,7 @@ const WhatToCompost: React.FC<WhatToCompostProps> = ({ ...props }) => {
 
         <Accordion sx={{ borderColor: 'warning.main' }}>
           <AccordionSummary expandIcon={<ExpandMoreRoundedIcon />}>
-            <Typography variant='h6' component="h3" display="flex" alignItems="center">
+            <Typography variant='h3' display="flex" alignItems="center">
               <ThumbsUpDownRoundedIcon sx={{ color: 'warning.main' }} />
               <Typography component="span" ml={1} fontWeight="bold">
                 {t('pages:site.with_moderation')}
@@ -68,7 +68,7 @@ const WhatToCompost: React.FC<WhatToCompostProps> = ({ ...props }) => {
 
         <Accordion sx={{ borderColor: 'error.main' }}>
           <AccordionSummary expandIcon={<ExpandMoreRoundedIcon />}>
-            <Typography variant='h6' component="h3" display="flex" alignItems="center">
+            <Typography variant='h3' display="flex" alignItems="center">
               <ThumbDownAltRoundedIcon sx={{ color: 'error.main' }} />
               <Typography component="span" ml={1} fontWeight="bold">
                 {t('pages:site.to_avoid')}

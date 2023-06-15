@@ -3,14 +3,7 @@ import { frFR as coreFrFR } from '@mui/material/locale'
 import { createTheme } from '@mui/material/styles'
 import { frFR as datePickerLocale } from '@mui/x-date-pickers/locales'
 
-import { Anton } from '@next/font/google'
-
-// TODO: add nice font to site
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const font = Anton({
-  subsets: ['latin'],
-  weight: '400'
-})
+import { titleFont } from './fonts'
 
 export const customTheme = createTheme(
   {
@@ -41,8 +34,26 @@ export const customTheme = createTheme(
       borderRadius: 8
     },
     typography: {
+      h1: {
+        fontFamily: titleFont.style.fontFamily,
+        fontSize: '2.5rem'
+      },
+      h2: {
+        fontSize: '2rem'
+      },
+      h3: {
+        fontSize: '1.5rem'
+      },
+      h4: {
+        fontSize: '1.3rem'
+      },
+      h5: {
+        fontSize: '1.2rem'
+      },
+      h6: {
+        fontSize: '1.1rem'
+      },
       fontFamily: [
-        // font.style.fontFamily,
         'Roboto',
         '"Helvetica Neue"',
         'Arial',

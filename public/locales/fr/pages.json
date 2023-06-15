@@ -88,5 +88,25 @@
   "organization": {
     "add_sites": "Associer des sites de compostage à cette organisation",
     "add_member": "Ajouter un membre"
+  },
+  "integration": {
+    "title": "Intégration de la carte interactive",
+    "description": "Nous mettons à disposition une carte interactive des différents sites de compostage référencés, que vous pouvez intégrer directement sur votre site web. Cela est possible à l'aide d'un simple code HTML utilisant une iframe qu'il vous suffit de copier-coller dans le code de votre site:",
+    "_description": "Il est très simple d'intégrer la carte interactive des sites de compostage sur votre site web au moyen d'une iframe.",
+    "map_description": "Ce code affichera la carte interactive centrée sur la ville de Metz avec un rayon de 1000 mètres. Il vous est bien évidemment possible de modifier l'emplacement de la carte ainsi que son niveau de zoom. Voir la section <a href='#iframeParams' style='color: blue'>Paramètres de l'iframe</a> pour en savoir plus.",
+    "url_description": "L'URL permettant d'afficher la carte interactive se compose de 3 paramètres obligatoires <code>latitude</code>, <code>longitude</code> et <code>radius</code>:",
+    "see_section": "Voir la section",
+    "iframe_parameters": {
+      "title": "Paramètres de l'iframe",
+      "src": "Il s'agit de l'url vers la carte interactive incluant les paramètres le localisation. Voir la section <a href='#urlParams' style='color: blue'>Paramètres de l'URL</a> pour en savoir plus.",
+      "height": "La hauteur en pixel de l'iframe",
+      "width": "La largeur en pixel de l'iframe"
+    },
+    "url_parameters": {
+      "title": "Paramètres de l'URL",
+      "latitude": "La latitude du centre de la carte au format décimal (Example: 49.235714817131054).",
+      "longitude": "La longitude du centre de la carte au format décimal (Example: 6.985372490936282).",
+      "radius": "La distance en mètres à partir du centre de la carte à afficher."
+    }
   }
 }

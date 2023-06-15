@@ -88,14 +88,14 @@ const UserProfile: NextPage<UserProfileProps> = ({ user: userProps, edition }) =
                   height: '150px'
                 }} />
 
-                <Typography variant="h4" component="h2" fontWeight="bold" sx={{ mt: 2 }}>
+                <Typography variant="h2" fontWeight="bold" sx={{ mt: 2 }}>
                   {user.firstName} {user.lastName}
                 </Typography>
 
                 {user.description && (
                   <Grid container justifyContent="center" mt={2}>
                     <Grid item xs={12} md={8}>
-                      <Typography variant="body1" component="p" textAlign="center">
+                      <Typography textAlign="center">
                         {user.description}
                       </Typography>
                     </Grid>

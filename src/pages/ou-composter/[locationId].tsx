@@ -98,7 +98,7 @@ const Page: NextPage<PageProps> = ({
       <PageTitle title={[address.name, t('pages:ouComposter.title')]} />
 
       <Container maxWidth="md">
-        <Typography component="h1" variant="h5">
+        <Typography variant="h1">
           {t('pages:ouComposter.where')}{' '}{address.name}?
         </Typography>
 

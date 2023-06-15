@@ -49,7 +49,7 @@ export const ForgotPassword: React.FC = () => {
         <VpnKeyOutlinedIcon />
       </Avatar>
 
-      <Typography component="h1" variant="h5">
+      <Typography variant="h1">
         {t(isEmailSent ? 'authentication:check_email' : 'pages:forgot_password.title')}
       </Typography>
 
