@@ -44,9 +44,8 @@ const CanOrLogin: React.FC<CanProps> = ({ children, ...restProps }) => {
                 <>
                   <LinearProgress />
                   <Typography
-                    variant='h5'
+                    variant='h2'
                     color="primary.main"
-                    component="h2"
                     sx={{
                       margin: 2,
                       display: 'flex',
@@ -63,9 +62,8 @@ const CanOrLogin: React.FC<CanProps> = ({ children, ...restProps }) => {
                 <Grid container margin={2} direction='column' alignItems='center'>
                   <Grid item>
                     <Typography
-                      variant='h5'
+                      variant='h2'
                       color="primary.main"
-                      component="h2"
                       textAlign='center'
                     >
                       {t('common:restricted_to_users')}

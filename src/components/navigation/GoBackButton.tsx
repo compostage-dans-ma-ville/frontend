@@ -18,7 +18,7 @@ const GoBackButton: React.FC<GoBackButtonProps> = ({
 }) => {
   return (
     <Button color='secondary' onClick={onGoBack} startIcon={startIcon}>
-      <Typography {...TypographyProps} component="span" variant='h6' fontWeight="bold">
+      <Typography {...TypographyProps} component="span" variant="h5" fontWeight="bold">
         {label}
       </Typography>
     </Button>

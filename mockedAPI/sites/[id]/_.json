@@ -17,7 +17,7 @@
     "longitude": 6.1749144
   },
   "isPublic": false,
-  "accessConditions": "[#faker:lorem:paragraph]",
+  "accessConditions": "[#faker:lorem:paragraphs]",
   "schedules": [
     null,
     [],

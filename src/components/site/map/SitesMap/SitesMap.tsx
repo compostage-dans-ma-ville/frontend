@@ -131,6 +131,11 @@ const SitesMap: React.FC<SitesMapProps> = ({
     }
   }, [map, onDragend])
 
+  React.useEffect(() => {
+    fetchSites()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <>
       <LoadingButton

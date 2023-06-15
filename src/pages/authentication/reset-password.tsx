@@ -56,7 +56,7 @@ const ResetPassword: React.FC = () => {
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <VpnKeyOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography variant="h1">
             {t('authentication:reset_password')}
           </Typography>
           {token
