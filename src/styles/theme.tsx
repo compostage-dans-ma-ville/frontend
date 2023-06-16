@@ -3,7 +3,7 @@ import { frFR as coreFrFR } from '@mui/material/locale'
 import { createTheme } from '@mui/material/styles'
 import { frFR as datePickerLocale } from '@mui/x-date-pickers/locales'
 
-import { titleFont } from './fonts'
+import { bodyFont, titleFont } from './fonts'
 
 export const customTheme = createTheme(
   {
@@ -54,6 +54,7 @@ export const customTheme = createTheme(
         fontSize: '1.1rem'
       },
       fontFamily: [
+        bodyFont.style.fontFamily,
         'Roboto',
         '"Helvetica Neue"',
         'Arial',
