@@ -119,7 +119,7 @@ const SitesMapWrapper: React.FC = () => {
             </IconButton>
             {selectedSite && (
               <>
-                <SiteInfo site={selectedSite}/>
+                <SiteInfo site={selectedSite} allowActions={false} />
 
                 <Grid mt={2} display="flex" justifyContent="center">
                   <Button

@@ -51,7 +51,10 @@ export const customTheme = createTheme(
         fontSize: '1.2rem'
       },
       h6: {
-        fontSize: '1.1rem'
+        fontSize: '1.2rem'
+      },
+      body1: {
+        fontSize: '1.125rem'
       },
       fontFamily: [
         bodyFont.style.fontFamily,
@@ -132,6 +135,11 @@ export const customTheme = createTheme(
           root: ({ theme }) => theme.unstable_sx({
             backdropFilter: 'blur(3px)'
           })
+        }
+      },
+      MuiDialogTitle: {
+        defaultProps: {
+          fontFamily: titleFont.style.fontFamily
         }
       },
       MuiDivider: {

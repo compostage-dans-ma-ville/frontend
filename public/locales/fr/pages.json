@@ -42,6 +42,7 @@
     "reset_map": "Réinitialiser l'emplacement",
     "position_is_distant": "L'emplacement indiquée est éloignée de l'adresse saisie",
     "update_localisation": "Modifier l'adresse",
+    "join": "Rejoindre le site \"{{name}}\"",
     "has_schedules": "Ce site possède des heures d'ouverture définies.",
     "lauch_date": "Date de mise en service",
     "link_organization_to_site": "Lier une organisation à ce site de compostage",
@@ -70,6 +71,8 @@
     "add_member": "Inviter un membre",
     "add_member_description": "Vous pouvez inviter un membre à ce site au moyen de son mail de contact. Si l'utilisateur n'existe pas encore, il lui sera d'abord demandé de créer un compte. L'utilisateur devra accepter l'invitation pour être listé comme membre.",
     "add_member_success": "Invitation envoyé avec succès!",
+    "send_invitation_description": "Pour faire une demande d'invitation, il est important que vous fassiez partie de l'équipe qui s'occupe du site de compostage. Veuillez vous présenter aux administrateurs pour qu'ils puissent vous reconnaître facilement et accepter votre demande avec plaisir.",
+    "send_invitation_success": "Demande d'invitation envoyé avec succès!",
     "go_to_site": "Accéder au site",
     "invitation": {
       "success": "Vous avez été ajouté au site \"{{siteName}}\".",

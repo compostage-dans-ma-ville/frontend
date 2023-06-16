@@ -22,9 +22,10 @@ import OrganizationListItemContent from '../organization/OrganizationListItemCon
 
 export interface SiteInfoProps {
   site: Site
+  allowActions?: boolean
 }
 
-const SiteInfo: React.FC<SiteInfoProps> = ({ site }) => {
+const SiteInfo: React.FC<SiteInfoProps> = ({ site, allowActions = true }) => {
   const { t } = useTranslation([
     'common',
     'pages'
@@ -77,7 +78,7 @@ const SiteInfo: React.FC<SiteInfoProps> = ({ site }) => {
 
               <Box>
                 <Typography variant='body1' component="p" fontWeight="bold">{t('common:access_condition')}</Typography>
-                <Typography variant='body2' component="p" sx={{ whiteSpace: 'pre-wrap' }}>
+                <Typography variant='body2' sx={{ whiteSpace: 'pre-wrap' }}>
                   {site.accessConditions}
                 </Typography>
               </Box>
@@ -109,7 +110,7 @@ const SiteInfo: React.FC<SiteInfoProps> = ({ site }) => {
         )}
 
         <Divider variant="inset" component="li" />
-        <TeamList site={site} />
+        <TeamList site={site} allowActions={allowActions}/>
       </List>
     </>
   )

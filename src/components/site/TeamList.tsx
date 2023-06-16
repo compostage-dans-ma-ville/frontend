@@ -1,5 +1,6 @@
 import React from 'react'
 
+import AddRoundedIcon from '@mui/icons-material/AddRounded'
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded'
 import EditIcon from '@mui/icons-material/Edit'
 import ExpandLessRoundedIcon from '@mui/icons-material/ExpandLessRounded'
@@ -29,6 +30,7 @@ import { getUserFullName } from '@/helpers/user'
 
 import AddSiteMemberDialog from './AddSiteMemberDialog'
 import EditSiteMemberDialog from './EditSiteMemberDialog'
+import SendInvitationDialog from './SendInvitationDialog'
 import Can, { an } from '../Can'
 import DropdownActions from '../DropdownActions'
 import UserListItem from '../UserListItem'
@@ -41,9 +43,10 @@ const sortTeamListOrder: Record<SiteRole, number> = {
 
 export interface TeamListProps {
   site: Site
+  allowActions: boolean
 }
 
-const TeamList: React.FC<TeamListProps> = ({ site }) => {
+const TeamList: React.FC<TeamListProps> = ({ site, allowActions }) => {
   const { t } = useTranslation([
     'pages',
     'common'
@@ -64,6 +67,7 @@ const TeamList: React.FC<TeamListProps> = ({ site }) => {
   const [memberToEdit, setMemberToEdit] = React.useState<SiteMember | undefined>(undefined)
   const [editMemberOpen, setEditMemberOpen] = React.useState(false)
   const [addMemberOpen, setAddMemberOpen] = React.useState(false)
+  const [invitationOpen, setInvitationOpen] = React.useState(false)
 
   const ability = React.useContext(AbilityContext)
 
@@ -101,18 +105,37 @@ const TeamList: React.FC<TeamListProps> = ({ site }) => {
       </ListItemButton>
 
       <Collapse in={open} sx={{ mx: 2 }}>
-        <Can do='update' on={an('site', site)}>
-          <Grid container my={2} pl={2}>
-            <Button
-              variant='outlined'
-              color='secondary'
-              startIcon={<PersonAddAltRoundedIcon />}
-              onClick={(): void => setAddMemberOpen(true)}
-            >
-              {t('pages:site.add_member')}
-            </Button>
-          </Grid>
-        </Can>
+        {allowActions && (
+          <>
+            <Can do='update' on={an('site', site)}>
+              <Grid container my={2} pl={2}>
+                <Button
+                  variant='outlined'
+                  color='secondary'
+                  startIcon={<PersonAddAltRoundedIcon />}
+                  onClick={(): void => setAddMemberOpen(true)}
+                >
+                  {t('pages:site.add_member')}
+                </Button>
+              </Grid>
+            </Can>
+            <Can do='join' on={an('site', site)}>
+              <Grid container mb={2} pr={2} justifyContent="flex-end">
+                <Grid item>
+                  <Button
+                    variant='outlined'
+                    color='secondary'
+                    size='small'
+                    startIcon={<AddRoundedIcon />}
+                    onClick={(): void => setInvitationOpen(true)}
+                  >
+                    {t('common:join')}
+                  </Button>
+                </Grid>
+              </Grid>
+            </Can>
+          </>
+        )}
 
         {members.map(({ role, member }) => (
           <UserListItem
@@ -183,6 +206,11 @@ const TeamList: React.FC<TeamListProps> = ({ site }) => {
         isOpen={addMemberOpen}
         site={site}
         close={(): void => { setAddMemberOpen(false) }}
+      />
+      <SendInvitationDialog
+        isOpen={invitationOpen}
+        site={site}
+        close={(): void => { setInvitationOpen(false) }}
       />
     </>
   )

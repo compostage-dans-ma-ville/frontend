@@ -99,6 +99,10 @@ export const addMemberToSiteSchema = yup.object().shape({
   ...emailSchema,
   role: yup.mixed<SiteRole>().oneOf(Object.values(SiteRole), 'testesr').required('errors:required_field').default(SiteRole.MEMBER)
 })
+export const sendInvitationSchema = yup.object().shape({
+  description: descriptionSchema.required('errors:required_field').min(30, 'errors:min30')
+})
 
 export type CreateSiteMember = RemoveIndex<yup.InferType<typeof addMemberToSiteSchema>>
 export type CreateSite = RemoveIndex<yup.InferType<typeof siteCreationSchema>>
+export type SendInvitation = RemoveIndex<yup.InferType<typeof sendInvitationSchema>>
