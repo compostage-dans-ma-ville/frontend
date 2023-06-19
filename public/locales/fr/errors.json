@@ -24,5 +24,6 @@
   "site": {
     "invitation": "Vous avez déjà envoyé une demande d'invitation à ce site. Merci de patienter 1 semaine pour envoyer une nouvelle demande."
   },
-  "send_reset_password": "Une erreur s'est produite lors de l'envoi de l'email. Veuillez vérifier que l'email est valide et connu de nos services."
+  "send_reset_password": "Une erreur s'est produite lors de l'envoi de l'email. Veuillez vérifier que l'email est valide et connu de nos services.",
+  "website": "Veuillez entrer une url valide"
 }

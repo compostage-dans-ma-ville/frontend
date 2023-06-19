@@ -16,6 +16,7 @@ export type Site = {
   id: number
   name: string
   description?: string
+  website?: string
   images: string[]
   address: Address
   schedules?: Schedule[] // array of 7 SiteSchedule for each day of week
@@ -79,6 +80,7 @@ export const siteCreationSchema: yup.SchemaOf<Omit<Site, 'id' | 'images' | 'orga
   ...nameSchema,
   description: descriptionSchema,
   address: yup.object().shape({ ...addressSchema }).defined(),
+  website: yup.string().url('errors:website').optional(),
   schedules: yup.array().of(scheduleSchema).optional(),
   isPublic: yup.boolean().default(true),
   launchDate: yup.date().typeError('errors:date').optional(),
