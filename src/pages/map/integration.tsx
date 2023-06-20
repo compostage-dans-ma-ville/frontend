@@ -18,6 +18,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import MainLayout from '@/components/layouts/MainLayout'
 import PageTitle from '@/components/PageTitle'
 import { useIsMobile } from '@/domains/hooks'
+import { Routes } from '@/domains/Routes'
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => ({
   props: {
@@ -47,7 +48,7 @@ const IntegrationPage: React.FC<PageProps> = ({ baseUrl }) => {
   const isMobile = useIsMobile()
 
   const iframeCode = `<iframe
-  src="${baseUrl}/map?latitude=49.1167524834301&longitude=6.173963072333283&radius=1000"
+  src="${baseUrl}${Routes.embeddedMap}?latitude=49.1167524834301&longitude=6.173963072333283&radius=1000"
   height="400px"
   width="700px"
   style="border: none;"
@@ -107,7 +108,7 @@ const IntegrationPage: React.FC<PageProps> = ({ baseUrl }) => {
         </Typography>
 
         <iframe
-          src={`${baseUrl}/map?radius=1000&latitude=49.1167524834301&longitude=6.173963072333283`}
+          src={`${baseUrl}${Routes.embeddedMap}?radius=1000&latitude=49.1167524834301&longitude=6.173963072333283`}
           height="400px"
           width={isMobile ? '300px' : '700px'}
           style={{ border: 'none' }}
@@ -153,7 +154,7 @@ const IntegrationPage: React.FC<PageProps> = ({ baseUrl }) => {
         </Typography>
 
         <Typography className="code" sx={{ my: 2, display: 'inline-block' }}>
-          <Typography component="span">{baseUrl}/map?</Typography>
+          <Typography component="span">{baseUrl}{Routes.embeddedMap}?</Typography>
           <Typography color="warning.main" fontWeight="bold" component="span">latitude=$latitude</Typography>
           <Typography component="span">&</Typography>
           <Typography color="warning.main" fontWeight="bold" component="span">longitude=$longitude</Typography>

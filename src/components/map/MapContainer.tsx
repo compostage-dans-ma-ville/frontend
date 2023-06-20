@@ -7,6 +7,7 @@ import ButtonGroup from '@mui/material/ButtonGroup'
 import Paper, { PaperProps as PaperPropsType } from '@mui/material/Paper'
 
 import { Map } from 'leaflet'
+import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import {
   MapContainer as LeafletMapContainer,
@@ -16,6 +17,7 @@ import {
 } from 'react-leaflet'
 
 import 'leaflet/dist/leaflet.css'
+import { Routes } from '@/domains/Routes'
 
 const MAX_ZOOM = 19
 
@@ -40,6 +42,19 @@ const _MapContainer: React.ForwardRefRenderFunction<Map, MapContainerProps> = ({
       {...PaperProps}
       sx={{ overflow: 'hidden', position: 'relative', ...PaperProps?.sx }}
     >
+      <Link href={Routes.home} target='_blank'>
+        <img
+          src='/images/icon-with-borders.svg'
+          style={{
+            position: 'absolute',
+            bottom: '2px',
+            left: '2px',
+            width: '50px',
+            zIndex: 1000
+          }}
+        />
+      </Link>
+
       <ButtonGroup
         orientation="vertical"
         sx={{

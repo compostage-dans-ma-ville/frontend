@@ -12,6 +12,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import Navigation from '@/components/navigation/Navigation'
+import { useIsMobile } from '@/domains/hooks'
 
 import AuthNavigation from './AuthNavigation'
 
@@ -19,13 +20,14 @@ const Navbar: React.FC = () => {
   const [visibleMenu, setVisibleMenu] = React.useState<boolean>(false)
   const { breakpoints } = useTheme()
   const matchMobileView = useMediaQuery(breakpoints.down('md'))
+  const isMobile = useIsMobile()
 
   return (
     <Box>
       <Container sx={{ py: { xs: 2, md: 3 } }}>
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Link href="/">
-            <Image src="/images/icon.svg" alt='les 3 bacs' width={80} height={30} />
+            <Image src={`/images/${isMobile ? 'icon' : 'icon-with-text-right'}.svg`} alt='les 3 bacs' width={isMobile ? 70 : 180} height={isMobile ? 20 : 30} />
           </Link>
 
           <Box sx={{ ml: 'auto', display: { xs: 'inline-flex', md: 'none' } }}>
