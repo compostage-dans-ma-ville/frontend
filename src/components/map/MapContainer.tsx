@@ -44,6 +44,7 @@ const _MapContainer: React.ForwardRefRenderFunction<Map, MapContainerProps> = ({
     >
       <Link href={Routes.home} target='_blank'>
         <img
+          alt={t('common:app_name')}
           src='/images/icon-with-borders.svg'
           style={{
             position: 'absolute',

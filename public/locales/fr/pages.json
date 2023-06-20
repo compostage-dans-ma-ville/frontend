@@ -86,7 +86,16 @@
   },
   "ouComposter": {
     "title": "Où composter",
-    "where": "Où composter à"
+    "where": "Où composter à",
+    "sites": "La ville de {{city}} dispose actuellement de {{count}} site de compostage",
+    "sites_other": "La ville de {{city}} dispose actuellement de {{count}} sites de compostage",
+    "public_sites_one": ", dont 1 est public.",
+    "public_sites_zero": " qui sont tous privés.",
+    "public_sites_other": ", dont {{count}} sont publics.",
+    "check_map": "La carte interactive ci-dessous permet d'explorer les différents sites.",
+    "sites_list": "Liste des sites de compostage",
+    "no_sites": "Il ne semble pas y avoir de sites de compostage référencés à {{city}} pour le moment.",
+    "help_us": "Aidez les autres utilisateurs à trouver un site de compostage près de chez eux en répertoriant les sites manquants."
   },
   "organization": {
     "add_sites": "Associer des sites de compostage à cette organisation",
