@@ -18,7 +18,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Can, { an } from '@/components/Can'
 import MainLayout from '@/components/layouts/MainLayout'
 import LazyLoadingLoader from '@/components/LazyLoadingLoader'
-import PageTitle from '@/components/PageTitle'
+import SeoMeta from '@/components/SeoMeta'
 import UserTabs from '@/components/user/UserTabs'
 import { getUser } from '@/domains/api'
 import { useUser } from '@/domains/api/hooks'
@@ -65,7 +65,7 @@ const UserProfile: NextPage<UserProfileProps> = ({ user: userProps, edition }) =
 
   return (
     <MainLayout>
-      <PageTitle title={t('common:profile')} />
+      <SeoMeta title={t('common:profile')} />
       <Container maxWidth="lg">
         {editionMode
           ? (

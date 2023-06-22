@@ -21,7 +21,7 @@ import { useSnackbar } from 'notistack'
 import { useForm } from 'react-hook-form'
 
 import MainLayout from '@/components/layouts/MainLayout'
-import PageTitle from '@/components/PageTitle'
+import SeoMeta from '@/components/SeoMeta'
 import { useMe, useValidateEmailDialog } from '@/contexts'
 import { registerUser as apiRegisterUser } from '@/domains/api'
 import { AuthService } from '@/domains/AuthService'
@@ -79,7 +79,7 @@ const Register: React.FC = () => {
 
   return (
     <MainLayout>
-      <PageTitle title={t('pages:register.title')} />
+      <SeoMeta title={t('pages:register.title')} />
       <Container component="main" maxWidth="xs">
         <Box
           sx={{
@@ -89,7 +89,7 @@ const Register: React.FC = () => {
             alignItems: 'center'
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1 }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography variant="h1">

@@ -53,7 +53,7 @@ const ValidateEmailDialog: React.FC = () => {
             }}
           >
             <Avatar sx={{
-              m: 1, bgcolor: 'secondary.main', width: 70, height: 70
+              m: 1, width: 70, height: 70
             }} >
               <MarkEmailReadRoundedIcon sx={{ width: 50, height: 50 }} />
             </Avatar>

@@ -13,9 +13,7 @@ import { useSnackbar } from 'notistack'
 
 import CanOrLogin from '@/components/authentication/CanOrLogin'
 import MainLayout from '@/components/layouts/MainLayout'
-// eslint-disable-next-line import/order
-import PageTitle from '@/components/PageTitle'
-
+import SeoMeta from '@/components/SeoMeta'
 import EditSiteForm from '@/components/site/forms/EditSiteForm'
 import { useCreateSite } from '@/domains/api/hooks'
 import { Routes } from '@/domains/Routes'
@@ -57,7 +55,7 @@ const SitePage: NextPage = () => {
 
   return (
     <MainLayout>
-      <PageTitle title={[t('pages:site.site_creation')]} />
+      <SeoMeta title={[t('pages:site.site_creation')]} />
 
       <CanOrLogin I='create' a='site'>
         <Container maxWidth="md">

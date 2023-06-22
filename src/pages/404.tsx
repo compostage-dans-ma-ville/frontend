@@ -10,7 +10,7 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import MainLayout from '@/components/layouts/MainLayout'
-import PageTitle from '@/components/PageTitle'
+import SeoMeta from '@/components/SeoMeta'
 import { titleFont } from '@/styles/fonts'
 
 export const getStaticProps: GetStaticProps = async () => ({
@@ -29,7 +29,7 @@ const Custom404: React.FC = () => {
 
   return (
     <MainLayout>
-      <PageTitle title="404" />
+      <SeoMeta title="404" />
       <Box sx={{
         display: 'flex',
         flexDirection: 'column',

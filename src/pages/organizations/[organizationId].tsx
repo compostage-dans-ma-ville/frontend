@@ -20,7 +20,7 @@ import Can, { an } from '@/components/Can'
 import MainLayout from '@/components/layouts/MainLayout'
 import OrganizationCounter from '@/components/organization/OrganizationCounter'
 import OrganizationTabs from '@/components/organization/OrganizationTabs'
-import PageTitle from '@/components/PageTitle'
+import SeoMeta from '@/components/SeoMeta'
 import { getOrganization } from '@/domains/api/organization'
 import { Organization } from '@/domains/schemas/organization'
 
@@ -56,7 +56,7 @@ const OrganizationPage: NextPage<OrganizationPageProps> = ({ organization }) => 
   ])
   return (
     <MainLayout>
-      <PageTitle title={[organization.name, t('common:organization')]} />
+      <SeoMeta title={[organization.name, t('common:organization')]} />
       <Container maxWidth="lg">
         <Card>
           <ButtonGroup variant="outlined" sx={{ m: 2, display: 'flex', justifyContent: 'flex-end' }}>

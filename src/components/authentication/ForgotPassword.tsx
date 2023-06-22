@@ -45,7 +45,7 @@ export const ForgotPassword: React.FC = () => {
 
   return (
     <>
-      <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+      <Avatar sx={{ m: 1 }}>
         <VpnKeyOutlinedIcon />
       </Avatar>
 

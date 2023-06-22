@@ -1,5 +1,7 @@
 import { Address, Hour } from './schemas'
 
+export const BASE_URL = process.env.NEXT_PUBLIC_BASEURL as string
+
 export const hourAsNumber = (hour: Hour): number => {
   return Number(hour.replace(':', '.'))
 }

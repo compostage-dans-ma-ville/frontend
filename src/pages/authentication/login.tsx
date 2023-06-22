@@ -20,7 +20,7 @@ import { useForm } from 'react-hook-form'
 
 import MainLayout from '@/components/layouts/MainLayout'
 import LoadingButton from '@/components/LoadingButton'
-import PageTitle from '@/components/PageTitle'
+import SeoMeta from '@/components/SeoMeta'
 import { useMe } from '@/contexts'
 import { loginUser } from '@/domains/api'
 import { AuthService } from '@/domains/AuthService'
@@ -76,7 +76,7 @@ const Login: React.FC = () => {
 
   return (
     <MainLayout>
-      <PageTitle title={t('pages:login.title')}/>
+      <SeoMeta title={t('pages:login.title')}/>
       <Container component="main" maxWidth="xs">
         <Box
           sx={{
@@ -86,7 +86,7 @@ const Login: React.FC = () => {
             alignItems: 'center'
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1 }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography variant="h1">

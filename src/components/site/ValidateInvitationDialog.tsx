@@ -59,7 +59,7 @@ const ValidateInvitationDialog: React.FC<ValidateInvitationDialogProps> = ({
             }}
           >
             <Avatar sx={{
-              m: 1, bgcolor: 'secondary.main', width: 70, height: 70
+              m: 1, width: 70, height: 70
             }} >
               {success ? (
                 <CheckCircleOutlineRoundedIcon sx={{ width: 50, height: 50 }} />

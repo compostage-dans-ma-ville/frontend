@@ -65,7 +65,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, logout }) => {
         }}
       >
         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-          <Avatar alt={user.firstName} src={user.avatar} sx={{ bgcolor: green[500] }}/>
+          <Avatar alt={user.firstName} src={user.avatar} />
         </IconButton>
       </Tooltip>
 

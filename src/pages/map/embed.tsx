@@ -5,7 +5,8 @@ import dynamic from 'next/dynamic'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import PageTitle from '@/components/PageTitle'
+import SeoMeta from '@/components/SeoMeta'
+
 const SitesMapWrapper = dynamic(
   () => import('@/components/map/SitesMapWrapper'),
   { ssr: false }
@@ -30,7 +31,7 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <PageTitle title={t('map:the_map')} />
+      <SeoMeta title={t('map:the_map')} />
       <SitesMapWrapper />
     </>
   )

@@ -17,7 +17,7 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import MainLayout from '@/components/layouts/MainLayout'
-import PageTitle from '@/components/PageTitle'
+import SeoMeta from '@/components/SeoMeta'
 import { activateEmailFromToken } from '@/domains/api'
 import { titleFont } from '@/styles/fonts'
 
@@ -55,7 +55,7 @@ const ActivateToken: React.FC = () => {
 
   return (
     <MainLayout>
-      <PageTitle title={t('pages:forgot_password.title')}/>
+      <SeoMeta title={t('pages:forgot_password.title')}/>
       <Container maxWidth="lg">
         <Paper sx={{ overflow: 'hidden', width: '100%' }}>
           {isLoading ? (

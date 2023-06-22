@@ -11,7 +11,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { ForgotPassword as ForgotPasswordComponent } from '@/components/authentication/ForgotPassword'
 import { ResetPassword } from '@/components/authentication/ResetPassword'
 import MainLayout from '@/components/layouts/MainLayout'
-import PageTitle from '@/components/PageTitle'
+import SeoMeta from '@/components/SeoMeta'
 
 export const getStaticProps: GetStaticProps = async () => ({
   props: {
@@ -38,7 +38,7 @@ const ForgotPassword: React.FC = () => {
 
   return (
     <MainLayout>
-      <PageTitle title={t('pages:forgot_password.title')}/>
+      <SeoMeta title={t('pages:forgot_password.title')}/>
       <Container component="main" maxWidth="xs">
         <Box
           sx={{

@@ -69,8 +69,10 @@ export const customTheme = createTheme(
         styleOverrides: {
           root: ({ theme }) => theme.unstable_sx({
             border: 'solid',
-            borderColor: theme.palette.primary.main,
-            borderWidth: 3
+            borderColor: 'black',
+            borderWidth: 3,
+            color: 'black',
+            backgroundColor: theme.palette.background.default
           })
         }
       },

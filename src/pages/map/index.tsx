@@ -11,7 +11,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import MainLayout from '@/components/layouts/MainLayout'
 import EmbedMapLink from '@/components/map/EmbedMapLink'
-import PageTitle from '@/components/PageTitle'
+import SeoMeta from '@/components/SeoMeta'
 import { useWindowDimensions } from '@/domains/hooks'
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => ({
@@ -54,7 +54,10 @@ const Page: React.FC<PageProps> = () => {
 
   return (
     <MainLayout>
-      <PageTitle title={[t('map:the_map')]} />
+      <SeoMeta
+        title={[t('map:the_map')]}
+        description={t('pages:map.description')}
+      />
 
       <Container maxWidth="xl">
         <Typography variant='h1'>{t('map:the_map')}</Typography>

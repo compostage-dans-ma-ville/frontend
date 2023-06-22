@@ -22,7 +22,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import MainLayout from '@/components/layouts/MainLayout'
 import EmbedMapLink from '@/components/map/EmbedMapLink'
-import PageTitle from '@/components/PageTitle'
+import SeoMeta from '@/components/SeoMeta'
 import SiteInfo from '@/components/site/SiteInfo'
 import SiteListItem from '@/components/site/SiteListItem'
 import { getSite, getSites } from '@/domains/api'
@@ -106,7 +106,10 @@ const Page: NextPage<PageProps> = ({
 
   return (
     <MainLayout>
-      <PageTitle title={[address.name, t('pages:ouComposter.title')]} />
+      <SeoMeta
+        title={[address.name, t('pages:ouComposter.title')]}
+        description={t('pages:ouComposter.description', { city: address.name })}
+      />
 
       <Container maxWidth="md">
         <Typography variant="h1">

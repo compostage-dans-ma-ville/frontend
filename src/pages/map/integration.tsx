@@ -16,7 +16,7 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import MainLayout from '@/components/layouts/MainLayout'
-import PageTitle from '@/components/PageTitle'
+import SeoMeta from '@/components/SeoMeta'
 import { useIsMobile } from '@/domains/hooks'
 import { Routes } from '@/domains/Routes'
 
@@ -86,7 +86,10 @@ const IntegrationPage: React.FC<PageProps> = ({ baseUrl }) => {
 
   return (
     <MainLayout>
-      <PageTitle title={[t('common:integration'), t('map:the_map')]} />
+      <SeoMeta
+        title={[t('common:integration'), t('map:the_map')]}
+        description={t('pages:integration.meta_description')}
+      />
 
       <Container maxWidth="md">
         <Typography variant="h1" mb={4}>

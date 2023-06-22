@@ -26,6 +26,7 @@
     }
   },
   "site": {
+    "description": "Site de compostage {{status}} \"{{name}}\" de la ville de {{city}}.",
     "helpful_information": "Informations utiles",
     "households_amount": "Nombre de foyers participants",
     "composting_site": "Site de compostage",
@@ -86,6 +87,7 @@
   },
   "ouComposter": {
     "title": "Où composter",
+    "description": "Découvrez aisément tous les sites de compostage partagé de la ville de {{city}} grâce à notre plateforme collaborative dédiée.",
     "where": "Où composter à",
     "sites": "La ville de {{city}} dispose actuellement de {{count}} site de compostage",
     "sites_other": "La ville de {{city}} dispose actuellement de {{count}} sites de compostage",
@@ -103,6 +105,7 @@
   },
   "integration": {
     "title": "Intégration de la carte interactive",
+    "meta_description": "Intégrez la carte interactive des sites de compostage directement sur votre site web.",
     "description": "Nous mettons à disposition une carte interactive des différents sites de compostage référencés, que vous pouvez intégrer directement sur votre site web. Cela est possible à l'aide d'un simple code HTML utilisant une iframe qu'il vous suffit de copier-coller dans le code de votre site:",
     "_description": "Il est très simple d'intégrer la carte interactive des sites de compostage sur votre site web au moyen d'une iframe.",
     "map_description": "Ce code affichera la carte interactive centrée sur la ville de Metz avec un rayon de 1000 mètres. Il vous est bien évidemment possible de modifier l'emplacement de la carte ainsi que son niveau de zoom. Voir la section <a href='#iframeParams' style='color: blue'>Paramètres de l'iframe</a> pour en savoir plus.",
@@ -120,5 +123,8 @@
       "longitude": "La longitude du centre de la carte au format décimal (Example: 6.985372490936282).",
       "radius": "La distance en mètres à partir du centre de la carte à afficher."
     }
+  },
+  "map": {
+    "description": "Découvrez aisément tous les sites de compostage partagé sur notre carte interactive."
   }
 }

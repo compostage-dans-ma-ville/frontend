@@ -13,7 +13,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Can, { an } from '@/components/Can'
 import MainLayout from '@/components/layouts/MainLayout'
 import LazyLoadingLoader from '@/components/LazyLoadingLoader'
-import PageTitle from '@/components/PageTitle'
+import SeoMeta from '@/components/SeoMeta'
 import SiteActions from '@/components/site/SiteActions'
 import SiteCarousel from '@/components/site/SiteCarousel'
 import SiteInfo from '@/components/site/SiteInfo'
@@ -75,7 +75,14 @@ const SitePage: NextPage<SiteProps> = ({ site: siteProp, edition }) => {
 
   return (
     <MainLayout>
-      <PageTitle title={[site.name, t('pages:site.composting_site')]} />
+      <SeoMeta
+        title={[site.name, t('pages:site.composting_site')]}
+        description={t('pages:site.description', {
+          status: (site.isPublic ? t('common:public') : t('common:private')).toLowerCase(),
+          name: site.name,
+          city: site.address.city
+        })}
+      />
 
       <Container maxWidth="md" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <Card>
