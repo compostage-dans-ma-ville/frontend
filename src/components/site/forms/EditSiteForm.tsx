@@ -1,6 +1,7 @@
 import React from 'react'
 
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded'
+import LabelRoundedIcon from '@mui/icons-material/LabelRounded'
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded'
 import LockRoundedIcon from '@mui/icons-material/LockRounded'
 import LoadingButton from '@mui/lab/LoadingButton'
@@ -10,6 +11,7 @@ import Collapse from '@mui/material/Collapse'
 import FormControl from '@mui/material/FormControl'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Grid from '@mui/material/Grid'
+import ListItemText from '@mui/material/ListItemText'
 import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
 import TextField from '@mui/material/TextField'
@@ -22,7 +24,9 @@ import { Controller, useForm, useWatch } from 'react-hook-form'
 
 import FormSection from '@/components/form/FormSection'
 import WeightInput from '@/components/form/WeightInput'
-import { CreateSite, DESCRIPTION_MAX_LENGTH, siteCreationSchema } from '@/domains/schemas'
+import {
+  CreateSite, DESCRIPTION_MAX_LENGTH, SiteType, siteCreationSchema
+} from '@/domains/schemas'
 
 import SchedulesForm from './SchedulesForm'
 import AddressInput from '../AddressInput'
@@ -66,6 +70,13 @@ const EditSiteForm: React.FC<EditSiteFormProps> = ({
     name: 'isPublic',
     defaultValue: defaultValues ? defaultValues.isPublic : true
   })
+  const typeOptions: SiteType[] = [
+    SiteType.SHARED,
+    SiteType.BUILDING_FOOT,
+    SiteType.ADMINISTRATIVE_INSTITUTION,
+    SiteType.EDUCATIONAL_INSTITUTION,
+    SiteType.COMPANY
+  ]
 
   return (
     <Box component="form" noValidate onSubmit={handleSubmit(onSubmit)} sx={{ mt: 5 }}>
@@ -109,6 +120,40 @@ const EditSiteForm: React.FC<EditSiteFormProps> = ({
         </Grid>
       </Grid>
 
+      <FormSection title={t('pages:site.site_type')} Icon={LabelRoundedIcon}>
+        <FormControl>
+          <Controller
+            control={control}
+            defaultValue={defaultValues?.type || SiteType.SHARED}
+            name="type"
+            render={({ field: { onChange, ...field } }): JSX.Element => (
+              <RadioGroup
+                {...field}
+                onChange={(e, value): void => {
+                  onChange(value)
+                }}
+              >
+                {typeOptions.map((type) => {
+                  return (
+                    <FormControlLabel
+                      key={type}
+                      value={type}
+                      control={<Radio />}
+                      label={
+                        <ListItemText
+                          primary={t(`pages:site.siteTypeEnum.${type}`)}
+                          secondary={t(`pages:site.siteTypeDescription.${type}`)}
+                        />
+                      }
+                    />
+                  )
+                })}
+              </RadioGroup>
+            )}
+          />
+        </FormControl>
+      </FormSection>
+
       <FormSection title={t('common:location')} Icon={LocationOnRoundedIcon}>
         <Controller
           control={control}
@@ -149,7 +194,6 @@ const EditSiteForm: React.FC<EditSiteFormProps> = ({
                   onChange(value === 'true')
                 }}
                 aria-label={t('pages:site.specify_site_visibility')}
-                name="radio-buttons-group"
               >
                 <FormControlLabel value={true} control={<Radio />} label={t('common:public_site_description')} />
                 <FormControlLabel value={false} control={<Radio />} label={t('common:private_site_description')} />

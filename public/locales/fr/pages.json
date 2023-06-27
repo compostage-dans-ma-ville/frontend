@@ -34,6 +34,7 @@
     "close_at": "Ferme à {{hour}}",
     "open_at": "Ouvre à {{hour}}",
     "site_creation": "Création d'un nouveau site",
+    "site_type": "Type du site",
     "opening_of": "Horaires du",
     "add_opening": "Ajouter une horaire",
     "access": "Accès",
@@ -83,6 +84,20 @@
       "MEMBER": "Membre",
       "ADMIN": "Administrateur",
       "REFEREE": "Référent"
+    },
+    "siteTypeEnum": {
+      "SHARED": "Partagé",
+      "BUILDING_FOOT": "Pied d'immeuble",
+      "ADMINISTRATIVE_INSTITUTION": "Établissement administratif",
+      "EDUCATIONAL_INSTITUTION": "Établissement scolaire",
+      "COMPANY": "Entreprise"
+    },
+    "siteTypeDescription": {
+      "SHARED": "Site de compostage situé dans des parcs ou jardins communément ouverts à tous.",
+      "BUILDING_FOOT": "Site de compostage collectif établi pour les résidents de l'endroit où il est situé.",
+      "ADMINISTRATIVE_INSTITUTION": "Site de compostage mis en place dans un établissement de la fonction publique.",
+      "EDUCATIONAL_INSTITUTION": "Site de compostage mis en place dans un établissement scolaire.",
+      "COMPANY": "Site de compostage mis en place dans une entreprise."
     }
   },
   "ouComposter": {

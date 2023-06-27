@@ -3,6 +3,7 @@
   "name": "Site numéro [id]",
   "description": "[#faker:lorem:paragraph]",
   "avatar": "https://avatars.githubusercontent.com/u/31794680?v=4",
+  "type": "BUILDING_FOOT",
   "website": "https://avatars.githubusercontent.com/u/31794680?v=4",
   "images": [
     "https://tse3.mm.bing.net/th?id=OIP.IcWsaHc_L9nKtZHRqJPYmgHaFj&pid=Api",

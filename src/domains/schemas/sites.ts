@@ -11,10 +11,20 @@ export enum SiteRole {
   REFEREE = 'REFEREE',
   ADMIN = 'ADMIN'
 }
+// eslint-disable-next-line no-shadow
+export enum SiteType {
+  SHARED = 'SHARED',
+  BUILDING_FOOT = 'BUILDING_FOOT',
+  ADMINISTRATIVE_INSTITUTION = 'ADMINISTRATIVE_INSTITUTION',
+  EDUCATIONAL_INSTITUTION = 'EDUCATIONAL_INSTITUTION',
+  COMPANY = 'COMPANY',
+}
+
 export type Schedule = Opening[] | null
 export type Site = {
   id: number
   name: string
+  type: SiteType
   description?: string
   website?: string
   images: string[]
@@ -79,6 +89,7 @@ export const scheduleSchema = yup.array().of(openingsSchema).nullable()
 export const siteCreationSchema: yup.SchemaOf<Omit<Site, 'id' | 'images' | 'organization'>> = yup.object().shape({
   ...nameSchema,
   description: descriptionSchema,
+  type: yup.mixed<SiteType>().oneOf(Object.values(SiteType)).required('errors:required_field'),
   address: yup.object().shape({ ...addressSchema }).defined(),
   website: yup.string().url('errors:website').optional(),
   schedules: yup.array().of(scheduleSchema).optional(),
