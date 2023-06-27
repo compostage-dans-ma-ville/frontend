@@ -27,6 +27,8 @@ To check the overall performance/seo/accessibility of the app use [unlighthouse]
 yarn unlighthouse --site http://localhost:3000
 ```
 
+> ⚠️ Don't forget to update the `.env` file and run `yarn build && yarn start` to test on the prod conditions.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

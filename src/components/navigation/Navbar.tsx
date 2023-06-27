@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
     <Box>
       <Container sx={{ py: { xs: 2, md: 3 } }}>
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <Link href={Routes.home}>
+          <Link href={Routes.home} aria-label={t('common:app_name')}>
             <Image src={`/images/${isMobile ? 'icon' : 'icon-with-text-right'}.svg`} alt={t('common:app_name')} width={isMobile ? 70 : 180} height={isMobile ? 20 : 30} />
           </Link>
 
